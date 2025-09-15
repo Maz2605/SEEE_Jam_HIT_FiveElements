@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [Header("Attack Settings")]
     [SerializeField] private GameObject _bulletPrefab;
@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private readonly List<Transform> enemiesInRange = new List<Transform>();
 
     private CircleCollider2D rangeCollider;
+
+    public float AttackRange => _attackRange;
+    public float BulletSpeed => _bulletSpeed;   
+
 
     private void Awake()
     {

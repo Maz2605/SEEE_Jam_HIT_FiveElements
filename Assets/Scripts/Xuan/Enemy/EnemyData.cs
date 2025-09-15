@@ -10,9 +10,27 @@ public class EnemyData : ScriptableObject
 [System.Serializable]
 public class EnemyStats
 {
+    public string idEnemy;
     // Enemy State
     public float health;
     public float speed;
-    public int damage;
-    public int scoreValue;
+    public float damage;
+    public float speedAttack;
+    public float scoreValue;
+    public EnemyEmotion emotion;
+    // Enemy Animation
+    public RuntimeAnimatorController animator;
+}
+
+public enum EnemyEmotion
+{
+    Normal,
+    Angry,
+    Happy,
+}
+
+public enum EnemyType
+{
+    Enemy,
+    Village,
 }

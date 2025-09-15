@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStatsList:
   - idEnemy: orc
+    isFar: 0
     health: 100
     speed: 1
     damage: 5
@@ -22,6 +23,7 @@ MonoBehaviour:
     emotion: 0
     animator: {fileID: 9100000, guid: f535fa4035af83e49883790605a80e2a, type: 2}
   - idEnemy: slime1
+    isFar: 0
     health: 100
     speed: 1
     damage: 5

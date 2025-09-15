@@ -11,6 +11,7 @@ public class EnemyData : ScriptableObject
 public class EnemyStats
 {
     public string idEnemy;
+    public bool isFar;
     // Enemy State
     public float health;
     public float speed;

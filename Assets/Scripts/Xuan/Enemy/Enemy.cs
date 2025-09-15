@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    private string _idEnemy;
+    public string GetIDEnemy => _idEnemy;
+    private bool _isFar;
     // Enemy State
     private float _health;
     private float _currentHealth;
@@ -20,11 +24,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     [SerializeField] private EnemyUI _enemyUI;
+    [SerializeField] private EnemySkill _enemySkill;
 
     [Header("Enemy Move Point")]
     private float _topMovePoint = 4f;
     private float _bottomMovePoint = -4f;
     private bool _isMoveY = false;
+
 
     private void Start()
     {
@@ -37,7 +43,9 @@ public class Enemy : MonoBehaviour
 
     public void InitState(EnemyStats data)
     {
+        _idEnemy = data.idEnemy;
         _health = data.health;
+        _isFar = data.isFar;
         _currentHealth = 0f;
         _speed = data.speed;
         _damage = data.damage;
@@ -97,15 +105,24 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         _animator.SetTrigger("IsAttack");
-        //
+        UseSkill();
+    }
+    public void StartExplosion()
+    {
+        _animator.SetBool("IsExplo", true);
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            PoolingManager.Despawn(gameObject);
+        });
     }
     public void Hit(float damage)
     {
-        
+        _currentHealth += damage;
+        _enemyUI.UpdateImotionBar(_currentHealth);
     }
     public void UseSkill()
     {
-
+        _enemySkill.UseKill(this);
     }
     public void Die()
     {
@@ -115,6 +132,11 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Wall"))
+        {
+            StopMove();
+            StartExplosion();
+        }
+        if(collision.CompareTag("Stop") && _isFar)
         {
             StopMove();
             StartAttack();

@@ -14,6 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStatsList:
   - idEnemy: magic
+    isFar: 1
+    health: 11
+    speed: 1
+    damage: 1
+    speedAttack: 3
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: 23320d622f8f39e43b3de01498e7d2ae, type: 2}
+  - idEnemy: master
+    isFar: 0
     health: 11
     speed: 1
     damage: 1

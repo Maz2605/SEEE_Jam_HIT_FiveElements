@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 867159983}
   - component: {fileID: 867159982}
   - component: {fileID: 867159981}
+  - component: {fileID: 867159985}
   m_Layer: 0
   m_Name: Enemy (4)
   m_TagString: Enemy
@@ -403,6 +404,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867159985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867159980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8372b1e20120b84ab91a072a1548891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 2
 --- !u!1 &1202156837
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +429,7 @@ GameObject:
   - component: {fileID: 1202156840}
   - component: {fileID: 1202156839}
   - component: {fileID: 1202156838}
+  - component: {fileID: 1202156842}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -561,6 +576,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1202156842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202156837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8372b1e20120b84ab91a072a1548891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 2
 --- !u!1 &1354209125
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +601,7 @@ GameObject:
   - component: {fileID: 1354209128}
   - component: {fileID: 1354209127}
   - component: {fileID: 1354209126}
+  - component: {fileID: 1354209130}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -719,6 +748,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1354209130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354209125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8372b1e20120b84ab91a072a1548891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 2
 --- !u!1 &2068861073
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +940,7 @@ GameObject:
   - component: {fileID: 2133431735}
   - component: {fileID: 2133431734}
   - component: {fileID: 2133431733}
+  - component: {fileID: 2133431737}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -1044,6 +1087,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2133431737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133431732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8372b1e20120b84ab91a072a1548891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 2
 --- !u!1 &2139842662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1112,7 @@ GameObject:
   - component: {fileID: 2139842665}
   - component: {fileID: 2139842664}
   - component: {fileID: 2139842663}
+  - component: {fileID: 2139842667}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1196,12 +1253,25 @@ Transform:
   m_GameObject: {fileID: 2139842662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -1.9, z: 0}
+  m_LocalPosition: {x: -1.01, y: -1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139842667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139842662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8372b1e20120b84ab91a072a1548891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

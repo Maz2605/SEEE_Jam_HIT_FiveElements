@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour
     private float _scoreValue;
 
     //UI Enemy
-    [SerializeField] private Image _imotionBar;
 
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _animator;

@@ -22,24 +22,12 @@ public class PlayerController : Singleton<PlayerController>
     public float AttackRange => _attackRange;
     public float BulletSpeed => _bulletSpeed;   
 
-
+    
     private void Awake()
     {
         rangeCollider = GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
     }
-
-    private void OnEnable()
-    {
-        GameEventBao.GetPlayer += GetPlayer;
-    }
-
-    private void OnDisable()
-    {
-        GameEventBao.GetPlayer -= GetPlayer;
-    }
-
-    private PlayerController GetPlayer() => this;
 
     private void Update()
     {

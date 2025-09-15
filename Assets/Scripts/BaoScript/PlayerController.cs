@@ -1,21 +1,47 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+[RequireComponent(typeof(CircleCollider2D))]
+public class PlayerController : MonoBehaviour
 {
     [Header("Attack Settings")]
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private float attackCooldown = 1f;
-    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private float _attackCooldown = 1f;
+    [SerializeField] private float _bulletSpeed = 10f;
+
+    [Header("Range Settings")]
+    [SerializeField] private float _attackRange = 5f; 
 
     private float attackTimer;
-
-    // Danh sách enemy trong vùng bắn
     private readonly List<Transform> enemiesInRange = new List<Transform>();
+
+    private CircleCollider2D rangeCollider;
+
+    private void Awake()
+    {
+        rangeCollider = GetComponent<CircleCollider2D>();
+        rangeCollider.isTrigger = true;
+    }
+
+    private void OnEnable()
+    {
+        GameEventBao.GetPlayer += GetPlayer;
+    }
+
+    private void OnDisable()
+    {
+        GameEventBao.GetPlayer -= GetPlayer;
+    }
+
+    private PlayerController GetPlayer() => this;
 
     private void Update()
     {
+        if (rangeCollider.radius != _attackRange)
+            rangeCollider.radius = _attackRange;
+
         attackTimer -= Time.deltaTime;
 
         if (attackTimer <= 0f && enemiesInRange.Count > 0)
@@ -24,7 +50,7 @@ public class Player : MonoBehaviour
             if (target != null)
             {
                 Shoot(target);
-                attackTimer = attackCooldown;
+                attackTimer = _attackCooldown;
             }
         }
     }
@@ -34,46 +60,38 @@ public class Player : MonoBehaviour
         Transform nearest = null;
         float minDistance = Mathf.Infinity;
 
-        for (int i = 0; i < enemiesInRange.Count; i++)
-        {
-            if (enemiesInRange[i] == null) continue;
+        enemiesInRange.RemoveAll(e => e == null); 
 
-            float distance = Vector3.Distance(transform.position, enemiesInRange[i].position);
-            if (distance < minDistance)
+        foreach (var enemy in enemiesInRange)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.position);
+            if (distance < minDistance && distance <= _attackRange)
             {
                 minDistance = distance;
-                nearest = enemiesInRange[i];
+                nearest = enemy;
             }
         }
-
         return nearest;
     }
 
     private void Shoot(Transform target)
     {
-        GameObject bulletObj = PoolingManager.Spawn(bulletPrefab, firePoint.position, Quaternion.identity);
+        GameObject bulletObj = PoolingManager.Spawn(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
 
-        Vector3 direction = (target.position - firePoint.position).normalized;
-        bullet.Launch(direction, bulletSpeed);
+        Vector3 direction = (target.position - _firePoint.position).normalized;
+        bullet.Launch(direction, _bulletSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            if (!enemiesInRange.Contains(other.transform))
-            {
-                enemiesInRange.Add(other.transform);
-            }
-        }
+        if (other.CompareTag("Enemy") && !enemiesInRange.Contains(other.transform))
+            enemiesInRange.Add(other.transform);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
-        {
             enemiesInRange.Remove(other.transform);
-        }
     }
 }

@@ -751,10 +751,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fccb090ee5e654887af5903a139ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7416307912267293480, guid: 8d95e41308a8a394a9eeed019e0fdce4, type: 3}
-  firePoint: {fileID: 472204952}
-  attackCooldown: 1
-  bulletSpeed: 10
+  _bulletPrefab: {fileID: 7416307912267293480, guid: 8d95e41308a8a394a9eeed019e0fdce4, type: 3}
+  _firePoint: {fileID: 472204952}
+  _attackCooldown: 1
+  _bulletSpeed: 10
+  _attackRange: 104.68
 --- !u!58 &2068861075
 CircleCollider2D:
   m_ObjectHideFlags: 0

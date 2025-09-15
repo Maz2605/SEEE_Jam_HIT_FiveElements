@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private int damage = 1;
-    [SerializeField] private float lifeTime = 2f;
+    [SerializeField] private int _damage = 1;
+    [SerializeField] private float _lifetime = 2f;
 
-    private Vector3 moveDirection;
-    private float speed;
-    private float timer;
+    private Vector3 _moveDirection;
+    private float _speed;
+    private float _timer;
 
     public void Launch(Vector3 direction, float bulletSpeed)
     {
-        moveDirection = direction;
-        speed = bulletSpeed;
-        timer = 0f;
+        _moveDirection = direction;
+        _speed = bulletSpeed;
+        _timer = 0f;
     }
 
     private void Update()
     {
-        transform.position += moveDirection * speed * Time.deltaTime;
+        transform.position += _moveDirection * _speed * Time.deltaTime;
 
-        timer += Time.deltaTime;
-        if (timer >= lifeTime)
+        _timer += Time.deltaTime;
+        if (_timer >= _lifetime)
         {
             PoolingManager.Despawn(gameObject);
         }

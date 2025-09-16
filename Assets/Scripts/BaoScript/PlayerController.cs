@@ -12,8 +12,10 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float _bulletSpeed = 10f;
 
     [Header("Range Settings")]
-    [SerializeField] private float _attackRange = 5f; 
+    [SerializeField] private float _attackRange = 5f;
 
+    [Header("Tower Health")]
+    [SerializeField] private float _healthTower;
     private float attackTimer;
     private readonly List<Transform> enemiesInRange = new List<Transform>();
 
@@ -21,8 +23,28 @@ public class PlayerController : Singleton<PlayerController>
 
     public float AttackRange => _attackRange;
     public float BulletSpeed => _bulletSpeed;   
+    public float  AttackCooldown => _attackCooldown;    
 
-    
+    public float HealthTower => _healthTower;   
+    public void SetAttackRange(float Range)
+    {
+        _attackRange += Range;
+    }
+
+    public void SetHealthTower(float health)
+    {
+        _healthTower += health;
+    }
+
+    public void SetBulletSpeed(float bulletSpeed)
+    {
+        _bulletSpeed += bulletSpeed;
+    }
+
+    public void SetAttackCooldown(float attackCooldown)
+    {
+        _attackCooldown += attackCooldown;
+    }
     private void Awake()
     {
         rangeCollider = GetComponent<CircleCollider2D>();

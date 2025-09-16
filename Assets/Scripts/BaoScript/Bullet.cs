@@ -12,7 +12,6 @@ public class Bullet : MonoBehaviour
     private float _speed;
     private float _timer;
 
-
     public void Launch(Vector3 direction, float bulletSpeed)
     {
         _moveDirection = direction;

@@ -105,6 +105,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
+  _spawnDelay: 0.55
 --- !u!58 &834721446682967190
 CircleCollider2D:
   m_ObjectHideFlags: 0

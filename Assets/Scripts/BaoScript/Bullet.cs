@@ -6,21 +6,36 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int _damage = 1;
     [SerializeField] private float _lifetime = 2f;
     [SerializeField] private float _explosionRadius = 2f; 
-    [SerializeField] private LayerMask enemyLayer;       
+    [SerializeField] private LayerMask enemyLayer;
+
+    [Header("Timing Settings")]
+    [SerializeField] private float _spawnDelay = 0.1f;
 
     private Vector3 _moveDirection;
     private float _speed;
     private float _timer;
+    private float _delayTimer;
+    private bool _launched;
 
     public void Launch(Vector3 direction, float bulletSpeed)
     {
         _moveDirection = direction;
         _speed = bulletSpeed;
         _timer = 0f;
+        _delayTimer = 0f;
+        _launched = true;
     }
 
     private void Update()
     {
+        if (!_launched) return;
+
+        if (_delayTimer < _spawnDelay)
+        {
+            _delayTimer += Time.deltaTime;
+            return;
+        }
+
         transform.position += _moveDirection * _speed * Time.deltaTime;
 
         _timer += Time.deltaTime;

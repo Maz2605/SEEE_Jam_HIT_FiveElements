@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] private EnemyData _enemyData;
     [SerializeField] private EnemyData _bossData;
+
     private void Start()
     {
         SpawnEnemy(20, 30f, "orc");
@@ -74,8 +75,23 @@ public class EnemyManager : MonoBehaviour
         _enemys.Add(newEnemy);
     }
 
-    public void GetEnemy()
+    public Enemy GetEnemyByDistance(Vector3 posWall)
     {
+        Enemy enemy = null;
+        float minDis = 100f;
 
+        foreach(Enemy e in _enemys)
+        {
+            Vector2 enemyPos = new Vector2(e.transform.position.x, e.transform.position.y);
+            Vector2 poswall = new Vector2(posWall.x, posWall.y);
+            float dis = Vector2.Distance(enemyPos, poswall);
+            if(dis < minDis)
+            {
+                minDis = dis;
+                enemy = e;
+            }
+        }
+
+        return enemy;
     }
 }

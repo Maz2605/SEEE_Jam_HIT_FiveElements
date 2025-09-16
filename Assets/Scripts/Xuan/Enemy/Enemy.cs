@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,14 @@ public class Enemy : MonoBehaviour
     private float _bottomMovePoint = -4f;
     private bool _isMoveY = false;
 
+    private void OnEnable()
+    {
+        XuanEventManager.EnemyTakeDamage += TakeDamage;
+    }
+    private void OnDisable()
+    {
+        XuanEventManager.EnemyTakeDamage -= TakeDamage;
+    }
 
     private void Start()
     {
@@ -121,10 +130,15 @@ public class Enemy : MonoBehaviour
             PoolingManager.Despawn(gameObject);
         });
     }
+    
     public void Hit(float damage)
     {
         _currentHealth += damage;
         _enemyUI.UpdateImotionBar(_currentHealth);
+    }
+    public void TakeDamage(Enemy enemy, float damage)
+    {
+        enemy.Hit(damage);
     }
     public void SetSpeed(float r, float time)
     {

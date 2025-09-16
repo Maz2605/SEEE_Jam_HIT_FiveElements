@@ -2,24 +2,24 @@
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHits = 2;  
-    private int currentHits;
+    [SerializeField] private int _maxHealth = 2;
+    private int _currentHealth;
 
     private void OnEnable()
     {
-        currentHits = 0; 
+        _currentHealth = _maxHealth;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void TakeDamage(int damage)
     {
-        if (other.CompareTag("Bullet"))
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
         {
-            currentHits++;
+            if (EmotionBar.Instance != null)
+                EmotionBar.Instance.AddEmotion(20f); 
 
-            if (currentHits >= maxHits)
-            {
-                gameObject.SetActive(false); 
-            }
+            gameObject.SetActive(false);
         }
     }
+
 }

@@ -27,6 +27,7 @@ public class HandlerSkill2 : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             enemiesInRange.Add(other);
+            
         }
     }
 
@@ -49,9 +50,14 @@ public class HandlerSkill2 : MonoBehaviour
                 if (enemy != null) 
                 {
                     Debug.Log($"-{damage} máu vào {enemy.name}");
-                    // ví dụ: enemy.GetComponent<Enemy>().TakeDamage(damage);
+                    // Enemy take damage
                 }
             }
         }
+    }
+
+    private void GetDamage()
+    {
+        
     }
 }

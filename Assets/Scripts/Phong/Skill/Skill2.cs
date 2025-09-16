@@ -8,8 +8,10 @@ public class Skill2 : MonoBehaviour
 {
     public GameObject skill2Prefab;      
     public GameObject skill2RangePrefab;
-
+    public float timeCoolDown = 5f;
+    
     private bool _isChoiceSkill = false;
+    private bool _isCooldown = false;
     private GameObject _rangeIndicator;
     private Camera _mainCam;
     [SerializeField] private LayerMask groundMask; 
@@ -47,7 +49,7 @@ public class Skill2 : MonoBehaviour
 
     private void UseSkill2()
     {
-        if (_isChoiceSkill || skill2RangePrefab == null) return;
+        if (_isChoiceSkill || skill2RangePrefab == null || _isCooldown) return;
 
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
@@ -61,11 +63,26 @@ public class Skill2 : MonoBehaviour
                 Quaternion.identity
             );
             ScaleRangeIndicator();
+            
+            // Bắt đầu cooldown
+            StartCooldown();
         }
         else
         {
             Debug.LogWarning("Failed to raycast to Ground layer!");
         }
+    }
+
+    // ================= COOL DOWN =================
+    private void StartCooldown()
+    {
+        _isCooldown = true;
+        Invoke(nameof(ResetCooldown), timeCoolDown);
+    }
+
+    private void ResetCooldown()
+    {
+        _isCooldown = false;
     }
 
     private void HandleMouseMove(Vector3 screenPos)

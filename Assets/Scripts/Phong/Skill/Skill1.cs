@@ -4,8 +4,10 @@ public class Skill1 : MonoBehaviour
 {
     public GameObject skill1Prefab;      
     public GameObject skill1RangePrefab;
-
+    public float timeCoolDown = 10f;
+    
     private bool _isChoiceSkill = false;
+    private bool _isCooldown = false; // check cooldown
     private GameObject _rangeIndicator;
     private Camera _mainCam;
     [SerializeField] private LayerMask groundMask; 
@@ -36,13 +38,12 @@ public class Skill1 : MonoBehaviour
         InputManager.OnMouseMove -= HandleMouseMove;
         InputManager.OnRightClick -= HandleRightClick;
 
-        // Cleanup range indicator if still active
         CancelSkill();
     }
 
     private void UseSkill1()
     {
-        if (_isChoiceSkill || skill1RangePrefab == null) return;
+        if (_isChoiceSkill || skill1RangePrefab == null || _isCooldown) return;
 
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
@@ -56,6 +57,9 @@ public class Skill1 : MonoBehaviour
                 Quaternion.identity
             );
             ScaleRangeIndicator();
+
+            // Bắt đầu cooldown
+            StartCooldown();
         }
         else
         {
@@ -70,7 +74,6 @@ public class Skill1 : MonoBehaviour
         Vector3 worldPos = GetMouseWorldPosition(screenPos);
         if (worldPos != Vector3.zero)
         {
-            // Smoothly move the indicator to reduce jitter
             _lastValidPosition = Vector3.Lerp(_lastValidPosition, worldPos, Time.deltaTime * 20f);
             _rangeIndicator.transform.position = _lastValidPosition;
         }
@@ -107,7 +110,7 @@ public class Skill1 : MonoBehaviour
         }
 
         Instantiate(skill1Prefab, pos, Quaternion.identity);
-        CancelSkill(); // Cleanup after casting
+        CancelSkill();
     }
 
     private void CancelSkill()
@@ -122,16 +125,15 @@ public class Skill1 : MonoBehaviour
     
     private Vector3 GetMouseWorldPosition(Vector3 screenPos)
     {
-        // Create a ray from the camera through the mouse position
         Ray ray = _mainCam.ScreenPointToRay(screenPos);
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, groundMask);
 
         if (hit.collider != null)
         {
-            return new Vector3(hit.point.x, hit.point.y, 0f); // Ensure Z is 0 for 2D
+            return new Vector3(hit.point.x, hit.point.y, 0f);
         }
 
-        return Vector3.zero; // Return invalid position if no hit
+        return Vector3.zero;
     }
 
     private void ScaleRangeIndicator()
@@ -156,5 +158,17 @@ public class Skill1 : MonoBehaviour
             radius = Mathf.Max(box.size.x, box.size.y) * 0.5f * scale;
 
         _rangeIndicator.transform.localScale = new Vector3(radius * 2f, radius * 2f, 1f);
+    }
+
+    // ================= COOL DOWN =================
+    private void StartCooldown()
+    {
+        _isCooldown = true;
+        Invoke(nameof(ResetCooldown), timeCoolDown);
+    }
+
+    private void ResetCooldown()
+    {
+        _isCooldown = false;
     }
 }

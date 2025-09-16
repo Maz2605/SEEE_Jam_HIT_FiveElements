@@ -1,15 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class GameEventPhong : Singleton<GameEventPhong>
+public static class GameEventPhong
 {
-    public static Action UseSkill1;
     
-    public static Action UseSkill2;
+    public static Func<float> PlayerTakeDamageRange;
+
     
-    public static Action UseSkill3;
-    
-    public static Action UseUltimate;
+    public static Func<float> PlayerTakeAttackSpeed;
+    public static Func<float> HealTower;
+    public static Func<float> IncreaseDuration;
+    public static Func<float> IncreaseMaxHeath;
+    public static Func<float> IncreasePowerSpeed;
+    public static Func<float> IncreaseSpeedAttack;
+    public static Func<float> IncreaseBaseDamage;
 }

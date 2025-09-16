@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IncreasePowerSpeed : MonoBehaviour
+public class IncreasePowerSpeed : Buff
 {
     
 }

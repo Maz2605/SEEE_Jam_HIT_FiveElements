@@ -1,35 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Skill3 : MonoBehaviour
 {
-
+    public UISkill uiSkill;
     public float timeCoolDown = 10f;
+    public Image lookImage;
     
     private bool _isCooldown = false;
+    [SerializeField] private bool _isLook = true;
     [SerializeField] private float _buffSpeedAttack;
     [SerializeField] private float _buffRangeAttack;
+    
+    public void SetLook(bool isLook)
+    {
+        _isLook = isLook;
+    }
     private void OnEnable()
     {
         InputManager.OnPressR += UseSkill3;
-        GameEventPhong.PlayerTakeDamageRange += GetBuffDamageRange;
-        GameEventPhong.PlayerTakeAttackSpeed += GetBuffAttackSpeed;
     }
 
     private void OnDisable()
     {
         InputManager.OnPressR -= UseSkill3;
-        GameEventPhong.PlayerTakeDamageRange -= GetBuffDamageRange;
-        GameEventPhong.PlayerTakeAttackSpeed -= GetBuffAttackSpeed;
+
     }
 
     private void UseSkill3()
     {
-        if(_isCooldown) return;
+        if(_isCooldown || _isLook) return;
+        
+        
         // Lam gi do voi player
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.AddComponent<PlayerController>();
+        BuffDamageRange();
+        BuffAttackSpeed();
         // Bắt đầu cooldown
         StartCooldown();
         
@@ -40,6 +47,11 @@ public class Skill3 : MonoBehaviour
     {
         _isCooldown = true;
         Invoke(nameof(ResetCooldown), timeCoolDown);
+        
+        // Gọi UI cooldown
+        if (uiSkill != null)
+            uiSkill.StartLoading(timeCoolDown, ResetCooldown);
+
     }
 
     private void ResetCooldown()
@@ -47,13 +59,13 @@ public class Skill3 : MonoBehaviour
         _isCooldown = false;
     }
 
-    private float GetBuffDamageRange()
+    private void BuffDamageRange()
     {
-        return PlayerController.Instance.AttackRange + _buffRangeAttack;
+        
     }
 
-    private float GetBuffAttackSpeed()
+    private void BuffAttackSpeed()
     {
-        return PlayerController.Instance.BulletSpeed + _buffSpeedAttack;
+        
     }
 }

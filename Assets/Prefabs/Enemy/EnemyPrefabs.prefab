@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb16d17a4eb0165479aa643efd0f912a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _imotionBar: {fileID: 0}
   _rb: {fileID: 5886540372529354503}
   _animator: {fileID: 3035776072474473773}
   _enemyUI: {fileID: 5028943238169219881}

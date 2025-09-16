@@ -6,7 +6,7 @@ using UnityEngine;
 public class HandlerSkill : MonoBehaviour
 {
 
-    [SerializeField] private float _damage;
+    [SerializeField] private float _damage = 1f;
     
 
 
@@ -16,7 +16,7 @@ public class HandlerSkill : MonoBehaviour
         {
             Debug.Log("-50 mau ");
             // Enemy take damage
-            
+            XuanEventManager.EnemyTakeDamage(other.gameObject.GetComponent<Enemy>(),_damage);
         }
     }
 

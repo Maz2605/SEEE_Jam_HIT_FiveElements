@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Skill2 : MonoBehaviour
 {
     public GameObject skill2Prefab;      
     public GameObject skill2RangePrefab;
+    public UISkill uiSkill;
     public float timeCoolDown = 5f;
+    public Image lookImage;
     
+    [SerializeField] private bool _isLook = true;
     private bool _isChoiceSkill = false;
     private bool _isCooldown = false;
     private GameObject _rangeIndicator;
@@ -17,6 +21,10 @@ public class Skill2 : MonoBehaviour
     [SerializeField] private LayerMask groundMask; 
     private Vector3 _lastValidPosition;
     
+    public void SetLook(bool isLook)
+    {
+        _isLook = isLook;
+    }
 
     private void Awake()
     {
@@ -49,7 +57,9 @@ public class Skill2 : MonoBehaviour
 
     private void UseSkill2()
     {
-        if (_isChoiceSkill || skill2RangePrefab == null || _isCooldown) return;
+        if (_isChoiceSkill || skill2RangePrefab == null || _isCooldown || _isLook) return;
+        
+      
 
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
@@ -129,6 +139,10 @@ public class Skill2 : MonoBehaviour
         }
 
         Instantiate(skill2Prefab, pos, Quaternion.identity);
+        // Gọi UI cooldown
+        if (uiSkill != null)
+            uiSkill.StartLoading(timeCoolDown, ResetCooldown);
+
         CancelSkill(); // Cleanup after casting
         
     }

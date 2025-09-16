@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("[InputManager] Pressed R");
-            OnPressW?.Invoke();
+            OnPressR?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

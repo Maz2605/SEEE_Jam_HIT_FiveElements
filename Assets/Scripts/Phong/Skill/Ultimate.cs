@@ -1,11 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ultimate : MonoBehaviour
 {
     public GameObject ultimatePrefab;      
     public GameObject ultimateRangePrefab;
     public float timeCoolDown = 3f;
+    public UISkill uiSkill;
+    public Image lookImage;
 
+    [SerializeField] private bool _isLook = true;
     [SerializeField] private float _damage;
     private bool _isChoiceSkill = false;
     private bool _isCooldown = false;
@@ -14,7 +18,10 @@ public class Ultimate : MonoBehaviour
     [SerializeField] private LayerMask groundMask; 
     private Vector3 _lastValidPosition; 
     
-    
+    public void SetLook(bool isLook)
+    {
+        _isLook = isLook;
+    }
 
     private void Awake()
     {
@@ -47,7 +54,9 @@ public class Ultimate : MonoBehaviour
 
     private void UseUltimate()
     {
-        if (_isChoiceSkill || ultimateRangePrefab == null || _isCooldown) return;
+        if (_isChoiceSkill || ultimateRangePrefab == null || _isCooldown || _isLook) return;
+        
+        
 
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
@@ -126,6 +135,10 @@ public class Ultimate : MonoBehaviour
         }
 
         Instantiate(ultimatePrefab, pos, Quaternion.identity);
+        // Gọi UI cooldown
+        if (uiSkill != null)
+            uiSkill.StartLoading(timeCoolDown, ResetCooldown);
+
         CancelSkill(); 
         
     }

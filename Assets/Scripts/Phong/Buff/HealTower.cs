@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealTower : MonoBehaviour
+public class HealTower : Buff
 {
     public float healAmount;
     

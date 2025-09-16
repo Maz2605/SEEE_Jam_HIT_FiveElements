@@ -1,18 +1,28 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Skill1 : MonoBehaviour
 {
     public GameObject skill1Prefab;      
     public GameObject skill1RangePrefab;
+    public UISkill uiSkill;
     public float timeCoolDown = 10f;
-    
+    public Image lookImage;
+
+    [SerializeField] private bool _isLook = false;
     private bool _isChoiceSkill = false;
     private bool _isCooldown = false; // check cooldown
     private GameObject _rangeIndicator;
     private Camera _mainCam;
     [SerializeField] private LayerMask groundMask; 
-    private Vector3 _lastValidPosition; 
+    private Vector3 _lastValidPosition;
 
+
+    public void SetLook(bool isLook)
+    {
+        _isLook = isLook;
+    }
+    
     private void Awake()
     {
         _mainCam = Camera.main; 
@@ -25,6 +35,7 @@ public class Skill1 : MonoBehaviour
 
     private void OnEnable()
     {
+       
         InputManager.OnPressE += UseSkill1;         
         InputManager.OnLeftClick += HandleLeftClick;
         InputManager.OnMouseMove += HandleMouseMove;
@@ -33,6 +44,7 @@ public class Skill1 : MonoBehaviour
 
     private void OnDisable()
     {
+        
         InputManager.OnPressE -= UseSkill1;
         InputManager.OnLeftClick -= HandleLeftClick;
         InputManager.OnMouseMove -= HandleMouseMove;
@@ -43,8 +55,9 @@ public class Skill1 : MonoBehaviour
 
     private void UseSkill1()
     {
-        if (_isChoiceSkill || skill1RangePrefab == null || _isCooldown) return;
+        if (_isChoiceSkill || skill1RangePrefab == null || _isCooldown || _isLook) return;
 
+        
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
         {
@@ -110,6 +123,10 @@ public class Skill1 : MonoBehaviour
         }
 
         Instantiate(skill1Prefab, pos, Quaternion.identity);
+        // Gọi UI cooldown
+        if (uiSkill != null)
+            uiSkill.StartLoading(timeCoolDown, ResetCooldown);
+
         CancelSkill();
     }
 
@@ -165,6 +182,8 @@ public class Skill1 : MonoBehaviour
     {
         _isCooldown = true;
         Invoke(nameof(ResetCooldown), timeCoolDown);
+        
+        
     }
 
     private void ResetCooldown()

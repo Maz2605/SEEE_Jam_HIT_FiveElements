@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class HandlerSkill2 : MonoBehaviour
 {
-    [SerializeField] private float damage = 5f;
+    [SerializeField] private float _damage = 5f;
     [SerializeField] private float tickInterval = 1f; // mỗi 1 giây gây sát thương
     private HashSet<Collider2D> enemiesInRange = new HashSet<Collider2D>();
 
     private void Start()
     {
         // tự hủy sau 5 giây
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(3f, () =>
         {
             gameObject.SetActive(false);
             Destroy(gameObject);
@@ -27,7 +27,7 @@ public class HandlerSkill2 : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             enemiesInRange.Add(other);
-            
+            XuanEventManager.EnemyTakeDamage(other.gameObject.GetComponent<Enemy>(), _damage);
         }
     }
 
@@ -49,7 +49,7 @@ public class HandlerSkill2 : MonoBehaviour
             {
                 if (enemy != null) 
                 {
-                    Debug.Log($"-{damage} máu vào {enemy.name}");
+                    
                     // Enemy take damage
                 }
             }

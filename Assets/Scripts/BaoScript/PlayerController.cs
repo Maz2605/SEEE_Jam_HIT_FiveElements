@@ -12,13 +12,15 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float _bulletSpeed = 10f;
 
     [Header("Range Settings")]
-    [SerializeField] private float _attackRange = 5f; 
+    [SerializeField] private float _attackRange = 5f;
+    
+    
 
     private float attackTimer;
     private readonly List<Transform> enemiesInRange = new List<Transform>();
 
     private CircleCollider2D rangeCollider;
-
+    
     public float AttackRange => _attackRange;   
     public float BulletSpeed => _bulletSpeed;   
 

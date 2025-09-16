@@ -16,6 +16,7 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Tower Health")]
     [SerializeField] private float _healthTower;
+    [SerializeField] private float _currentHealthTower;
     private float attackTimer;
     private readonly List<Transform> enemiesInRange = new List<Transform>();
 
@@ -26,6 +27,9 @@ public class PlayerController : Singleton<PlayerController>
     public float  AttackCooldown => _attackCooldown;    
 
     public float HealthTower => _healthTower;   
+
+    public float CurrentHealthTower => _currentHealthTower;
+
     public void SetAttackRange(float Range)
     {
         _attackRange += Range;
@@ -45,6 +49,12 @@ public class PlayerController : Singleton<PlayerController>
     {
         _attackCooldown += attackCooldown;
     }
+
+    public void SetCurrentHealthTower(float currentHealthTower)
+    {
+        _currentHealthTower += currentHealthTower;
+    }
+
     private void Awake()
     {
         rangeCollider = GetComponent<CircleCollider2D>();

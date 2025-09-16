@@ -41,10 +41,12 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         XuanEventManager.EnemyTakeDamage += TakeDamage;
+        XuanEventManager.ReduceSpeed += ReductSpeed;
     }
     private void OnDisable()
     {
         XuanEventManager.EnemyTakeDamage -= TakeDamage;
+        XuanEventManager.ReduceSpeed -= ReductSpeed;
     }
 
     private void Start()
@@ -134,11 +136,20 @@ public class Enemy : MonoBehaviour
     public void Hit(float damage)
     {
         _currentHealth += damage;
+        if (_currentHealth >= _health)
+        {
+            _currentHealth = _health;
+            Die();
+        }
         _enemyUI.UpdateImotionBar(_currentHealth);
     }
     public void TakeDamage(Enemy enemy, float damage)
     {
         enemy.Hit(damage);
+    }
+    public void ReductSpeed(Enemy enemy, float r, float time)
+    {
+        enemy.SetSpeed(r, time);
     }
     public void SetSpeed(float r, float time)
     {
@@ -158,7 +169,7 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
-
+        _animator.SetBool("IsDie", true);
     }
     //Va Cham
     private void OnTriggerEnter2D(Collider2D collision)

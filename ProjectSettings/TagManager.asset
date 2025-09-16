@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
-  - Stop
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -42,7 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: UI
-    uniqueID: 1997707975
     locked: 0

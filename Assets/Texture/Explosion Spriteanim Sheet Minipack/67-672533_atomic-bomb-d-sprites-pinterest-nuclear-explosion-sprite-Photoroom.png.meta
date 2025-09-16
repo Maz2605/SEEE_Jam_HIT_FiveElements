@@ -1,0 +1,703 @@
+fileFormatVersion: 2
+guid: de06fbed92fbc6b4db668e777be88fba
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 440.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a5f0698b9b10749b9177e0539ec441
+      internalID: 631253833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_1
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 440.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb8b4d78e881e147b8b81d92c8d2367
+      internalID: 180422181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_2
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 440.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2162031de6ec65a4d94f0d4f1202496f
+      internalID: -163703116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_3
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 440.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d383cbf120cfacf479b8224543fbeec5
+      internalID: -1320704996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_4
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 440.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ede1d999449b04fbf42884c1dbf723
+      internalID: -878691582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 330.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddcc773ade1ccc04ebbba4b39f0919c7
+      internalID: 415558987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_6
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 330.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d2a8fc290533e43acaaf72bbe40861
+      internalID: 474439448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_7
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 330.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26994251b22b9b4ca00fccdc914fc8d
+      internalID: 1400891582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_8
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 330.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb7dec6519017a428ecb83ce85fb10b
+      internalID: 1743759480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_9
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 330.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b053c0aabba8f794fb87030791d36750
+      internalID: -2110441914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 220.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a17e49649c5fbe4680241ca6c11682d
+      internalID: -610917939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_11
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 220.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e59c7208ec4064ea8797a9d96820c2
+      internalID: 1527578359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_12
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 225
+        width: 164
+        height: 106
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36ba859d15c7c564ca5a1841758e13a9
+      internalID: 1987582621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_13
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 225
+        width: 164
+        height: 106
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc63555579d2a12438a6da76b3bbcb53
+      internalID: -803499808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_14
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 226
+        width: 164
+        height: 105
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec9c69f075c539741be4f2442e969b14
+      internalID: 338135822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e638027cd7301e4794f36a7ec9b87a6
+      internalID: -675557192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_16
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 110.8
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91e0635cffab81488c43b3f0b33e41f
+      internalID: -62533985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_17
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 115
+        width: 164
+        height: 110
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae19c28755b5e77448dfdcb5148c20fe
+      internalID: 1460167874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_18
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 116
+        width: 164
+        height: 110
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44a474481de82946a4b0976933a47e6
+      internalID: -648738276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_19
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 117
+        width: 164
+        height: 110
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f304f99f7f70e1b47b7db9d2dd985959
+      internalID: -977360966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.80000305
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889d7bea48f1ffd489784a7abf22b810
+      internalID: -186274961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_21
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0.80000305
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f69de365a972f46a9a496e8f560315
+      internalID: 68954310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_22
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0.80000305
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2670389ae142b4faeeb76c6af9d5b7
+      internalID: 997443261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_23
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0.80000305
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830155dd59ba995428baab4571c16b62
+      internalID: 1232529272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_24
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 0.80000305
+        width: 164
+        height: 110.2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08663ad0543e29848a6480b7eb34624e
+      internalID: 927748651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_0: 631253833
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_1: 180422181
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_10: -610917939
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_11: 1527578359
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_12: 1987582621
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_13: -803499808
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_14: 338135822
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_15: -675557192
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_16: -62533985
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_17: 1460167874
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_18: -648738276
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_19: -977360966
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_2: -163703116
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_20: -186274961
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_21: 68954310
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_22: 997443261
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_23: 1232529272
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_24: 927748651
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_3: -1320704996
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_4: -878691582
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_5: 415558987
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_6: 474439448
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_7: 1400891582
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_8: 1743759480
+      67-672533_atomic-bomb-d-sprites-pinterest-nuclear-explosion-sprite-Photoroom_9: -2110441914
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

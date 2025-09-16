@@ -4,8 +4,11 @@ public class Ultimate : MonoBehaviour
 {
     public GameObject ultimatePrefab;      
     public GameObject ultimateRangePrefab;
+    public float timeCoolDown = 3f;
 
+    [SerializeField] private float _damage;
     private bool _isChoiceSkill = false;
+    private bool _isCooldown = false;
     private GameObject _rangeIndicator;
     private Camera _mainCam;
     [SerializeField] private LayerMask groundMask; 
@@ -44,7 +47,7 @@ public class Ultimate : MonoBehaviour
 
     private void UseUltimate()
     {
-        if (_isChoiceSkill || ultimateRangePrefab == null) return;
+        if (_isChoiceSkill || ultimateRangePrefab == null || _isCooldown) return;
 
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
@@ -58,11 +61,26 @@ public class Ultimate : MonoBehaviour
                 Quaternion.identity
             );
             ScaleRangeIndicator();
+            
+            // Bắt đầu cooldown
+            StartCooldown();
         }
         else
         {
             Debug.LogWarning("Failed to raycast to Ground layer!");
         }
+    }
+    
+    // ================= COOL DOWN =================
+    private void StartCooldown()
+    {
+        _isCooldown = true;
+        Invoke(nameof(ResetCooldown), timeCoolDown);
+    }
+
+    private void ResetCooldown()
+    {
+        _isCooldown = false;
     }
 
     private void HandleMouseMove(Vector3 screenPos)

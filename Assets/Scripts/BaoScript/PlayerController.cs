@@ -19,7 +19,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private CircleCollider2D rangeCollider;
 
-    public float AttackRange => _attackRange;
+    public float AttackRange => _attackRange;   
     public float BulletSpeed => _bulletSpeed;   
 
     

@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class HandlerUltimate : MonoBehaviour
 {
+    
+    [SerializeField] private float _damage;
+    
     private void Start()
     {
         ShakeCamera.Instance.Shake();
@@ -17,6 +20,12 @@ public class HandlerUltimate : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("-100 mau");
+            // Enemy take damage
         }
+    }
+
+    private void GetDamage()
+    {
+        
     }
 }

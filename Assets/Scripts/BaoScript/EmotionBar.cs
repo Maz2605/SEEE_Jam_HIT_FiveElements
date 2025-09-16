@@ -37,6 +37,31 @@ public class EmotionBar : Singleton<EmotionBar>
     private float currentEmotion;
     private string currentState = ""; 
 
+    public float MaxEmotion => _maxEmotion; 
+    public float PassiveGainPerSecond => _passiveGainPerSecond;
+    public float TweenDuration => tweenDuration;    
+    public float IconColorTween => iconColorTween;  
+
+    public void SetMaxEmotion(float maxEmotion)
+    {
+        _maxEmotion += maxEmotion;
+    }
+
+    public void SetPassiveGainPerSecond(float passiveGain)
+    {
+        _passiveGainPerSecond += passiveGain;
+    }
+
+    public void SetTweenDuration(float duration)
+    {
+        tweenDuration += duration;
+    }
+
+    public void SetIconColorTween(float duration)
+    {
+        iconColorTween += duration;
+    }
+
     private void Start()
     {
         currentEmotion = 0f;

@@ -17,6 +17,13 @@ public class Enemy : MonoBehaviour
     private float _speedAttack;
     private float _scoreValue;
 
+    public float GetHealth => _health;
+    public float GetCurrentHealth => _currentHealth;
+    public float GetSpeed => _speed;
+    public float GetDamage => _damage;
+    public float GetSpeedAttack => _speedAttack;
+    public float GetScoreValue => _scoreValue;
+
     //UI Enemy
 
     [SerializeField] private Rigidbody2D _rb;
@@ -118,6 +125,18 @@ public class Enemy : MonoBehaviour
     {
         _currentHealth += damage;
         _enemyUI.UpdateImotionBar(_currentHealth);
+    }
+    public void SetSpeed(float r, float time)
+    {
+        StartCoroutine(Speed(r, time));
+    }
+    private IEnumerator Speed(float r, float time)
+    {
+        _rb.velocity = new Vector2(_speed * r, _rb.velocity.y);
+
+        yield return new WaitForSeconds(time);
+
+        _rb.velocity = new Vector2(_speed, _rb.velocity.y);
     }
     public void UseSkill()
     {

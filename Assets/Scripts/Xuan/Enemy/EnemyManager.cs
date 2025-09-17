@@ -96,6 +96,8 @@ public class EnemyManager : Singleton<EnemyManager>
 
         foreach(Enemy e in _enemys)
         {
+            if(e.GetEnemyType != EnemyType.Enemy) continue;
+
             Vector2 enemyPos = new Vector2(e.transform.position.x, e.transform.position.y);
             Vector2 poswall = new Vector2(posWall.x, posWall.y);
             float dis = Vector2.Distance(enemyPos, poswall);

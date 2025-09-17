@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     public float GetDamage => _damage;
     public float GetSpeedAttack => _speedAttack;
     public float GetScoreValue => _scoreValue;
+    public EnemyType GetEnemyType => _type;
 
     //UI Enemy
 
@@ -40,7 +41,6 @@ public class Enemy : MonoBehaviour
     private float _topMovePoint = 4f;
     private float _bottomMovePoint = -4f;
     private bool _isMoveY = false;
-    private bool _isDelayTakeDamage = false;
 
     private void OnEnable()
     {
@@ -178,7 +178,10 @@ public class Enemy : MonoBehaviour
     
     public void Hit(float damage)
     {
+        if (_type != EnemyType.Enemy) return;
+
         _animator.SetTrigger("IsHit");
+        StopMove();
         _currentHealth += damage;
         _enemyUI.UpdateImotionBar(_currentHealth);
         if (_currentHealth >= _health)
@@ -186,6 +189,13 @@ public class Enemy : MonoBehaviour
             _currentHealth = _health;
             Die();
         }
+        DOVirtual.DelayedCall(0.5f, () =>
+        {
+            if (_currentHealth < _health && _type == EnemyType.Enemy)
+            {
+                StartMove();
+            }
+        });
     }
     public void TakeDamage(Enemy enemy, float damage)
     {

@@ -9,7 +9,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _attackCooldown = 1f;
-    [SerializeField] private float _bulletSpeed = 10f;
+    [SerializeField] private float _bulletSpeed = 100f;
 
     [Header("Range Settings")]
     [SerializeField] private float _attackRange = 5f;
@@ -84,7 +84,8 @@ public class PlayerController : Singleton<PlayerController>
 
         if (attackTimer <= 0f && enemiesInRange.Count > 0)
         {
-            Transform target = GetNearestEnemy();
+            //Transform target = GetNearestEnemy();
+            Transform target = XuanEventManager.GetEnemy(transform.position).transform;
             if (target != null)
             {
                 Shoot(target);

@@ -23,12 +23,12 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Start()
     {
-        //SpawnEnemy(4, 5f, "fire");
-       // SpawnEnemy(2, 30f, "light");
-        //SpawnEnemy(2, 30f, "magic");
+        SpawnEnemy(4, 5f, "fire");
+        SpawnEnemy(2, 30f, "light");
+        SpawnEnemy(2, 30f, "magic");
         SpawnEnemy(3, 30f, "knight1");
-        //SpawnEnemy(3, 30f, "knight2");
-        //SpawnEnemy(3, 30f, "knight3");
+        SpawnEnemy(3, 30f, "knight2");
+        SpawnEnemy(3, 30f, "knight3");
 
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;

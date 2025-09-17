@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     public Animator GetAnimator => _animator;
 
     [SerializeField] private EnemyUI _enemyUI;
-    [SerializeField] private EnemySkill _enemySkill;
+    //[SerializeField] private EnemySkill _enemySkill;
 
     [Header("Enemy Move Point")]
     private float _topMovePoint = 4f;
@@ -154,6 +154,7 @@ public class Enemy : MonoBehaviour
 
     public void StartExplosion()
     {
+        EnemyManager.Instance.RemoveEnemy(this);
         _animator.SetBool("IsDead", true);
         EnemyManager.Instance.SpawnExplosionInEnemy(this);
         DOVirtual.DelayedCall(1f, () =>
@@ -175,6 +176,7 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(Enemy enemy, float damage)
     {
+        Debug.Log("Enemy Take Damage" + damage);
         enemy.Hit(damage);
     }
     public void ReductSpeed(Enemy enemy, float r, float time)
@@ -195,10 +197,12 @@ public class Enemy : MonoBehaviour
     }
     public void UseSkill()
     {
-        _enemySkill.UseKill(this);
+        //_enemySkill.UseKill(this);
+        EnemySkill.Instance.UseKill(this);
     }
     public void Die()
     {
+        EnemyManager.Instance.RemoveEnemy(this);
         if(_type == EnemyType.Enemy)
         {
             _type = EnemyType.Village;
@@ -214,7 +218,6 @@ public class Enemy : MonoBehaviour
                 _rb.velocity = new Vector2(_speed * 1.5f, _rb.velocity.y);
             });
         }
-        EnemyManager.Instance.RemoveEnemy(this);
     }
     //Va Cham
     private void OnTriggerEnter2D(Collider2D collision)

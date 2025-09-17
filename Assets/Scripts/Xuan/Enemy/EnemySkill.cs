@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EnemySkill : MonoBehaviour
+public class EnemySkill : Singleton<EnemySkill>
 {
     [Header("Ball Skill")]
     [SerializeField] private Ball ball;

@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     public void InitBall(RuntimeAnimatorController run, float speedBall)
     {
         _animator.runtimeAnimatorController = run;
-        _rb.velocity = new Vector2(speedBall, _rb.velocity.y);
+        _rb.velocity = new Vector2(-speedBall, _rb.velocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private float _damage;
     private float _speedAttack;
     private float _scoreValue;
+    private EnemyType _type;
 
     public float GetHealth => _health;
     public float GetCurrentHealth => _currentHealth;
@@ -29,6 +30,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Collider2D _collider2D;
+    public Animator GetAnimator => _animator;
 
     [SerializeField] private EnemyUI _enemyUI;
     [SerializeField] private EnemySkill _enemySkill;
@@ -37,6 +40,7 @@ public class Enemy : MonoBehaviour
     private float _topMovePoint = 4f;
     private float _bottomMovePoint = -4f;
     private bool _isMoveY = false;
+    private bool _isDelayTakeDamage = false;
 
     private void OnEnable()
     {
@@ -69,7 +73,7 @@ public class Enemy : MonoBehaviour
         _speedAttack = data.speedAttack;
         _scoreValue = data.scoreValue;
         _animator.runtimeAnimatorController = data.animator;
-
+        _type = EnemyType.Enemy;
         _enemyUI.SetImotionBar(_health);
     }
 
@@ -80,13 +84,11 @@ public class Enemy : MonoBehaviour
 
         if (transform.position.y >= _topMovePoint)
         {
-            Debug.Log("Top");
             _rb.velocity = new Vector2(_rb.velocity.x, -_speed);
             _isMoveY = true;
         }
         else if(transform.position.y <= _bottomMovePoint)
         {
-            Debug.Log("Bottom");
             _rb.velocity = new Vector2(_rb.velocity.x, _speed);
             _isMoveY = true;
         }
@@ -113,7 +115,7 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator AttackWall()
     {
-        while(_health > 0)
+        while(_health > 0 && _type == EnemyType.Enemy)
         {
             Attack();
             yield return new WaitForSeconds(_speedAttack);
@@ -169,20 +171,37 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
-        _animator.SetBool("IsDie", true);
+        Debug.Log("Enemy Die");
+        if(_type == EnemyType.Enemy)
+        {
+            _type = EnemyType.Village;
+            _animator.SetBool("IsDie", true);
+            _animator.SetBool("IsWalk", true);
+            _rb.velocity = new Vector2(_speed, _rb.velocity.y);
+        }
     }
     //Va Cham
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Wall"))
         {
-            StopMove();
-            StartExplosion();
+            if(_type == EnemyType.Enemy)
+            {
+                StopMove();
+                StartExplosion();
+            }
+            else
+            {
+                PoolingManager.Despawn(gameObject);
+            }
         }
         if(collision.CompareTag("Stop") && _isFar)
         {
-            StopMove();
-            StartAttack();
+            if (_type == EnemyType.Enemy)
+            {
+                StopMove();
+                StartAttack();
+            }
         }
     }
 }

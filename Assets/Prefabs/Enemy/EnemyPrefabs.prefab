@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1531934858114659525}
   m_Layer: 0
   m_Name: EnemyPrefabs
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,9 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb16d17a4eb0165479aa643efd0f912a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _imotionBar: {fileID: 0}
   _rb: {fileID: 5886540372529354503}
   _animator: {fileID: 3035776072474473773}
+  _collider2D: {fileID: 7783825051014780163}
   _enemyUI: {fileID: 5028943238169219881}
   _enemySkill: {fileID: 0}
 --- !u!1 &2230676722540607918
@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8553303963005604295
 RectTransform:
   m_ObjectHideFlags: 0
@@ -352,8 +352,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3, y: 43.91}
-  m_SizeDelta: {x: 41.27, y: 47.96}
+  m_AnchoredPosition: {x: -0.0024616, y: 26.2}
+  m_SizeDelta: {x: 33.34, y: 30.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8778507219161650963
 CanvasRenderer:
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3808cfadc88ef2a4db0dfddaa7471a3f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63f69981e3a6bda4294b07ca7d3f5273, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _imotionBar: {fileID: 3204242188504053337}
+  _imotionIcon: {fileID: 5012027903524720717}
   _imotion: {fileID: 2672914903481527485}
   _colorGradient:
     serializedVersion: 2
@@ -541,6 +542,10 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  _imo1: {fileID: 21300000, guid: 3808cfadc88ef2a4db0dfddaa7471a3f, type: 3}
+  _imo2: {fileID: 21300000, guid: eb21cd256fac06e49ae9972212fc861e, type: 3}
+  _imo3: {fileID: 21300000, guid: 63f69981e3a6bda4294b07ca7d3f5273, type: 3}
+  _imo4: {fileID: 21300000, guid: 2c350ae4ac6111b4391977bb0960d80a, type: 3}
 --- !u!1 &6094855827791724847
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +641,7 @@ Animator:
   m_GameObject: {fileID: 6094855827791724847}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 187536921fd992547883b6131f472303, type: 2}
+  m_Controller: {fileID: 9100000, guid: 45230227bfd2d3d43be5a64b64bc07f0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

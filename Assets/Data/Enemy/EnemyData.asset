@@ -13,16 +13,34 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   enemyStatsList:
-  - idEnemy: orc
-    isFar: 0
+  - idEnemy: fire
+    isFar: 1
     health: 100
     speed: 1
     damage: 5
     speedAttack: 2
     scoreValue: 1
     emotion: 0
-    animator: {fileID: 9100000, guid: f535fa4035af83e49883790605a80e2a, type: 2}
-  - idEnemy: slime1
+    animator: {fileID: 9100000, guid: 21d1da7c3adf32d4d9d17416b93f99a9, type: 2}
+  - idEnemy: light
+    isFar: 1
+    health: 100
+    speed: 1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: 45230227bfd2d3d43be5a64b64bc07f0, type: 2}
+  - idEnemy: magic
+    isFar: 1
+    health: 100
+    speed: 1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: d9768425ec0e099448b62d0a78a5dc6d, type: 2}
+  - idEnemy: zombie3
     isFar: 0
     health: 100
     speed: 1
@@ -31,3 +49,30 @@ MonoBehaviour:
     scoreValue: 1
     emotion: 0
     animator: {fileID: 9100000, guid: ae27a6c3f9f7e2e4f8653d2cba537b0a, type: 2}
+  - idEnemy: zombie4
+    isFar: 0
+    health: 100
+    speed: 1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: 555c5110f26f993488b89e09ec737b0f, type: 2}
+  - idEnemy: 2
+    isFar: 0
+    health: 100
+    speed: 1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: 555c5110f26f993488b89e09ec737b0f, type: 2}
+  - idEnemy: 0
+    isFar: 0
+    health: 100
+    speed: 1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: 555c5110f26f993488b89e09ec737b0f, type: 2}

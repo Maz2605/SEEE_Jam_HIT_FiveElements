@@ -17,18 +17,19 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemy(20, 30f, "orc");
-        SpawnEnemy(15, 30f, "slime1");
-        SpawnBoss(10f, "magic");
+        SpawnEnemy(1, 5f, "fire");
+        //SpawnEnemy(10, 30f, "light");
+      //  SpawnEnemy(10, 30f, "magic");
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;
-        //XuanEventManager.GetEnemy += GetEnemyByDistance;
+        XuanEventManager.GetEnemy += GetEnemyByDistance;
     }
     //
     
     private void OnDestroy()
     {
         XuanEventManager.SpawnEnemy -= SpawnEnemy;
+        XuanEventManager.GetEnemy -= GetEnemyByDistance;
     }
     public void SpawnEnemy(int number, float timeWave, string idEnemy)
     {

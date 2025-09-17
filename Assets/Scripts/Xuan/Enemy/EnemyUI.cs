@@ -22,7 +22,6 @@ public class EnemyUI : MonoBehaviour
     public void SetImotionBar(float maxImotion)
     {
         _imotionBar.SetActive(false);
-        _imotionIcon.gameObject.SetActive(false);
         _maxEnergy = maxImotion;
         _currentFill = 0f;
         _targetFill = 0f;
@@ -35,21 +34,20 @@ public class EnemyUI : MonoBehaviour
         if(!_imotionBar.activeSelf)
         {
             _imotionBar.SetActive(true);
-            _imotionIcon.gameObject.SetActive(true);
         }
         _targetFill = Mathf.Clamp01(currentEnergy / _maxEnergy);
     }
     public void ChangeIcon()
     {
-        if(_targetFill < 0.25f)
+        if(_targetFill < 0.33f)
         {
             _imotionIcon.sprite = _imo1;
         }
-        else if(_targetFill < 0.5f)
+        else if(_targetFill < 0.66f)
         {
             _imotionIcon.sprite = _imo2;
         }
-        else if(_targetFill < 0.75f)
+        else if(_targetFill < 0.99f)
         {
             _imotionIcon.sprite = _imo3;
         }

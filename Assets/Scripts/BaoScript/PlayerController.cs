@@ -21,6 +21,9 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
+    [Header("UI")]
+    [SerializeField] private HealthBarController _healthBar;
+
     private float attackTimer;
 
     private bool _isDead;
@@ -70,9 +73,13 @@ public class PlayerController : Singleton<PlayerController>
     private void Awake()
     {
         rangeCollider = GetComponent<CircleCollider2D>();
+        rangeCollider.isTrigger = true;
+
         if (animator == null)
             animator = GetComponent<Animator>();
-        rangeCollider.isTrigger = true;
+
+        if (_healthBar != null)
+            _healthBar.Initialize(_healthTower);
     }
     #region PlAYER ATTACK
     private void Update()
@@ -92,25 +99,6 @@ public class PlayerController : Singleton<PlayerController>
                 attackTimer = _attackCooldown;
             }
         }
-    }
-
-    private Transform GetNearestEnemy()
-    {
-        Transform nearest = null;
-        float minDistance = Mathf.Infinity;
-
-        enemiesInRange.RemoveAll(e => e == null); 
-
-        foreach (var enemy in enemiesInRange)
-        {
-            float distance = Vector3.Distance(transform.position, enemy.position);
-            if (distance < minDistance && distance <= _attackRange)
-            {
-                minDistance = distance;
-                nearest = enemy;
-            }
-        }
-        return nearest;
     }
 
     private void Shoot(Transform target)
@@ -144,12 +132,16 @@ public class PlayerController : Singleton<PlayerController>
 
         ChangeState(PlayerStateType.Die);
         Debug.Log("Player died → animation Die");
+        
+        //Panel
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && !enemiesInRange.Contains(other.transform))
             enemiesInRange.Add(other.transform);
+
+        // ENEMY interaction will call TakeDamage(TakeDamge)
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -180,4 +172,25 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
     #endregion
+
+    #region HEALTH TOWER CONTROL
+    public void TakeDamage(float damage)
+    {
+        if (_isDead) return;
+
+        _currentHealthTower -= damage;
+
+        if (_healthBar != null)
+            _healthBar.SetHealth(_currentHealthTower);
+
+        if (_currentHealthTower <= 0)
+        {
+            Die();
+        }
+    }
+
+
+    //DIE
+    #endregion
+
 }

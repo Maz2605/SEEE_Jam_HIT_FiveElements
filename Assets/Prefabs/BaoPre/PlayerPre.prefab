@@ -198,10 +198,11 @@ MonoBehaviour:
   _firePoint: {fileID: 6653253576650786522}
   _attackCooldown: 1
   _bulletSpeed: 10
-  _attackRange: 20
+  _attackRange: 10.7
   _healthTower: 0
   _currentHealthTower: 0
   animator: {fileID: 937804946593924308}
+  _healthBar: {fileID: 0}
 --- !u!95 &937804946593924308
 Animator:
   serializedVersion: 5

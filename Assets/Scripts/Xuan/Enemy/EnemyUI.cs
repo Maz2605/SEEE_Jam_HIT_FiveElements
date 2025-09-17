@@ -14,15 +14,16 @@ public class EnemyUI : MonoBehaviour
     [SerializeField] private Sprite _imo3;
     [SerializeField] private Sprite _imo4;
 
-    private float _maxEnergy;
+    private float _maxHealth;
     private float _targetFill;
     private float _currentFill;
     private float _lerpSpeed = 5f;
+    private bool _isStop = false;
 
     public void SetImotionBar(float maxImotion)
     {
         _imotionBar.SetActive(false);
-        _maxEnergy = maxImotion;
+        _maxHealth = maxImotion;
         _currentFill = 0f;
         _targetFill = 0f;
         _imotion.fillAmount = 0f;
@@ -35,7 +36,7 @@ public class EnemyUI : MonoBehaviour
         {
             _imotionBar.SetActive(true);
         }
-        _targetFill = Mathf.Clamp01(currentEnergy / _maxEnergy);
+        _targetFill = Mathf.Clamp01(currentEnergy / _maxHealth);
     }
     public void ChangeIcon()
     {
@@ -59,8 +60,14 @@ public class EnemyUI : MonoBehaviour
 
     private void Update()
     {
+        if (_isStop) return;
         // Fill mượt
         _currentFill = Mathf.Lerp(_currentFill, _targetFill, Time.deltaTime * _lerpSpeed);
+        if(_currentFill >= 0.9999f)
+        {
+            _isStop = true;
+            return;
+        }
         _imotion.fillAmount = _currentFill;
         ChangeIcon();
         // Đổi màu theo gradient

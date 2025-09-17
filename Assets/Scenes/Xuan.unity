@@ -800,6 +800,22 @@ PrefabInstance:
       propertyPath: _enemySkill
       value: 
       objectReference: {fileID: 1380679064}
+    - target: {fileID: 2086426784683353875, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086426784683353875, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2086426784683353875, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -430516133, guid: 1e8ceff32338b134e82e1149b3cd2fed, type: 3}
+    - target: {fileID: 2086426784683353875, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2113229933565913409, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
       propertyPath: m_Name
       value: EnemyPrefab
@@ -811,7 +827,7 @@ PrefabInstance:
     - target: {fileID: 3035776072474473773, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 45230227bfd2d3d43be5a64b64bc07f0, type: 2}
+      objectReference: {fileID: 9100000, guid: 76ff4369d5053d1499e4a71954f9fb68, type: 2}
     - target: {fileID: 4734776177129304637, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -954,6 +970,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1403643111111248079, guid: 67d2b6a7fd0a39d4997e68b8fa74747f, type: 3}
+      propertyPath: _boy
+      value: 
+      objectReference: {fileID: 9100000, guid: 173fccd796963354f8a5b1d07fa92f82, type: 2}
+    - target: {fileID: 1403643111111248079, guid: 67d2b6a7fd0a39d4997e68b8fa74747f, type: 3}
+      propertyPath: _gird
+      value: 
+      objectReference: {fileID: 9100000, guid: fce1730a18d262f419e70535ff39d13e, type: 2}
+    - target: {fileID: 1403643111111248079, guid: 67d2b6a7fd0a39d4997e68b8fa74747f, type: 3}
       propertyPath: _enemyPrefab
       value: 
       objectReference: {fileID: 1772363575}
@@ -961,6 +985,10 @@ PrefabInstance:
       propertyPath: _bossSpawnPoint
       value: 
       objectReference: {fileID: 1056204212}
+    - target: {fileID: 1403643111111248079, guid: 67d2b6a7fd0a39d4997e68b8fa74747f, type: 3}
+      propertyPath: _effectExplosion
+      value: 
+      objectReference: {fileID: 6176778899653607890, guid: c484469333e12c54185e8ac0f344e815, type: 3}
     - target: {fileID: 1403643111111248079, guid: 67d2b6a7fd0a39d4997e68b8fa74747f, type: 3}
       propertyPath: _spawnPoints.Array.data[0]
       value: 
@@ -1149,10 +1177,6 @@ PrefabInstance:
     - target: {fileID: 8754395540815011858, guid: 0f944597f27ea2d428713894bfbdf3c4, type: 3}
       propertyPath: m_Name
       value: EnemySpawnList
-      objectReference: {fileID: 0}
-    - target: {fileID: 8754395540815011858, guid: 0f944597f27ea2d428713894bfbdf3c4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

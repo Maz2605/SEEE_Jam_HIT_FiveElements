@@ -1,8 +1,9 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     [SerializeField] private List<Enemy> _enemys;
     [SerializeField] private Enemy _enemyPrefab;
@@ -15,11 +16,20 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private EnemyData _enemyData;
     [SerializeField] private EnemyData _bossData;
 
+    [Header("Animation")]
+    [SerializeField] private RuntimeAnimatorController _boy;
+    [SerializeField] private RuntimeAnimatorController _gird;
+    [SerializeField] private GameObject _effectExplosion;
+
     private void Start()
     {
-        SpawnEnemy(1, 5f, "fire");
-        //SpawnEnemy(10, 30f, "light");
-      //  SpawnEnemy(10, 30f, "magic");
+        //SpawnEnemy(4, 5f, "fire");
+       // SpawnEnemy(2, 30f, "light");
+        //SpawnEnemy(2, 30f, "magic");
+        SpawnEnemy(3, 30f, "knight1");
+        //SpawnEnemy(3, 30f, "knight2");
+        //SpawnEnemy(3, 30f, "knight3");
+
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;
         XuanEventManager.GetEnemy += GetEnemyByDistance;
@@ -41,11 +51,6 @@ public class EnemyManager : MonoBehaviour
         float time = timeWare/2;
         StartCoroutine(SpawnBossRoutine(time, idEnemy));
     }
-    public void AttackOneEnemy(float damage)
-    {
-
-    }
-
 
     //
     IEnumerator SpawnEnemyRoutine(int number, float time, string idEnemy)
@@ -59,7 +64,7 @@ public class EnemyManager : MonoBehaviour
             SpwanRandomPoints(data);
             yield return new WaitForSeconds(time);
             safe++;
-            if(safe > number) break;
+            if(safe > number) yield break;
         }
     }
     IEnumerator SpawnBossRoutine(float time, string idEnemy)
@@ -102,5 +107,31 @@ public class EnemyManager : MonoBehaviour
         }
 
         return enemy;
+    }
+    public RuntimeAnimatorController RandomVillage()
+    {
+        int random = Random.Range(0, 2);
+        if (random == 1)
+        {
+            return _boy;
+        }
+        else
+        {
+            return _gird;
+        }
+    }
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        _enemys.Remove(enemy);
+    }
+
+    public void SpawnExplosionInEnemy(Enemy enemy)
+    {
+        GameObject explosion = PoolingManager.Spawn(_effectExplosion, enemy.transform.position, Quaternion.identity);
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            PoolingManager.Despawn(explosion);
+        });
     }
 }

@@ -40,7 +40,7 @@ MonoBehaviour:
     scoreValue: 1
     emotion: 0
     animator: {fileID: 9100000, guid: d9768425ec0e099448b62d0a78a5dc6d, type: 2}
-  - idEnemy: zombie3
+  - idEnemy: knight1
     isFar: 0
     health: 100
     speed: 1
@@ -48,8 +48,8 @@ MonoBehaviour:
     speedAttack: 1.2
     scoreValue: 1
     emotion: 0
-    animator: {fileID: 9100000, guid: ae27a6c3f9f7e2e4f8653d2cba537b0a, type: 2}
-  - idEnemy: zombie4
+    animator: {fileID: 9100000, guid: c50cbb3561cd3184ead9d3c825bda5fa, type: 2}
+  - idEnemy: knight2
     isFar: 0
     health: 100
     speed: 1
@@ -57,8 +57,8 @@ MonoBehaviour:
     speedAttack: 1.2
     scoreValue: 1
     emotion: 0
-    animator: {fileID: 9100000, guid: 555c5110f26f993488b89e09ec737b0f, type: 2}
-  - idEnemy: 2
+    animator: {fileID: 9100000, guid: 8292ed2038d93194894c41b1ee975667, type: 2}
+  - idEnemy: knight3
     isFar: 0
     health: 100
     speed: 1
@@ -66,13 +66,4 @@ MonoBehaviour:
     speedAttack: 1.2
     scoreValue: 1
     emotion: 0
-    animator: {fileID: 9100000, guid: 555c5110f26f993488b89e09ec737b0f, type: 2}
-  - idEnemy: 0
-    isFar: 0
-    health: 100
-    speed: 1
-    damage: 5
-    speedAttack: 1.2
-    scoreValue: 1
-    emotion: 0
-    animator: {fileID: 9100000, guid: 555c5110f26f993488b89e09ec737b0f, type: 2}
+    animator: {fileID: 9100000, guid: 76ff4369d5053d1499e4a71954f9fb68, type: 2}

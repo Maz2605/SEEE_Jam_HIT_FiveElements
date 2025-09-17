@@ -7,6 +7,8 @@ public class XuanEventManager : Singleton<XuanEventManager>
 {
     public static Action<Enemy, float> EnemyTakeDamage;
 
+    public static Action<Enemy, float> EnemyBeFrozen;
+
     public static Action<Enemy,float, float> ReduceSpeed;
 
     public static Action<int, float, string> SpawnEnemy;

@@ -6,6 +6,9 @@ public class InputManager : MonoBehaviour
     public static event Action OnPressE;
     public static event Action OnPressW;
     public static event Action OnPressR;
+    public static event Action OnPress1;
+    public static event Action OnPress2;
+    public static event Action OnPress3;
     public static event Action OnPressSpace;
     public static event Action<Vector3> OnMouseMove;
     public static event Action<Vector3> OnLeftClick;
@@ -29,6 +32,24 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("[InputManager] Pressed R");
             OnPressR?.Invoke();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("[InputManager] Pressed 1");
+            OnPress1?.Invoke();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("[InputManager] Pressed 2");
+            OnPress2?.Invoke();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("[InputManager] Pressed 3");
+            OnPress3?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

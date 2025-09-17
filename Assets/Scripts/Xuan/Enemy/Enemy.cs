@@ -46,11 +46,13 @@ public class Enemy : MonoBehaviour
     {
         XuanEventManager.EnemyTakeDamage += TakeDamage;
         XuanEventManager.ReduceSpeed += ReductSpeed;
+        XuanEventManager.EnemyBeFrozen += BeFrozen;
     }
     private void OnDisable()
     {
         XuanEventManager.EnemyTakeDamage -= TakeDamage;
         XuanEventManager.ReduceSpeed -= ReductSpeed;
+        XuanEventManager.EnemyBeFrozen -= BeFrozen;
     }
 
     private void Start()
@@ -144,12 +146,23 @@ public class Enemy : MonoBehaviour
     }
     public void BeFrozen(Enemy enemy, float time)
     {
-
+        enemy.Frozen(time);
     }
     public void Frozen(float time)
     {
+        _animator.speed = 0f;
+        _rb.velocity = Vector2.zero;
+        StopCoroutine(AttackWall());
+        DOVirtual.DelayedCall(time, () =>
+        {
+            _animator.speed = 1f;
+            if (_currentHealth < _health && _type == EnemyType.Enemy)
+            {
+                StartCoroutine(AttackWall());
+                _rb.velocity = new Vector2(_speed, _rb.velocity.y);
+            }
 
-
+        });
     }
 
     public void StartExplosion()

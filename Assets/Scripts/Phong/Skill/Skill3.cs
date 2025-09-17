@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,11 +62,21 @@ public class Skill3 : MonoBehaviour
 
     private void BuffDamageRange()
     {
+        PlayerController.Instance.SetAttackRange(_buffRangeAttack);
         
+        DOVirtual.DelayedCall(5f, () =>
+        {
+            PlayerController.Instance.SetAttackRange(-_buffRangeAttack);
+        });
     }
 
     private void BuffAttackSpeed()
     {
+        PlayerController.Instance.SetBulletSpeed(_buffSpeedAttack);
         
+        DOVirtual.DelayedCall(5f, () =>
+        {
+            PlayerController.Instance.SetBulletSpeed(-_buffSpeedAttack);
+        });
     }
 }

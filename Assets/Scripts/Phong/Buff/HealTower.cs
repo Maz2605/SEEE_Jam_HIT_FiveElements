@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HealTower : Buff
 {
-    public float healAmount;
+    public float healAmount = 100f;
     
-    private void onEnable()
+    private void OnEnable()
     {
         GameEventPhong.HealTower += HealthTower;
     }
@@ -16,8 +16,8 @@ public class HealTower : Buff
         GameEventPhong.HealTower -= HealthTower;
     }
 
-    private float HealthTower()
+    private void HealthTower()
     {
-        return 0f;
+        PlayerController.Instance.SetCurrentHealthTower(healAmount);
     }
 }

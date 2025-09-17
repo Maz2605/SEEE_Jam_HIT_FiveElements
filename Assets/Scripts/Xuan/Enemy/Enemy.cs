@@ -100,12 +100,12 @@ public class Enemy : MonoBehaviour
         }
         if (transform.position.y >= _topMovePoint)
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, -_speed);
+            _rb.velocity = new Vector2(_rb.velocity.x, _speed);
             _isMoveY = true;
         }
         else if (transform.position.y <= _bottomMovePoint)
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, _speed);
+            _rb.velocity = new Vector2(_rb.velocity.x, -_speed);
             _isMoveY = true;
         }
     }
@@ -142,6 +142,16 @@ public class Enemy : MonoBehaviour
         _animator.SetTrigger("IsAttack");
         UseSkill();
     }
+    public void BeFrozen(Enemy enemy, float time)
+    {
+
+    }
+    public void Frozen(float time)
+    {
+
+
+    }
+
     public void StartExplosion()
     {
         _animator.SetBool("IsDead", true);

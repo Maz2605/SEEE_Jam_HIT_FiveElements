@@ -4,7 +4,7 @@ using DG.Tweening;
 public class ShakeCamera : Singleton<ShakeCamera>
 {
     [SerializeField] private float duration = 0.5f;   // thời gian rung
-    [SerializeField] private float strength = 0.5f;   // độ mạnh
+    [SerializeField] private float strength = 1f;   // độ mạnh
     [SerializeField] private int vibrato = 10;        // số lần rung
     [SerializeField] private float randomness = 90f;  // độ ngẫu nhiên
 

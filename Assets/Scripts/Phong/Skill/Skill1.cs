@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +12,13 @@ public class Skill1 : MonoBehaviour
 
     [SerializeField] private bool _isLook = false;
     private bool _isChoiceSkill = false;
-    private bool _isCooldown = false; // check cooldown
+    private bool _isCooldown = false; 
     private GameObject _rangeIndicator;
     private Camera _mainCam;
     [SerializeField] private LayerMask groundMask; 
     private Vector3 _lastValidPosition;
 
+    private Coroutine _cooldownRoutine;
 
     public void SetLook(bool isLook)
     {
@@ -35,7 +37,6 @@ public class Skill1 : MonoBehaviour
 
     private void OnEnable()
     {
-       
         InputManager.OnPressE += UseSkill1;         
         InputManager.OnLeftClick += HandleLeftClick;
         InputManager.OnMouseMove += HandleMouseMove;
@@ -44,7 +45,6 @@ public class Skill1 : MonoBehaviour
 
     private void OnDisable()
     {
-        
         InputManager.OnPressE -= UseSkill1;
         InputManager.OnLeftClick -= HandleLeftClick;
         InputManager.OnMouseMove -= HandleMouseMove;
@@ -57,22 +57,14 @@ public class Skill1 : MonoBehaviour
     {
         if (_isChoiceSkill || skill1RangePrefab == null || _isCooldown || _isLook) return;
 
-        
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
         {
             _isChoiceSkill = true;
             _lastValidPosition = spawnPos;
 
-            _rangeIndicator = Instantiate(
-                skill1RangePrefab,
-                spawnPos,
-                Quaternion.identity
-            );
+            _rangeIndicator = Instantiate(skill1RangePrefab, spawnPos, Quaternion.identity);
             ScaleRangeIndicator();
-
-            // Bắt đầu cooldown
-            StartCooldown();
         }
         else
         {
@@ -123,9 +115,13 @@ public class Skill1 : MonoBehaviour
         }
 
         Instantiate(skill1Prefab, pos, Quaternion.identity);
+
         // Gọi UI cooldown
         if (uiSkill != null)
             uiSkill.StartLoading(timeCoolDown, ResetCooldown);
+
+        // Bắt đầu cooldown sau khi cast
+        StartCooldown();
 
         CancelSkill();
     }
@@ -180,14 +176,22 @@ public class Skill1 : MonoBehaviour
     // ================= COOL DOWN =================
     private void StartCooldown()
     {
+        if (_cooldownRoutine != null)
+            StopCoroutine(_cooldownRoutine);
+
+        _cooldownRoutine = StartCoroutine(CooldownRoutine());
+    }
+
+    private IEnumerator CooldownRoutine()
+    {
         _isCooldown = true;
-        Invoke(nameof(ResetCooldown), timeCoolDown);
-        
-        
+        yield return new WaitForSeconds(timeCoolDown);
+        ResetCooldown();
     }
 
     private void ResetCooldown()
     {
         _isCooldown = false;
+        _cooldownRoutine = null;
     }
 }

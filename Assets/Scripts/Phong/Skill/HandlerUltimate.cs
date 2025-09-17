@@ -8,11 +8,33 @@ public class HandlerUltimate : MonoBehaviour
 {
     
     [SerializeField] private float _damage = 100f;
+    [SerializeField] private float _upgradeDamage = 10f;
     
+    private void Awake()
+    {
+        _damage = DataManager.Instance.DamageSkillUltimate;
+    }
+
+    private void OnEnable()
+    {
+        GameEventPhong.UpgradeSkillUltimate += UpgradeSkill;
+    }
+
+    private void OnDisable()
+    {
+        GameEventPhong.UpgradeSkillUltimate -= UpgradeSkill;
+    }
+
+    private void UpgradeSkill()
+    {
+        _damage += _upgradeDamage;
+        DataManager.Instance.SaveDataSkillUltimate(_damage);
+    }
+
     private void Start()
     {
         ShakeCamera.Instance.Shake();
-        DOVirtual.DelayedCall(0.6f, (() => Destroy(gameObject)));
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

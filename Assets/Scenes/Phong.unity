@@ -1732,6 +1732,7 @@ MonoBehaviour:
   _attackRange: 5
   _healthTower: 0
   _currentHealthTower: 0
+  animator: {fileID: 0}
 --- !u!58 &796325889
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3932,6 +3933,10 @@ PrefabInstance:
       propertyPath: uiSkill
       value: 
       objectReference: {fileID: 71990287}
+    - target: {fileID: 4316341320001643527, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
+      propertyPath: skill2Prefab
+      value: 
+      objectReference: {fileID: 8007967281831883496, guid: e534fcdb3835b854887cb61874719761, type: 3}
     - target: {fileID: 4900165548452823119, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: m_Name
       value: SpawnSkill
@@ -3980,6 +3985,14 @@ PrefabInstance:
       propertyPath: uiSkill
       value: 
       objectReference: {fileID: 617753911}
+    - target: {fileID: 4964746534709621870, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
+      propertyPath: timeCoolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964746534709621870, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
+      propertyPath: ultimatePrefab
+      value: 
+      objectReference: {fileID: 2297915172804088086, guid: d8bbf077688afbe4786fd54329978f83, type: 3}
     - target: {fileID: 7942058939425273593, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: uiSkill
       value: 
@@ -3988,6 +4001,10 @@ PrefabInstance:
       propertyPath: lookImage
       value: 
       objectReference: {fileID: 1947662726}
+    - target: {fileID: 7942058939425273593, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
+      propertyPath: skill1Prefab
+      value: 
+      objectReference: {fileID: 3085864873709428002, guid: 2ab85097e8519374fa3748c2f469db9c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

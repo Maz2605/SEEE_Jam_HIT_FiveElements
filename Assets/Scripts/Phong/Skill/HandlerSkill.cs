@@ -7,8 +7,28 @@ public class HandlerSkill : MonoBehaviour
 {
 
     [SerializeField] private float _damage = 1f;
-    
+    [SerializeField] private float _upgradeDamage = 1f;
 
+    private void Awake()
+    {
+       _damage =  DataManager.Instance.DamageSkill1;
+    }
+
+    private void OnEnable()
+    {
+        GameEventPhong.UpgradeSkill1 += UpgradeSkill;
+    }
+
+    private void OnDisable()
+    {
+        GameEventPhong.UpgradeSkill1 -= UpgradeSkill;
+    }
+
+    private void UpgradeSkill()
+    {
+        _damage += _upgradeDamage;
+        DataManager.Instance.SaveDataSkill1(_damage);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,8 +40,4 @@ public class HandlerSkill : MonoBehaviour
         }
     }
 
-    private void GetDamage()
-    {
-        
-    }
 }

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8c675cb7b84b943917002d56c82150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill1Prefab: {fileID: 9172243483831418718, guid: 9047637553e60844181023873421aaf6, type: 3}
+  skill1Prefab: {fileID: 3728204646341299105, guid: 805726d8101ca7042bee149d135754f4, type: 3}
   skill1RangePrefab: {fileID: 8674421737477049869, guid: 061a286993d50b44fa76734c481bd83c, type: 3}
   uiSkill: {fileID: 0}
   timeCoolDown: 3
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e115aab9ef0b7c240b5b901813ee3c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill2Prefab: {fileID: 7275707716008161047, guid: 5ca77e7d02a273c4eaf2cc9723c4fea4, type: 3}
+  skill2Prefab: {fileID: 8007967281831883496, guid: e534fcdb3835b854887cb61874719761, type: 3}
   skill2RangePrefab: {fileID: 8674421737477049869, guid: 061a286993d50b44fa76734c481bd83c, type: 3}
   uiSkill: {fileID: 0}
   timeCoolDown: 5
@@ -153,9 +153,12 @@ MonoBehaviour:
   uiSkill: {fileID: 0}
   timeCoolDown: 10
   lookImage: {fileID: 0}
+  skill3Prefab: {fileID: 4379258795286816389, guid: bc582564c6ff2424581105118879ba93, type: 3}
   _isLook: 0
   _buffSpeedAttack: 2
+  _upgradeBuffSpeedAttack: 0.2
   _buffRangeAttack: 2
+  _upgradeBuffRangeAttack: 0.2
 --- !u!1 &4900165548452823119
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,9 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a80ff7493c4c8d4eb424eec1ccb5028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultimatePrefab: {fileID: 3271058108069272189, guid: 34196eb0b90d88f4da61b02d8173f713, type: 3}
+  ultimatePrefab: {fileID: 2297915172804088086, guid: d8bbf077688afbe4786fd54329978f83, type: 3}
   ultimateRangePrefab: {fileID: 8674421737477049869, guid: 061a286993d50b44fa76734c481bd83c, type: 3}
-  timeCoolDown: 20
+  timeCoolDown: 2
   uiSkill: {fileID: 0}
   lookImage: {fileID: 0}
   _isLook: 0

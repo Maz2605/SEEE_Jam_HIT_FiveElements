@@ -6,9 +6,11 @@ public class PlayerLevelSystem : MonoBehaviour
     [SerializeField] private GameObject _currentPlayer;
     private int currentLevel = 0;
 
+    [Header("Spawn Settings")]
+    [SerializeField] private Transform _spawnPoint;
     private void Start()
     {
-        if (_currentPlayer == null && _playerPrefabs.Length > 0)
+        if (_currentPlayer == null || !_currentPlayer.activeInHierarchy)
         {
             SpawnPlayer(0); 
         }
@@ -25,16 +27,18 @@ public class PlayerLevelSystem : MonoBehaviour
 
     private void SpawnPlayer(int level)
     {
-        Vector3 spawnPos = Vector3.zero;
-        Quaternion spawnRot = Quaternion.identity;
+        Vector3 spawnPos = _spawnPoint != null ? _spawnPoint.position : Vector3.zero;
+        Quaternion spawnRot = _spawnPoint != null ? _spawnPoint.rotation : Quaternion.identity;
 
         if (_currentPlayer != null)
         {
-            spawnPos = _currentPlayer.transform.position;
-            spawnRot = _currentPlayer.transform.rotation;
             PoolingManager.Despawn(_currentPlayer);
         }
 
         _currentPlayer = PoolingManager.Spawn(_playerPrefabs[level], spawnPos, spawnRot);
+
+        Debug.Log($"[PlayerLevelSystem] Spawned {_playerPrefabs[level].name} tại {spawnPos}");
     }
+
+
 }

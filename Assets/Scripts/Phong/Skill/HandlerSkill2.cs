@@ -40,7 +40,7 @@ public class HandlerSkill2 : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             // Frezon Enemy
-            
+            XuanEventManager.EnemyBeFrozen(collision.gameObject.GetComponent<Enemy>(),_timer);
         }
     }
 }

@@ -484,63 +484,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101600584}
   m_CullTransparentMesh: 1
---- !u!1001 &106429507
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3728204646341299105, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_Name
-      value: Skill1_REAL
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.9699945
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.34044504
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030319192161134532, guid: 805726d8101ca7042bee149d135754f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 805726d8101ca7042bee149d135754f4, type: 3}
 --- !u!1 &128789634
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,10 +3929,6 @@ PrefabInstance:
       propertyPath: uiSkill
       value: 
       objectReference: {fileID: 1754723552}
-    - target: {fileID: 3703201610310532428, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
-      propertyPath: skill3Prefab
-      value: 
-      objectReference: {fileID: 4379258795286816389, guid: bc582564c6ff2424581105118879ba93, type: 3}
     - target: {fileID: 4316341320001643527, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: uiSkill
       value: 
@@ -3997,7 +3936,7 @@ PrefabInstance:
     - target: {fileID: 4316341320001643527, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: skill2Prefab
       value: 
-      objectReference: {fileID: 8007967281831883496, guid: e534fcdb3835b854887cb61874719761, type: 3}
+      objectReference: {fileID: 5502587377938160510, guid: e534fcdb3835b854887cb61874719761, type: 3}
     - target: {fileID: 4900165548452823119, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: m_Name
       value: SpawnSkill
@@ -4047,13 +3986,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 617753911}
     - target: {fileID: 4964746534709621870, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
-      propertyPath: timeCoolDown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964746534709621870, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: ultimatePrefab
       value: 
-      objectReference: {fileID: 2297915172804088086, guid: d8bbf077688afbe4786fd54329978f83, type: 3}
+      objectReference: {fileID: 1626925705321483110, guid: c6764fbdffacca644b1aac540dd4f4c9, type: 3}
     - target: {fileID: 7942058939425273593, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: uiSkill
       value: 
@@ -4062,10 +3997,6 @@ PrefabInstance:
       propertyPath: lookImage
       value: 
       objectReference: {fileID: 1947662726}
-    - target: {fileID: 7942058939425273593, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
-      propertyPath: skill1Prefab
-      value: 
-      objectReference: {fileID: 3728204646341299105, guid: 805726d8101ca7042bee149d135754f4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4083,4 +4014,3 @@ SceneRoots:
   - {fileID: 796325890}
   - {fileID: 399192978}
   - {fileID: 1319710754}
-  - {fileID: 106429507}

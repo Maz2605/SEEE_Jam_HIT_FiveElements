@@ -1,0 +1,1297 @@
+fileFormatVersion: 2
+guid: ded23ea9777145d48845b438c38ce13a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_0
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d3500994b93fc42818c36e585e98a5
+      internalID: -572192754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_1
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69dd3f780d44a6549aaec931c4df7265
+      internalID: -601483489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_2
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02eac3e9e54645543a5ee49bc3a77d2b
+      internalID: -594008515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_3
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ae5b826174ca042b1a193d1cc41bfb
+      internalID: -1845957578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_4
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5910ec43568e90f4f9265a56324b14ca
+      internalID: 1623892892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_5
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 444e92fd42d677248ae087241fbda219
+      internalID: -258265943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_6
+      rect:
+        serializedVersion: 2
+        x: 2485
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4bfaa77f99bd0847a441c465fdec291
+      internalID: 1646389616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_7
+      rect:
+        serializedVersion: 2
+        x: 2840
+        y: 2190
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a19946a630e954589e91ef151fd715
+      internalID: 75312895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f29bf68f51bfd44a02f2aec512beac
+      internalID: -1336702790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_9
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130af9543615a01469ee5372196821e8
+      internalID: 254431937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_10
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 387100c98d6d5ca4a922b2a66f25809e
+      internalID: 45517987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_11
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe829a64d87d0334e89b78da8f81bb11
+      internalID: -1266615552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_12
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6e97f763b290749b138bdb953a0b1f
+      internalID: 284057980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_13
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4409ba5789a1bf4ba1c59ba75e622c5
+      internalID: 1922778357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_14
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68d66678dfc13254390af2a7fe8a782b
+      internalID: 1322810203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_15
+      rect:
+        serializedVersion: 2
+        x: 2485
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c5c78097cf4f5f49b37d636619e2997
+      internalID: -704911636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_16
+      rect:
+        serializedVersion: 2
+        x: 2840
+        y: 1825
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36dde0abe1f85c8458109011023b1205
+      internalID: -1725720608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53144cc5080b674c972ff584ccce030
+      internalID: 2139589298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_18
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e51cb0343f390d24083eea010ae79e12
+      internalID: -1870793507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_19
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904fcb72b9475474a8714c65fbcac5e4
+      internalID: -382477357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_20
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df64c7e02f6684a4fbbd791a5506649a
+      internalID: -805455611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_21
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3598c1d9cd89f404f9d0fe270b39323d
+      internalID: 344450816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_22
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0fa3a501c7ccbc40804c3afee04aef4
+      internalID: 1327913542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_23
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67380eb77168fa7429ad949b7e26cd40
+      internalID: -715965316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_24
+      rect:
+        serializedVersion: 2
+        x: 2485
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5bc400a785eeb444a87fbc721a304cd
+      internalID: -1347077341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_25
+      rect:
+        serializedVersion: 2
+        x: 2840
+        y: 1460
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56e16979c66f9649a55b98579cc8d57
+      internalID: 355213010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daaea9561b90e8c40a185581103be855
+      internalID: 554171353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_27
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1b7ad8dd891f0546af6891f7829a46d
+      internalID: -1077525795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_28
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4abea6bbe2ef4eb4d9ce043f17542c58
+      internalID: 1560461842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_29
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f75783b3591d74f895274500099f15
+      internalID: 2093548439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_30
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a9a987c38849a4ea8cc6200ac43749
+      internalID: -1180380087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_31
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359294ac31ab2fa44a71b117385aad3d
+      internalID: -1347233869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_32
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f86bd6210e7c7b47a4facf76c1cfc30
+      internalID: 1880027324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_33
+      rect:
+        serializedVersion: 2
+        x: 2485
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c0e92dc99613a947b1ae58af219f31f
+      internalID: 522727717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_34
+      rect:
+        serializedVersion: 2
+        x: 2840
+        y: 1095
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0e620bb56a5cb64d8298f6ce15ad3b9
+      internalID: -1845203581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c3a92a11c26fb4e84e96eadd60cc39
+      internalID: -1647001940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_36
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190bc46e7ca097346896a587028d2540
+      internalID: 1523525604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_37
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b4f59368cecf14aad7a44b6b3ea657
+      internalID: 928266480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_38
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83cbd33eab5a654881b7c9ceef4dc17
+      internalID: -281609314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_39
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a1bd657082713468f123638b893af9
+      internalID: -1370227110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_40
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796dbfd7524b8ff4eb14e6bedab6680c
+      internalID: -1018116155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_41
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b72faf1545f654d8f3e310e2787e38
+      internalID: 1162093817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_42
+      rect:
+        serializedVersion: 2
+        x: 2485
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bace4562c5ba464eb1b739350cd36f8
+      internalID: 1708056964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_43
+      rect:
+        serializedVersion: 2
+        x: 2840
+        y: 730
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061032bd6c0b1b64fa4f0cc6c7aadeba
+      internalID: -1884765775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada6a109372e08e43ba7b10ed6e4f546
+      internalID: 1488175147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_45
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0fcf9ff09635f24f80c3dafefb19eb1
+      internalID: 2076426386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_46
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a394133783c5b1941a96c9a141bffd16
+      internalID: -1134978797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_47
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4128e7eb5dc271c4088e29ef859a4f55
+      internalID: 715433249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_48
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c36b4f0a06976e40852ae2de66263f1
+      internalID: 164033610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_49
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ea28c0df73d6c44918354b5ec3449b
+      internalID: -930926024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_50
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aeb8606e586ab94ab3d8d180383cad7
+      internalID: -1668059325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Explosion2_1_355x365_51
+      rect:
+        serializedVersion: 2
+        x: 2485
+        y: 365
+        width: 355
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a68afbf3d8470e43acfeaaae066cd77
+      internalID: -554231440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Effect_Explosion2_1_355x365_0: -572192754
+      Effect_Explosion2_1_355x365_1: -601483489
+      Effect_Explosion2_1_355x365_10: 45517987
+      Effect_Explosion2_1_355x365_11: -1266615552
+      Effect_Explosion2_1_355x365_12: 284057980
+      Effect_Explosion2_1_355x365_13: 1922778357
+      Effect_Explosion2_1_355x365_14: 1322810203
+      Effect_Explosion2_1_355x365_15: -704911636
+      Effect_Explosion2_1_355x365_16: -1725720608
+      Effect_Explosion2_1_355x365_17: 2139589298
+      Effect_Explosion2_1_355x365_18: -1870793507
+      Effect_Explosion2_1_355x365_19: -382477357
+      Effect_Explosion2_1_355x365_2: -594008515
+      Effect_Explosion2_1_355x365_20: -805455611
+      Effect_Explosion2_1_355x365_21: 344450816
+      Effect_Explosion2_1_355x365_22: 1327913542
+      Effect_Explosion2_1_355x365_23: -715965316
+      Effect_Explosion2_1_355x365_24: -1347077341
+      Effect_Explosion2_1_355x365_25: 355213010
+      Effect_Explosion2_1_355x365_26: 554171353
+      Effect_Explosion2_1_355x365_27: -1077525795
+      Effect_Explosion2_1_355x365_28: 1560461842
+      Effect_Explosion2_1_355x365_29: 2093548439
+      Effect_Explosion2_1_355x365_3: -1845957578
+      Effect_Explosion2_1_355x365_30: -1180380087
+      Effect_Explosion2_1_355x365_31: -1347233869
+      Effect_Explosion2_1_355x365_32: 1880027324
+      Effect_Explosion2_1_355x365_33: 522727717
+      Effect_Explosion2_1_355x365_34: -1845203581
+      Effect_Explosion2_1_355x365_35: -1647001940
+      Effect_Explosion2_1_355x365_36: 1523525604
+      Effect_Explosion2_1_355x365_37: 928266480
+      Effect_Explosion2_1_355x365_38: -281609314
+      Effect_Explosion2_1_355x365_39: -1370227110
+      Effect_Explosion2_1_355x365_4: 1623892892
+      Effect_Explosion2_1_355x365_40: -1018116155
+      Effect_Explosion2_1_355x365_41: 1162093817
+      Effect_Explosion2_1_355x365_42: 1708056964
+      Effect_Explosion2_1_355x365_43: -1884765775
+      Effect_Explosion2_1_355x365_44: 1488175147
+      Effect_Explosion2_1_355x365_45: 2076426386
+      Effect_Explosion2_1_355x365_46: -1134978797
+      Effect_Explosion2_1_355x365_47: 715433249
+      Effect_Explosion2_1_355x365_48: 164033610
+      Effect_Explosion2_1_355x365_49: -930926024
+      Effect_Explosion2_1_355x365_5: -258265943
+      Effect_Explosion2_1_355x365_50: -1668059325
+      Effect_Explosion2_1_355x365_51: -554231440
+      Effect_Explosion2_1_355x365_6: 1646389616
+      Effect_Explosion2_1_355x365_7: 75312895
+      Effect_Explosion2_1_355x365_8: -1336702790
+      Effect_Explosion2_1_355x365_9: 254431937
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

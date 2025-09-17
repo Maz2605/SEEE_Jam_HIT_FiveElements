@@ -4,7 +4,6 @@ public class DataManager : Singleton<DataManager>
 {
     [Header("Skill Damage Default")]
     [SerializeField] private float damageSkill1 = 10f;
-    [SerializeField] private float damageSkill2 = 20f;
     [SerializeField] private float damageSkillUltimate = 100f;
 
     [Header("Skill Timer")]
@@ -19,7 +18,6 @@ public class DataManager : Singleton<DataManager>
 
     // 🔑 Key lưu PlayerPrefs
     private const string DamageSkill1Key = "DamageSkill1";
-    private const string DamageSkill2Key = "DamageSkill2";
     private const string DamageSkillUltimateKey = "DamageSkillUltimate";
     private const string TimerSkill2Key = "TimerSkill2";
     private const string BuffRangeAttackKey = "BuffRangeAttack";
@@ -34,12 +32,7 @@ public class DataManager : Singleton<DataManager>
         get => damageSkill1;
         set { damageSkill1 = value; SaveDataSkill1(damageSkill1); }
     }
-
-    public float DamageSkill2
-    {
-        get => damageSkill2;
-        set { damageSkill2 = value; SaveDataDamageSkill2(damageSkill2); }
-    }
+    
 
     public float DamageSkillUltimate
     {
@@ -82,9 +75,7 @@ public class DataManager : Singleton<DataManager>
     // =========================
     public void SaveDataSkill1(float damage) =>
         PlayerPrefs.SetFloat(DamageSkill1Key, damage);
-
-    public void SaveDataDamageSkill2(float damage) =>
-        PlayerPrefs.SetFloat(DamageSkill2Key, damage);
+    
 
     public void SaveDataSkillUltimate(float damage) =>
         PlayerPrefs.SetFloat(DamageSkillUltimateKey, damage);
@@ -107,7 +98,6 @@ public class DataManager : Singleton<DataManager>
     public void SaveAll()
     {
         PlayerPrefs.SetFloat(DamageSkill1Key, damageSkill1);
-        PlayerPrefs.SetFloat(DamageSkill2Key, damageSkill2);
         PlayerPrefs.SetFloat(DamageSkillUltimateKey, damageSkillUltimate);
         PlayerPrefs.SetFloat(TimerSkill2Key, timerSkill2);
         PlayerPrefs.SetFloat(BuffRangeAttackKey, buffRangeAttack);
@@ -124,7 +114,6 @@ public class DataManager : Singleton<DataManager>
     public void LoadAll()
     {
         damageSkill1 = PlayerPrefs.GetFloat(DamageSkill1Key, damageSkill1);
-        damageSkill2 = PlayerPrefs.GetFloat(DamageSkill2Key, damageSkill2);
         damageSkillUltimate = PlayerPrefs.GetFloat(DamageSkillUltimateKey, damageSkillUltimate);
         timerSkill2 = PlayerPrefs.GetFloat(TimerSkill2Key, timerSkill2);
         buffRangeAttack = PlayerPrefs.GetFloat(BuffRangeAttackKey, buffRangeAttack);

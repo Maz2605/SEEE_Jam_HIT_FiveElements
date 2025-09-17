@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class HandlerUltimate : MonoBehaviour
     
     [SerializeField] private float _damage = 100f;
     [SerializeField] private float _upgradeDamage = 10f;
+    private List<Enemy> _enemies = new List<Enemy>();
     
     private void Awake()
     {
@@ -43,12 +45,18 @@ public class HandlerUltimate : MonoBehaviour
         {
             Debug.Log("-100 mau");
             // Enemy take damage
-            XuanEventManager.EnemyTakeDamage(other.gameObject.GetComponent<Enemy>(),_damage);
+            _enemies.Add(other.GetComponent<Enemy>());
         }
     }
 
-    private void GetDamage()
+    public void GetDamage()
     {
-        
+        if (_enemies.Count > 0)
+        {
+            foreach (var enemy in _enemies)
+            {
+                XuanEventManager.EnemyTakeDamage(enemy, _damage);
+            }
+        }
     }
 }

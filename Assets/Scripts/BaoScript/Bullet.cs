@@ -55,7 +55,6 @@ public class Bullet : MonoBehaviour
 
         DespawnBullet();
 
-        //XuanEventManager.EnemyTakeDamage(other.GetComponent<Enemy>(), _damage); 
     }
 
     private void DamageMainEnemy(Collider2D other)

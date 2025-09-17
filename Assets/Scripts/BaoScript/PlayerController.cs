@@ -17,11 +17,20 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Tower Health")]
     [SerializeField] private float _healthTower;
     [SerializeField] private float _currentHealthTower;
+
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+
     private float attackTimer;
+
+    private bool _isDead;
+    private bool _isAttacking;
+    private PlayerStateType _state = PlayerStateType.Idle;
+
     private readonly List<Transform> enemiesInRange = new List<Transform>();
 
     private CircleCollider2D rangeCollider;
-
+    #region Getter Setter
     public float AttackRange => _attackRange;
     public float BulletSpeed => _bulletSpeed;   
     public float  AttackCooldown => _attackCooldown;    
@@ -29,6 +38,9 @@ public class PlayerController : Singleton<PlayerController>
     public float HealthTower => _healthTower;   
 
     public float CurrentHealthTower => _currentHealthTower;
+
+    public bool IsAttacking => _isAttacking && !_isDead;
+    public bool IsIdle => !_isDead && !_isAttacking;
 
     public void SetAttackRange(float Range)
     {
@@ -54,13 +66,15 @@ public class PlayerController : Singleton<PlayerController>
     {
         _currentHealthTower += currentHealthTower;
     }
-
+    #endregion
     private void Awake()
     {
         rangeCollider = GetComponent<CircleCollider2D>();
+        if (animator == null)
+            animator = GetComponent<Animator>();
         rangeCollider.isTrigger = true;
     }
-
+    #region PlAYER ATTACK
     private void Update()
     {
         if (rangeCollider.radius != _attackRange)
@@ -100,11 +114,35 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Shoot(Transform target)
     {
+        if (_isDead) return; 
+
         GameObject bulletObj = PoolingManager.Spawn(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
 
         Vector3 direction = (target.position - _firePoint.position).normalized;
         bullet.Launch(direction, _bulletSpeed);
+
+        ChangeState(PlayerStateType.Attack);
+
+        _isAttacking = true;
+
+        Invoke(nameof(ResetAttack), 0.2f);
+    }
+    private void ResetAttack()
+    {
+        _isAttacking = false;
+        if (!_isDead) ChangeState(PlayerStateType.Idle);
+    }
+
+    public void Die()
+    {
+        if (_isDead) return;
+
+        _isDead = true;
+        _isAttacking = false;
+
+        ChangeState(PlayerStateType.Die);
+        Debug.Log("Player died → animation Die");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -118,4 +156,27 @@ public class PlayerController : Singleton<PlayerController>
         if (other.CompareTag("Enemy"))
             enemiesInRange.Remove(other.transform);
     }
+    #endregion
+
+    #region ANIMATION CONTROL
+    private void ChangeState(PlayerStateType newState)
+    {
+        if (_state == newState) return; // tránh spam trigger
+
+        _state = newState;
+
+        switch (newState)
+        {
+            case PlayerStateType.Idle:
+                animator.SetTrigger("Idle");
+                break;
+            case PlayerStateType.Attack:
+                animator.SetTrigger("Attack");
+                break;
+            case PlayerStateType.Die:
+                animator.SetTrigger("Die");
+                break;
+        }
+    }
+    #endregion
 }

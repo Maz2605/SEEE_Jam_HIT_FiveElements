@@ -2,6 +2,7 @@ public enum PlayerStateType
 {
     Idle,
     Attack,
-    Victory
+    Victory,
+    Die
 }
     

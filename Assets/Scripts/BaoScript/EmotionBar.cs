@@ -35,7 +35,10 @@ public class EmotionBar : Singleton<EmotionBar>
     [SerializeField] private PlayerLevelSystem playerLevelSystem;
 
     private float currentEmotion;
-    private string currentState = ""; 
+    private string currentState = "";
+
+
+    private bool isDraining = false;
 
     public float MaxEmotion => _maxEmotion; 
     public float PassiveGainPerSecond => _passiveGainPerSecond;
@@ -73,25 +76,38 @@ public class EmotionBar : Singleton<EmotionBar>
         AddEmotion(_passiveGainPerSecond * Time.deltaTime);
     }
 
-    public void AddEmotion(float amount)
-    {
-        currentEmotion = Mathf.Clamp(currentEmotion + amount, 0, _maxEmotion);
-        UpdateUITween();
+   public void AddEmotion(float amount)
+{
+    if (isDraining) return; 
 
-        if (currentEmotion >= _maxEmotion)
-        {
-            OnEmotionFull();
-        }
+    currentEmotion = Mathf.Clamp(currentEmotion + amount, 0, _maxEmotion);
+    UpdateUITween();
+
+    if (currentEmotion >= _maxEmotion)
+    {
+        OnEmotionFull();
     }
+}
 
     private void UpdateUITween()
     {
         float t = currentEmotion / _maxEmotion;
 
         UpdateSliderValue(t);
-        UpdateFillColor(t);
-        UpdateEmotionIcon(t);
-        //MoveEmotionIcon(t);
+
+        if (isDraining && currentEmotion > 0f)
+        {
+            _fillImage.DOColor(superHappyColor, tweenDuration).SetEase(Ease.InOutSine);
+            if (_emotionIcon != null)
+                _emotionIcon.sprite = _superHappyIcon;
+
+            playerLevelSystem.LevelUp(3);
+        }
+        else
+        {
+            UpdateFillColor(t);
+            UpdateEmotionIcon(t);
+        }
     }
 
     private void UpdateSliderValue(float t)
@@ -144,7 +160,19 @@ public class EmotionBar : Singleton<EmotionBar>
 
     private void OnEmotionFull()
     {
-        Debug.Log(" Emotion Bar Full! Ultimate skill ready!");
+        if (isDraining) return;
+
+        isDraining = true;
+
+        float endEmotion = 0f;
+        float duration = 3f;
+
+        DOTween.To(() => currentEmotion,
+                   x => { currentEmotion = x; UpdateUITween(); },
+                   endEmotion,
+                   duration)
+               .SetEase(Ease.Linear)
+               .OnComplete(() => { isDraining = false; });
     }
 
     private void UpdateEmotionLevel(float t)
@@ -162,4 +190,6 @@ public class EmotionBar : Singleton<EmotionBar>
 
         playerLevelSystem.LevelUp(newLevel);
     }
+
+
 }

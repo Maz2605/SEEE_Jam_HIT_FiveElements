@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private float _damage;
     private float _speedAttack;
     private float _scoreValue;
+    private EnemyType _type;
 
     public float GetHealth => _health;
     public float GetCurrentHealth => _currentHealth;
@@ -29,6 +30,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Collider2D _collider2D;
+    public Animator GetAnimator => _animator;
 
     [SerializeField] private EnemyUI _enemyUI;
     [SerializeField] private EnemySkill _enemySkill;
@@ -37,14 +40,17 @@ public class Enemy : MonoBehaviour
     private float _topMovePoint = 4f;
     private float _bottomMovePoint = -4f;
     private bool _isMoveY = false;
+    private bool _isDelayTakeDamage = false;
 
     private void OnEnable()
     {
         XuanEventManager.EnemyTakeDamage += TakeDamage;
+        XuanEventManager.ReduceSpeed += ReductSpeed;
     }
     private void OnDisable()
     {
         XuanEventManager.EnemyTakeDamage -= TakeDamage;
+        XuanEventManager.ReduceSpeed -= ReductSpeed;
     }
 
     private void Start()
@@ -67,24 +73,38 @@ public class Enemy : MonoBehaviour
         _speedAttack = data.speedAttack;
         _scoreValue = data.scoreValue;
         _animator.runtimeAnimatorController = data.animator;
-
+        _type = EnemyType.Enemy;
         _enemyUI.SetImotionBar(_health);
     }
 
     public void StartMove()
     {
-        _rb.velocity = new Vector2(_speed,_rb.velocity.y);
-        _animator.SetBool("IsWalk", true);
-
+        if(_isFar)
+        {
+            _animator.SetBool("IsWalk", true);
+            _rb.velocity = new Vector2(_speed, _rb.velocity.y);
+        }
+        else
+        {
+            int random = Random.Range(0, 2);
+            if (random == 1)
+            {
+                _animator.SetBool("IsWalk", true);
+                _rb.velocity = new Vector2(_speed, _rb.velocity.y);
+            }
+            else
+            {
+                _animator.SetBool("IsRun", true);
+                _rb.velocity = new Vector2(_speed * 1.5f, _rb.velocity.y);
+            }
+        }
         if (transform.position.y >= _topMovePoint)
         {
-            Debug.Log("Top");
             _rb.velocity = new Vector2(_rb.velocity.x, -_speed);
             _isMoveY = true;
         }
-        else if(transform.position.y <= _bottomMovePoint)
+        else if (transform.position.y <= _bottomMovePoint)
         {
-            Debug.Log("Bottom");
             _rb.velocity = new Vector2(_rb.velocity.x, _speed);
             _isMoveY = true;
         }
@@ -111,7 +131,7 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator AttackWall()
     {
-        while(_health > 0)
+        while(_health > 0 && _type == EnemyType.Enemy)
         {
             Attack();
             yield return new WaitForSeconds(_speedAttack);
@@ -124,7 +144,8 @@ public class Enemy : MonoBehaviour
     }
     public void StartExplosion()
     {
-        _animator.SetBool("IsExplo", true);
+        _animator.SetBool("IsDead", true);
+        EnemyManager.Instance.SpawnExplosionInEnemy(this);
         DOVirtual.DelayedCall(1f, () =>
         {
             PoolingManager.Despawn(gameObject);
@@ -133,12 +154,22 @@ public class Enemy : MonoBehaviour
     
     public void Hit(float damage)
     {
+        _animator.SetTrigger("IsHit");
         _currentHealth += damage;
         _enemyUI.UpdateImotionBar(_currentHealth);
+        if (_currentHealth >= _health)
+        {
+            _currentHealth = _health;
+            Die();
+        }
     }
     public void TakeDamage(Enemy enemy, float damage)
     {
         enemy.Hit(damage);
+    }
+    public void ReductSpeed(Enemy enemy, float r, float time)
+    {
+        enemy.SetSpeed(r, time);
     }
     public void SetSpeed(float r, float time)
     {
@@ -158,20 +189,45 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
-
+        if(_type == EnemyType.Enemy)
+        {
+            _type = EnemyType.Village;
+            _animator.SetBool("IsDead", true);
+            StopMove();
+            DOVirtual.DelayedCall(0.5f, () =>
+            {
+                _animator.runtimeAnimatorController = EnemyManager.Instance.RandomVillage();
+                _animator.SetBool("IsRun", true);
+            });
+            DOVirtual.DelayedCall(1.2f, () =>
+            {
+                _rb.velocity = new Vector2(_speed * 1.5f, _rb.velocity.y);
+            });
+        }
+        EnemyManager.Instance.RemoveEnemy(this);
     }
     //Va Cham
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Wall"))
         {
-            StopMove();
-            StartExplosion();
+            if(_type == EnemyType.Enemy)
+            {
+                StopMove();
+                StartExplosion();
+            }
+            else
+            {
+                PoolingManager.Despawn(gameObject);
+            }
         }
         if(collision.CompareTag("Stop") && _isFar)
         {
-            StopMove();
-            StartAttack();
+            if (_type == EnemyType.Enemy)
+            {
+                StopMove();
+                StartAttack();
+            }
         }
     }
 }

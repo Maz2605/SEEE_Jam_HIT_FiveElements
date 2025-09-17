@@ -6,7 +6,6 @@ using System;
 public class PageManager : MonoBehaviour
 {
     public Image imageInfor;
-    public Image textInfor;
 
     public void ShowPage(Action onComplete = null, bool autoHide = true)
     {
@@ -14,17 +13,14 @@ public class PageManager : MonoBehaviour
 
         // Reset alpha
         imageInfor.color = new Color(imageInfor.color.r, imageInfor.color.g, imageInfor.color.b, 0);
-        textInfor.color = new Color(textInfor.color.r, textInfor.color.g, textInfor.color.b, 0);
-
         Sequence seq = DOTween.Sequence();
         seq.Append(imageInfor.DOFade(1f, 1f));
-        seq.Join(textInfor.DOFade(1f, 1f));
-
+    
         if (autoHide)
         {
             seq.AppendInterval(3f);
             seq.Append(imageInfor.DOFade(0f, 1f));
-            seq.Join(textInfor.DOFade(0f, 1f));
+   
 
             seq.OnComplete(() =>
             {
@@ -43,7 +39,6 @@ public class PageManager : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
         seq.Append(imageInfor.DOFade(0f, 1f));
-        seq.Join(textInfor.DOFade(0f, 1f));
 
         seq.OnComplete(() =>
         {

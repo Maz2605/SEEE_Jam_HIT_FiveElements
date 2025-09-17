@@ -13,21 +13,57 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   enemyStatsList:
-  - idEnemy: orc
-    isFar: 0
+  - idEnemy: fire
+    isFar: 1
     health: 100
-    speed: 1
+    speed: -1
     damage: 5
     speedAttack: 2
     scoreValue: 1
     emotion: 0
-    animator: {fileID: 9100000, guid: f535fa4035af83e49883790605a80e2a, type: 2}
-  - idEnemy: slime1
-    isFar: 0
+    animator: {fileID: 9100000, guid: 21d1da7c3adf32d4d9d17416b93f99a9, type: 2}
+  - idEnemy: light
+    isFar: 1
     health: 100
-    speed: 1
+    speed: -1
     damage: 5
     speedAttack: 1.2
     scoreValue: 1
     emotion: 0
-    animator: {fileID: 9100000, guid: ae27a6c3f9f7e2e4f8653d2cba537b0a, type: 2}
+    animator: {fileID: 9100000, guid: 45230227bfd2d3d43be5a64b64bc07f0, type: 2}
+  - idEnemy: magic
+    isFar: 1
+    health: 100
+    speed: -1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: d9768425ec0e099448b62d0a78a5dc6d, type: 2}
+  - idEnemy: knight1
+    isFar: 0
+    health: 100
+    speed: -1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: c50cbb3561cd3184ead9d3c825bda5fa, type: 2}
+  - idEnemy: knight2
+    isFar: 0
+    health: 100
+    speed: -1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: 8292ed2038d93194894c41b1ee975667, type: 2}
+  - idEnemy: knight3
+    isFar: 0
+    health: 100
+    speed: -1
+    damage: 5
+    speedAttack: 1.2
+    scoreValue: 1
+    emotion: 0
+    animator: {fileID: 9100000, guid: 76ff4369d5053d1499e4a71954f9fb68, type: 2}

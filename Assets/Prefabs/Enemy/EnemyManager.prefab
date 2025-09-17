@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2daede4cd38d99742b9e9b1d69ad05c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
+  ball: {fileID: 5129152671191751409, guid: 5c21f6a32076adb4ea0ef9c2457c426c, type: 3}
+  ballParent: {fileID: 6518739638986356880}
+  fireBall: {fileID: 9100000, guid: 10efb508cde8024469b3c55b3d13225c, type: 2}
+  lightBall: {fileID: 9100000, guid: fc4cdd9559059f0468677736fdaf6bcc, type: 2}
+  magicBall: {fileID: 9100000, guid: 556461bef0736fe4cb5780ec5e8701db, type: 2}
+  magicArrow: {fileID: 9100000, guid: 442ffc9656dd1584bbb12735c8db82e2, type: 2}
 --- !u!1 &4167356559076943256
 GameObject:
   m_ObjectHideFlags: 0

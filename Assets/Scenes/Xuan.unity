@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1230449424
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -602,7 +602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1290683551
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -808,6 +808,10 @@ PrefabInstance:
     - target: {fileID: 2113229933565913409, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
       propertyPath: m_Name
       value: EnemyPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113229933565913409, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3035776072474473773, guid: 6a15236a7d52db94d81690e1d4af3f3a, type: 3}
       propertyPath: m_Controller

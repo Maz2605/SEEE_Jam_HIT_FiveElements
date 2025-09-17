@@ -6,6 +6,6 @@ public class Test1 : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        XuanEventManager.EnemyTakeDamage(collision.GetComponent<Enemy>(), 10);
+        XuanEventManager.EnemyBeFrozen(collision.GetComponent<Enemy>(), 3);
     }
 }

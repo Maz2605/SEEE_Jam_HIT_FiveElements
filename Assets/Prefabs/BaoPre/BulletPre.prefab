@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 834721446682967190}
   - component: {fileID: 2212958306860693641}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletPre
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d748d9323628db94090b3e41c9f28b6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7fbf1c273a2bd045b54118f6e48e131, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

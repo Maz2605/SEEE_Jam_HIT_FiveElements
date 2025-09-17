@@ -3,7 +3,7 @@
 public class Bullet : MonoBehaviour
 {
     [Header("Bullet Settings")]
-    [SerializeField] private int _damage = 1;
+    [SerializeField] private int _damage = 50;
     [SerializeField] private float _lifetime = 2f;
     [SerializeField] private float _explosionRadius = 2f; 
     [SerializeField] private LayerMask enemyLayer;
@@ -54,14 +54,16 @@ public class Bullet : MonoBehaviour
         DamageSplash(other);
 
         DespawnBullet();
+
+        //XuanEventManager.EnemyTakeDamage(other.GetComponent<Enemy>(), _damage); 
     }
 
     private void DamageMainEnemy(Collider2D other)
     {
-        EnemyReference refMain = other.GetComponent<EnemyReference>();
+        Enemy refMain = other.GetComponent<Enemy>();
         if (refMain != null)
         {
-            refMain.Health.TakeDamage(_damage);
+            XuanEventManager.EnemyTakeDamage(refMain, _damage);
         }
     }
 
@@ -72,10 +74,10 @@ public class Bullet : MonoBehaviour
         {
             if (hit.gameObject == mainTarget.gameObject) continue; 
 
-            EnemyReference refEnemy = hit.GetComponent<EnemyReference>();
+            Enemy refEnemy = hit.GetComponent<Enemy>();
             if (refEnemy != null)
             {
-                refEnemy.Health.TakeDamage(Mathf.CeilToInt(_damage * 0.5f)); // 50% damage
+                XuanEventManager.EnemyTakeDamage(refEnemy, Mathf.CeilToInt(_damage * 0.5f));
             }
         }
     }

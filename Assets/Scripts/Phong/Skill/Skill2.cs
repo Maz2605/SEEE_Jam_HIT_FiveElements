@@ -147,7 +147,7 @@ public class Skill2 : MonoBehaviour
         
     }
 
-    private void CancelSkill()
+    public void CancelSkill()
     {
         _isChoiceSkill = false;
         if (_rangeIndicator != null)

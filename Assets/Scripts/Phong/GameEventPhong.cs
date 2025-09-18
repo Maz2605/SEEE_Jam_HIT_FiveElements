@@ -19,5 +19,13 @@ public static class GameEventPhong
     public static Action UpgradeSkill3;
     public static Action UpgradeSkillUltimate;
 
+    public static Action LookSkill2;
+    public static Action LookSkill3;
+    public static Action LookUltimate;
+    
+    public static Action UnLookSkill2;
+    public static Action UnLookSkill3;
+    public static Action UnLookUltimate;
+
 
 }

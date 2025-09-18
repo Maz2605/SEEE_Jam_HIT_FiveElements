@@ -167,13 +167,29 @@ public class EmotionBar : Singleton<EmotionBar>
         if (_emotionIcon == null) return;
 
         if (t <= 0.3f)
+        {
             _emotionIcon.sprite = _sadIcon;
+            GameEventPhong.LookSkill2();
+        }
+           
         else if (t <= 0.6f)
+        {
             _emotionIcon.sprite = _normalIcon;
+            GameEventPhong.UnLookSkill2();
+        }
+           
         else if (t < 1f)
+        {
             _emotionIcon.sprite = _happyIcon;
+            GameEventPhong.UnLookSkill3();
+        }
+           
         else
+        {
             _emotionIcon.sprite = _superHappyIcon;
+            GameEventPhong.UnLookUltimate();
+        }
+          
     }
 
     private void UpdateUIImmediate()

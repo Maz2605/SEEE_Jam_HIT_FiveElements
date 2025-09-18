@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class PlayerController : Singleton<PlayerController>
@@ -10,13 +11,10 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _attackCooldown = 1f;
     [SerializeField] private float _bulletSpeed = 100f;
+    [SerializeField] private PlayerLevel _currentLevel = PlayerLevel.Normal;
 
     [Header("Range Settings")]
     [SerializeField] private float _attackRange = 5f;
-
-    [Header("Tower Health")]
-    [SerializeField] private float _healthTower;
-    [SerializeField] private float _currentHealthTower;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
@@ -38,21 +36,12 @@ public class PlayerController : Singleton<PlayerController>
     public float BulletSpeed => _bulletSpeed;   
     public float  AttackCooldown => _attackCooldown;    
 
-    public float HealthTower => _healthTower;   
-
-    public float CurrentHealthTower => _currentHealthTower;
-
     public bool IsAttacking => _isAttacking && !_isDead;
     public bool IsIdle => !_isDead && !_isAttacking;
 
     public void SetAttackRange(float Range)
     {
         _attackRange += Range;
-    }
-
-    public void SetHealthTower(float health)
-    {
-        _healthTower += health;
     }
 
     public void SetBulletSpeed(float bulletSpeed)
@@ -65,10 +54,7 @@ public class PlayerController : Singleton<PlayerController>
         _attackCooldown += attackCooldown;
     }
 
-    public void SetCurrentHealthTower(float currentHealthTower)
-    {
-        _currentHealthTower += currentHealthTower;
-    }
+
     #endregion
     private void Awake()
     {
@@ -78,10 +64,8 @@ public class PlayerController : Singleton<PlayerController>
         if (animator == null)
             animator = GetComponent<Animator>();
 
-        if (_healthBar != null)
-            _healthBar.Initialize(_healthTower);
     }
-    #region PlAYER ATTACK
+    #region UPDATE LOOP
     private void Update()
     {
         if (rangeCollider.radius != _attackRange)
@@ -91,38 +75,87 @@ public class PlayerController : Singleton<PlayerController>
 
         if (attackTimer <= 0f && enemiesInRange.Count > 0)
         {
-            //Transform target = GetNearestEnemy();
             Transform target = XuanEventManager.GetEnemy(transform.position).transform;
             if (target != null)
             {
-                Shoot(target);
+                PrepareAttack(target);
                 attackTimer = _attackCooldown;
             }
         }
+        
+    }
+    #endregion
+
+    #region ATTACK LOGIC
+    private Transform _cachedTarget;
+    private Tween _fireLoopTween;
+
+    private void PrepareAttack(Transform target)
+    {
+        if (_isDead) return;
+            
+        _cachedTarget = target;
+        ChangeState(PlayerStateType.Attack);
+        _isAttacking = true;
     }
 
-    private void Shoot(Transform target)
+    private void StartFireLoop(float interval)
     {
-        if (_isDead) return; 
+        _fireLoopTween?.Kill();
+
+        _fireLoopTween = DOVirtual.DelayedCall(interval, () =>
+        {
+            FireBullet();
+            StartFireLoop(interval);
+        });
+    }
+
+    private void ResetAttack()
+    {
+        _isAttacking = false;
+
+        _fireLoopTween?.Kill();
+
+        if (!_isDead) ChangeState(PlayerStateType.Idle);
+    }
+    public void FireBullet()
+    {
+        if (_isDead || _cachedTarget == null) return;
 
         GameObject bulletObj = PoolingManager.Spawn(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
 
-        Vector3 direction = (target.position - _firePoint.position).normalized;
+        Vector3 direction = (_cachedTarget.position - _firePoint.position).normalized;
         bullet.Launch(direction, _bulletSpeed);
-
-        ChangeState(PlayerStateType.Attack);
-
-        _isAttacking = true;
 
         Invoke(nameof(ResetAttack), 0.2f);
     }
-    private void ResetAttack()
+
+    private void FireBulletMulti(int count, float interval)
     {
-        _isAttacking = false;
-        if (!_isDead) ChangeState(PlayerStateType.Idle);
+        for (int i = 0; i < count; i++)
+        {
+            DOVirtual.DelayedCall(i * interval, () =>
+            {
+                FireBullet();
+            });
+        }
     }
 
+    public void FireBulletByLevel()
+    {
+        if (_currentLevel == PlayerLevel.SuperHappy)
+        {
+            FireBulletMulti(4, 0f); 
+        }
+        else
+        {
+            FireBullet();
+        }
+    }
+    #endregion
+
+    #region DEATH LOGIC
     public void Die()
     {
         if (_isDead) return;
@@ -132,16 +165,16 @@ public class PlayerController : Singleton<PlayerController>
 
         ChangeState(PlayerStateType.Die);
         Debug.Log("Player died → animation Die");
-        
-        //Panel
-    }
 
+        // TODO: display Game Over UI, stop the game, etc.
+    }
+    #endregion
+
+    #region ENEMY DETECTION
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && !enemiesInRange.Contains(other.transform))
             enemiesInRange.Add(other.transform);
-
-        // ENEMY interaction will call TakeDamage(TakeDamge)
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -154,7 +187,7 @@ public class PlayerController : Singleton<PlayerController>
     #region ANIMATION CONTROL
     private void ChangeState(PlayerStateType newState)
     {
-        if (_state == newState) return; // tránh spam trigger
+        if (_state == newState) return;
 
         _state = newState;
 
@@ -173,24 +206,5 @@ public class PlayerController : Singleton<PlayerController>
     }
     #endregion
 
-    #region HEALTH TOWER CONTROL
-    public void TakeDamage(float damage)
-    {
-        if (_isDead) return;
-
-        _currentHealthTower -= damage;
-
-        if (_healthBar != null)
-            _healthBar.SetHealth(_currentHealthTower);
-
-        if (_currentHealthTower <= 0)
-        {
-            Die();
-        }
-    }
-
-
-    //DIE
-    #endregion
 
 }

@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -39,10 +39,12 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private EnemyUI _enemyUI;
 
-    [Header("Enemy Move Point")]
-    private float _topMovePoint = 4f;
-    private float _bottomMovePoint = -4f;
-    private bool _isMoveY = false;
+    private Coroutine _cAttack;
+    public Coroutine GetCAttack => _cAttack;
+    public Coroutine SetCAttack
+    {
+        set { _cAttack = value; }
+    }
 
     private void OnEnable()
     {
@@ -55,15 +57,6 @@ public class Enemy : MonoBehaviour
         XuanEventManager.EnemyTakeDamage -= TakeDamage;
         XuanEventManager.ReduceSpeed -= ReductSpeed;
         XuanEventManager.EnemyBeFrozen -= BeFrozen;
-    }
-
-    public virtual void Start()
-    {
-        StartMove();
-    }
-    private void Update()
-    {
-        CheckMove();
     }
 
     public void InitState(EnemyStats data)
@@ -81,6 +74,8 @@ public class Enemy : MonoBehaviour
         _type = EnemyType.Enemy;
         _enemyUI.SetImotionBar(_health);
         gameObject.tag = "Enemy";
+
+        StartMove();
     }
 
     public virtual void StartMove()
@@ -104,26 +99,6 @@ public class Enemy : MonoBehaviour
                 _rb.velocity = new Vector2(-_speed * 1.5f, _rb.velocity.y);
             }
         }
-        if (transform.position.y >= _topMovePoint)
-        {
-            _rb.velocity = new Vector2(_rb.velocity.x, _speed);
-            _isMoveY = true;
-        }
-        else if (transform.position.y <= _bottomMovePoint)
-        {
-            _rb.velocity = new Vector2(_rb.velocity.x, -_speed);
-            _isMoveY = true;
-        }
-    }
-    public void CheckMove()
-    {
-        if(!_isMoveY) return;
-
-        if (transform.position.y <= _topMovePoint && transform.position.y >= _bottomMovePoint)
-        {
-            _rb.velocity = new Vector2(_rb.velocity.x, 0);
-            _isMoveY = false;
-        }
     }
     public void StopMove()
     {
@@ -133,7 +108,7 @@ public class Enemy : MonoBehaviour
     
     public virtual void StartAttack()
     {
-        StartCoroutine(AttackWall());
+        _cAttack = StartCoroutine(AttackWall());
     }
     public virtual IEnumerator AttackWall()
     {
@@ -156,13 +131,13 @@ public class Enemy : MonoBehaviour
     {
         _animator.speed = 0f;
         _rb.velocity = Vector2.zero;
-        StopCoroutine(AttackWall());
+        StopCoroutine(_cAttack);
         DOVirtual.DelayedCall(time, () =>
         {
             _animator.speed = 1f;
             if (_currentHealth < _health && _type == EnemyType.Enemy)
             {
-                StartCoroutine(AttackWall());
+                _cAttack = StartCoroutine(AttackWall());
                 _rb.velocity = new Vector2(_speed, _rb.velocity.y);
             }
 
@@ -242,7 +217,7 @@ public class Enemy : MonoBehaviour
             });
             DOVirtual.DelayedCall(1.2f, () =>
             {
-                StartMove();
+                _rb.velocity = new Vector2(-_speed * 3f, _rb.velocity.y);
             });
         }
         SpawnCoin();
@@ -251,8 +226,19 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < _countCoin; i++)
         {
-            Coin coin = PoolingManager.Spawn(EnemyManager.Instance.GetCoin, transform.position, Quaternion.identity);
-            coin.StartCoin(new Vector3(-20f,-20f,0f));
+            // Spawn tại vị trí enemy (có thể thêm chút random nhỏ)
+            Vector3 spawnPos = transform.position + new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0);
+
+            Coin coin = PoolingManager.Spawn(EnemyManager.Instance.GetCoin, spawnPos, Quaternion.identity);
+
+            // Hướng bay về góc trái trên, thêm random để coin không chồng nhau
+            Vector3 baseDir = new Vector3(-1f, 1f, 0f).normalized; // góc trái trên
+            Vector3 randomOffset = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0);
+
+            Vector3 finalDir = (baseDir + randomOffset).normalized;
+            float force = Random.Range(15f, 25f); // lực bay
+
+            coin.StartCoin(finalDir * force);
         }
     }
     //Va Cham

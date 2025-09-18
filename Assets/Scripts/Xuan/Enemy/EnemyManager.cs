@@ -17,6 +17,7 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private EnemyData _bossData;
 
     [SerializeField] private DarkMagic darkMagic;
+    [SerializeField] private MedusaBoss medusa;
 
     [Header("Animation")]
     [SerializeField] private RuntimeAnimatorController _boy;
@@ -28,13 +29,14 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Start()
     {
-        //SpawnEnemy(4, 5f, "fire");
-        //SpawnEnemy(2, 30f, "light");
-        //SpawnEnemy(2, 30f, "magic");
+        SpawnEnemy(4, 5f, "fire");
+        SpawnEnemy(2, 30f, "light");
+        SpawnEnemy(2, 30f, "magic");
         //SpawnEnemy(3, 30f, "knight1");
         //SpawnEnemy(3, 30f, "knight2");
-        SpawnEnemy(3, 30f, "knight3");
-        SpawnDarkMagic();
+        //SpawnEnemy(3, 30f, "knight3");
+        //SpawnDarkMagic();
+        //SpawnMedusa();
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;
         XuanEventManager.GetEnemy += GetEnemyByDistance;
@@ -61,6 +63,12 @@ public class EnemyManager : Singleton<EnemyManager>
         DarkMagic darkMagic = PoolingManager.Spawn(this.darkMagic, _bossSpawnPoint.position, Quaternion.identity, _enemyPerant);
         darkMagic.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "dark"));
         _enemys.Add(darkMagic);
+    }
+    public void SpawnMedusa()
+    {
+        MedusaBoss medusa = PoolingManager.Spawn(this.medusa, new Vector3(18f,0f,0f), Quaternion.identity, _enemyPerant);
+        medusa.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "medusa"));
+        _enemys.Add(medusa);
     }
 
     IEnumerator SpawnEnemyRoutine(int number, float time, string idEnemy)

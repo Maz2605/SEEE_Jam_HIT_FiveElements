@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 715a8ac83dab85d45a49529bb9e1f6ec
+guid: 1a4bbb07d0459e242b33f88337da4292
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,223 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_0
+      name: pipo-gate01c_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d224c0af86ca24f96464ed6966ac20
+      internalID: -998060609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_1
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 960
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a301afb0ca946844aaecb0dc163658b6
+      internalID: 1587329309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_2
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 960
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: affa99049a60c7747892229da5c5ee15
+      internalID: -213060574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_3
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 960
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33613010223736e429d8c95f330a1464
+      internalID: 522284532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_4
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 960
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a4dbdbe6d644974f9973baf7b06f6a3
+      internalID: 1638499607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b076b7d0d15af0e49b3f985157d47fe3
+      internalID: 28601026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_6
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9907de66cabfe1e489c75acf9fc83a5b
+      internalID: -1410785264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_7
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 480
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554f16572e26b3f43baa5067d89f00ae
+      internalID: 869075417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_8
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 480
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c422b8099c577428455b1a0add4e5b
+      internalID: 411425634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_9
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 480
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f38d5000d1fa3a94eb1e388b2c53fb71
+      internalID: -1677969782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01c_10
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 64
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,209 +347,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3319e158e7f9d5f4f806fcb37bcf093e
-      internalID: -2051707867
+      spriteID: 7782eb6679c3c5241af3864f1abd7992
+      internalID: 1793244744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c4607fcce950f547b4fb583f3a768b9
-      internalID: 368867286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3fa7ece52ef1efb42893086d8fea5be6
-      internalID: -1437619857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4afc3aef492423f499f1628501551114
-      internalID: -1466132459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64062dd434f74024e812608a7994020b
-      internalID: -1538565844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_5
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 04aa700c8e9cc344cbe95628adfc50c3
-      internalID: -1627457154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_6
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 561ba94c7bd72754ea897258431c4f2b
-      internalID: -1542510652
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_7
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 591822f41fbc4214d89db66edd882784
-      internalID: -1447931308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_8
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92e77aa9b6e608f4aa19dbe11337b245
-      internalID: 1881168365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_9
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 588bc0ba3050c1d459048cc833b31e6e
-      internalID: 906883376
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_10
+      name: pipo-gate01c_11
       rect:
         serializedVersion: 2
         x: 480
         y: 0
-        width: 48
-        height: 64
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,20 +368,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 171c8ce1edf058a489590fa00b63f2ad
-      internalID: -173341149
+      spriteID: 70ff5cb521c5ff54d98c9be6eb6afc52
+      internalID: -220504906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_11
+      name: pipo-gate01c_12
       rect:
         serializedVersion: 2
-        x: 528
+        x: 960
         y: 0
-        width: 48
-        height: 64
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,20 +389,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec6d6cc4acaff6847a1c2a5d096fa942
-      internalID: 1049699135
+      spriteID: c5ac8b84b3f30194e8df8ec24d92ec8e
+      internalID: 691570229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_12
+      name: pipo-gate01c_13
       rect:
         serializedVersion: 2
-        x: 576
+        x: 1440
         y: 0
-        width: 48
-        height: 64
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,20 +410,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3be1ba9379e6ea4bb864e6eca7b7b72
-      internalID: -126710057
+      spriteID: ce2463199822e7d419d7f23f05245169
+      internalID: 877054000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_13
+      name: pipo-gate01c_14
       rect:
         serializedVersion: 2
-        x: 624
+        x: 1920
         y: 0
-        width: 48
-        height: 64
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -410,29 +431,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 783fab8df88df34469be1978875f5cce
-      internalID: -840891566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dark VFX 2 (48x64)_14
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a4101469480fd446bd3c8b1d3eb805c
-      internalID: -247363729
+      spriteID: 05c603bb0438d8d48b4b24846578fbbd
+      internalID: 967459038
       vertices: []
       indices: 
       edges: []
@@ -448,21 +448,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dark VFX 2 (48x64)_0: -2051707867
-      Dark VFX 2 (48x64)_1: 368867286
-      Dark VFX 2 (48x64)_10: -173341149
-      Dark VFX 2 (48x64)_11: 1049699135
-      Dark VFX 2 (48x64)_12: -126710057
-      Dark VFX 2 (48x64)_13: -840891566
-      Dark VFX 2 (48x64)_14: -247363729
-      Dark VFX 2 (48x64)_2: -1437619857
-      Dark VFX 2 (48x64)_3: -1466132459
-      Dark VFX 2 (48x64)_4: -1538565844
-      Dark VFX 2 (48x64)_5: -1627457154
-      Dark VFX 2 (48x64)_6: -1542510652
-      Dark VFX 2 (48x64)_7: -1447931308
-      Dark VFX 2 (48x64)_8: 1881168365
-      Dark VFX 2 (48x64)_9: 906883376
+      pipo-gate01c_0: -998060609
+      pipo-gate01c_1: 1587329309
+      pipo-gate01c_10: 1793244744
+      pipo-gate01c_11: -220504906
+      pipo-gate01c_12: 691570229
+      pipo-gate01c_13: 877054000
+      pipo-gate01c_14: 967459038
+      pipo-gate01c_2: -213060574
+      pipo-gate01c_3: 522284532
+      pipo-gate01c_4: 1638499607
+      pipo-gate01c_5: 28601026
+      pipo-gate01c_6: -1410785264
+      pipo-gate01c_7: 869075417
+      pipo-gate01c_8: 411425634
+      pipo-gate01c_9: -1677969782
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyStatsList:
   - idEnemy: dark
     isFar: 1
-    health: 111
+    health: 555
     speed: 1
     damage: 12
     speedAttack: 2
@@ -23,3 +23,13 @@ MonoBehaviour:
     countCoin: 45
     emotion: 0
     animator: {fileID: 9100000, guid: 67646336bb7998c42bb04d509ad63517, type: 2}
+  - idEnemy: medusa
+    isFar: 1
+    health: 555
+    speed: 1
+    damage: 12
+    speedAttack: 2
+    scoreValue: 1
+    countCoin: 45
+    emotion: 0
+    animator: {fileID: 9100000, guid: 44c32f9fc7a07de4180d06c5eeb90288, type: 2}

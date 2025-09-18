@@ -50,6 +50,10 @@ public class EnemySkill : Singleton<EnemySkill>
                 SpawnDarkBall(enemy);
                 break;
 
+            case "medusa":
+                SpawnMagicBall(enemy);
+                break;
+
             default:
                 break;
         }

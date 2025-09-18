@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private float _speed = 20f;
+    private float _speed = 2f;
     private void Start()
     {
         

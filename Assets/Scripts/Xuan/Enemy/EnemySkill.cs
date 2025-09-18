@@ -14,6 +14,7 @@ public class EnemySkill : Singleton<EnemySkill>
     [SerializeField] private RuntimeAnimatorController lightBall;
     [SerializeField] private RuntimeAnimatorController magicBall;
     [SerializeField] private RuntimeAnimatorController magicArrow;
+    [SerializeField] private RuntimeAnimatorController darkBall;
     //
     public void UseKill(Enemy enemy)
     {
@@ -44,6 +45,11 @@ public class EnemySkill : Singleton<EnemySkill>
                 Explosion(enemy);
                 break;
 
+            //boss
+            case "dark":
+                SpawnDarkBall(enemy);
+                break;
+
             default:
                 break;
         }
@@ -57,6 +63,11 @@ public class EnemySkill : Singleton<EnemySkill>
     {
         Ball newObj = PoolingManager.Spawn(ball, enemy.transform.position + new Vector3(0.2f, 0f, 0f), Quaternion.identity, ballParent);
         newObj.InitBall(lightBall, 10f);
+    }
+    public void SpawnDarkBall(Enemy enemy)
+    {
+        Ball newObj = PoolingManager.Spawn(ball, enemy.transform.position + new Vector3(0.2f, 0f, 0f), Quaternion.identity, ballParent);
+        newObj.InitBall(darkBall, 10f);
     }
     public void SpawnMagicBall(Enemy enemy)
     {

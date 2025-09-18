@@ -18,6 +18,7 @@ public class EnemyStats
     public float damage;
     public float speedAttack;
     public float scoreValue;
+    public int countCoin;
     public EnemyEmotion emotion;
     // Enemy Animation
     public RuntimeAnimatorController animator;

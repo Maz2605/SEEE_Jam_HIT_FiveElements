@@ -16,20 +16,25 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private EnemyData _enemyData;
     [SerializeField] private EnemyData _bossData;
 
+    [SerializeField] private DarkMagic darkMagic;
+
     [Header("Animation")]
     [SerializeField] private RuntimeAnimatorController _boy;
     [SerializeField] private RuntimeAnimatorController _gird;
     [SerializeField] private GameObject _effectExplosion;
 
+    [SerializeField] private Coin _coinPrefab;
+    public Coin GetCoin => _coinPrefab;
+
     private void Start()
     {
-        SpawnEnemy(4, 5f, "fire");
-        SpawnEnemy(2, 30f, "light");
-        SpawnEnemy(2, 30f, "magic");
-        SpawnEnemy(3, 30f, "knight1");
-        SpawnEnemy(3, 30f, "knight2");
+        //SpawnEnemy(4, 5f, "fire");
+        //SpawnEnemy(2, 30f, "light");
+        //SpawnEnemy(2, 30f, "magic");
+        //SpawnEnemy(3, 30f, "knight1");
+        //SpawnEnemy(3, 30f, "knight2");
         SpawnEnemy(3, 30f, "knight3");
-
+        SpawnDarkMagic();
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;
         XuanEventManager.GetEnemy += GetEnemyByDistance;
@@ -51,20 +56,25 @@ public class EnemyManager : Singleton<EnemyManager>
         float time = timeWare/2;
         StartCoroutine(SpawnBossRoutine(time, idEnemy));
     }
+    public void SpawnDarkMagic()
+    {
+        DarkMagic darkMagic = PoolingManager.Spawn(this.darkMagic, _bossSpawnPoint.position, Quaternion.identity, _enemyPerant);
+        darkMagic.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "dark"));
+        _enemys.Add(darkMagic);
+    }
 
-    //
     IEnumerator SpawnEnemyRoutine(int number, float time, string idEnemy)
     {
         int safe = 0;
         EnemyStats data = _enemyData.enemyStatsList.Find(x => x.idEnemy == idEnemy);
         if (data == null) yield break;
-        Debug.Log("Data is not null");
+        
         while (true)
         {
             SpwanRandomPoints(data);
             yield return new WaitForSeconds(time);
             safe++;
-            if(safe > number) yield break;
+            if(safe >= number) yield break;
         }
     }
     IEnumerator SpawnBossRoutine(float time, string idEnemy)

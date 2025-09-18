@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private float _damage;
     private float _speedAttack;
     private float _scoreValue;
+    private int _countCoin;
     private EnemyType _type;
 
     public float GetHealth => _health;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     public float GetDamage => _damage;
     public float GetSpeedAttack => _speedAttack;
     public float GetScoreValue => _scoreValue;
+    public int GetCountCoin => _countCoin;
     public EnemyType GetEnemyType => _type;
 
     //UI Enemy
@@ -33,9 +35,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Collider2D _collider2D;
     public Animator GetAnimator => _animator;
+    public Rigidbody2D GetRigidbody2D => _rb;
 
     [SerializeField] private EnemyUI _enemyUI;
-    //[SerializeField] private EnemySkill _enemySkill;
 
     [Header("Enemy Move Point")]
     private float _topMovePoint = 4f;
@@ -55,7 +57,7 @@ public class Enemy : MonoBehaviour
         XuanEventManager.EnemyBeFrozen -= BeFrozen;
     }
 
-    private void Start()
+    public virtual void Start()
     {
         StartMove();
     }
@@ -74,17 +76,19 @@ public class Enemy : MonoBehaviour
         _damage = data.damage;
         _speedAttack = data.speedAttack;
         _scoreValue = data.scoreValue;
+        _countCoin = data.countCoin;
         _animator.runtimeAnimatorController = data.animator;
         _type = EnemyType.Enemy;
         _enemyUI.SetImotionBar(_health);
+        gameObject.tag = "Enemy";
     }
 
-    public void StartMove()
+    public virtual void StartMove()
     {
         if(_isFar)
         {
             _animator.SetBool("IsWalk", true);
-            _rb.velocity = new Vector2(_speed, _rb.velocity.y);
+            _rb.velocity = new Vector2(-_speed, _rb.velocity.y);
         }
         else
         {
@@ -92,12 +96,12 @@ public class Enemy : MonoBehaviour
             if (random == 1)
             {
                 _animator.SetBool("IsWalk", true);
-                _rb.velocity = new Vector2(_speed, _rb.velocity.y);
+                _rb.velocity = new Vector2(-_speed, _rb.velocity.y);
             }
             else
             {
                 _animator.SetBool("IsRun", true);
-                _rb.velocity = new Vector2(_speed * 1.5f, _rb.velocity.y);
+                _rb.velocity = new Vector2(-_speed * 1.5f, _rb.velocity.y);
             }
         }
         if (transform.position.y >= _topMovePoint)
@@ -127,11 +131,11 @@ public class Enemy : MonoBehaviour
         _animator.SetBool("IsWalk", false);
     }
     
-    public void StartAttack()
+    public virtual void StartAttack()
     {
         StartCoroutine(AttackWall());
     }
-    private IEnumerator AttackWall()
+    public virtual IEnumerator AttackWall()
     {
         while(_health > 0 && _type == EnemyType.Enemy)
         {
@@ -139,7 +143,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(_speedAttack);
         }
     }
-    public void Attack()
+    public virtual void Attack()
     {
         _animator.SetTrigger("IsAttack");
         UseSkill();
@@ -220,11 +224,11 @@ public class Enemy : MonoBehaviour
     }
     public void UseSkill()
     {
-        //_enemySkill.UseKill(this);
         EnemySkill.Instance.UseKill(this);
     }
-    public void Die()
+    public virtual void Die()
     {
+        gameObject.tag = "Untagged";
         EnemyManager.Instance.RemoveEnemy(this);
         if(_type == EnemyType.Enemy)
         {
@@ -238,8 +242,17 @@ public class Enemy : MonoBehaviour
             });
             DOVirtual.DelayedCall(1.2f, () =>
             {
-                _rb.velocity = new Vector2(_speed * 1.5f, _rb.velocity.y);
+                StartMove();
             });
+        }
+        SpawnCoin();
+    }
+    public void SpawnCoin()
+    {
+        for (int i = 0; i < _countCoin; i++)
+        {
+            Coin coin = PoolingManager.Spawn(EnemyManager.Instance.GetCoin, transform.position, Quaternion.identity);
+            coin.StartCoin(new Vector3(-20f,-20f,0f));
         }
     }
     //Va Cham

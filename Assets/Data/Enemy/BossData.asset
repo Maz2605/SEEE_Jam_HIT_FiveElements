@@ -13,21 +13,13 @@ MonoBehaviour:
   m_Name: BossData
   m_EditorClassIdentifier: 
   enemyStatsList:
-  - idEnemy: magic
+  - idEnemy: dark
     isFar: 1
-    health: 11
+    health: 111
     speed: 1
-    damage: 1
-    speedAttack: 3
+    damage: 12
+    speedAttack: 2
     scoreValue: 1
+    countCoin: 45
     emotion: 0
-    animator: {fileID: 9100000, guid: 23320d622f8f39e43b3de01498e7d2ae, type: 2}
-  - idEnemy: master
-    isFar: 0
-    health: 11
-    speed: 1
-    damage: 1
-    speedAttack: 1
-    scoreValue: 1
-    emotion: 0
-    animator: {fileID: 9100000, guid: 23320d622f8f39e43b3de01498e7d2ae, type: 2}
+    animator: {fileID: 9100000, guid: 67646336bb7998c42bb04d509ad63517, type: 2}

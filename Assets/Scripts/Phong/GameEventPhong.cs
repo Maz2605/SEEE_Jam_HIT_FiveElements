@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class GameEventPhong
 {
@@ -9,6 +10,9 @@ public static class GameEventPhong
     public static Action IncreasePowerSpeed;
     public static Action IncreaseSpeedAttack;
     public static Action IncreaseBaseDamage;
+    
+    public static Action HandleIncreaseMaxHeath;
+    public static Action HandleIncreaseDuration;
 
     public static Func<bool,int> GetIsLookSkill;
 
@@ -26,6 +30,10 @@ public static class GameEventPhong
     public static Action UnLookSkill2;
     public static Action UnLookSkill3;
     public static Action UnLookUltimate;
+    
+    [Header("Shop")]
+    public static Action BuyBuffIncreaseMaxHeath;
+    public static Action BuyBuffIncreaseDuration;
 
 
 }

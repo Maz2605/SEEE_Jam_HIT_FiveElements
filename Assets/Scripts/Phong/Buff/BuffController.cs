@@ -5,12 +5,21 @@ using UnityEngine;
 
 public class BuffController : MonoBehaviour
 {
-    List<Buff> buffInGames = new List<Buff>();
-    
-    List<Buff> buffOutGames = new List<Buff>();
+    public int numberOfHealTower = 0;
+    public int numberOfIncreasePowerSpeed = 0;
+    public int numberOfSpeedAttack = 0;
+
+    private void Awake()
+    {
+        numberOfHealTower = DataManager.Instance.BuffHealTower;
+        numberOfIncreasePowerSpeed = DataManager.Instance.BuffIncreasePowerSpeed;
+        numberOfSpeedAttack = DataManager.Instance.BuffIncreaseSpeedAttack;
+    }
 
     private void OnEnable()
     {
+        GameEventPhong.HandleIncreaseMaxHeath += IncreaseMaxHeath;
+        GameEventPhong.HandleIncreaseDuration += IncreaseDuration;
         InputManager.OnPress1 += HeathTower;
         InputManager.OnPress2 += IncreasePowerSpeed;
         InputManager.OnPress3 += IncreaseSpeedAttack;
@@ -18,6 +27,8 @@ public class BuffController : MonoBehaviour
 
     private void OnDisable()
     {
+        GameEventPhong.HandleIncreaseMaxHeath -= IncreaseMaxHeath;
+        GameEventPhong.HandleIncreaseDuration -= IncreaseDuration;
         InputManager.OnPress1 -= HeathTower;
         InputManager.OnPress2 -= IncreasePowerSpeed;
         InputManager.OnPress3 -= IncreaseSpeedAttack;
@@ -25,19 +36,43 @@ public class BuffController : MonoBehaviour
 
     public void HeathTower()
     {
-        GameEventPhong.HealTower();
+        if (numberOfHealTower > 0)
+        {
+            GameEventPhong.HealTower();
+            DataManager.Instance.SaveBuffHealTower(numberOfHealTower-1);
+            numberOfHealTower--;
+        }
     }
 
     public void IncreasePowerSpeed()
     {
-        GameEventPhong.IncreasePowerSpeed();
+        if (numberOfIncreasePowerSpeed > 0)
+        {
+            GameEventPhong.IncreasePowerSpeed();
+            DataManager.Instance.SaveBuffIncreasePowerSpeed(numberOfIncreasePowerSpeed-1);
+            numberOfIncreasePowerSpeed--;
+        }
     }
 
     public void IncreaseSpeedAttack()
     {
-        GameEventPhong.IncreaseSpeedAttack();
+        if (numberOfSpeedAttack > 0)
+        {
+            GameEventPhong.IncreaseSpeedAttack();
+            DataManager.Instance.SaveBuffSpeedAttack(numberOfSpeedAttack-1);
+            numberOfSpeedAttack--;
+        }
     }
-    
+
+    public void IncreaseMaxHeath()
+    {
+        GameEventPhong.IncreaseMaxHeath();
+    }
+
+    public void IncreaseDuration()
+    {
+        GameEventPhong.IncreaseDuration();
+    }
     
     
     

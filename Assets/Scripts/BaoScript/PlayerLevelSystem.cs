@@ -2,43 +2,80 @@
 
 public class PlayerLevelSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _playerPrefabs;
-    [SerializeField] private GameObject _currentPlayer;
-    private int currentLevel = 0;
+    [Header("Player Prefabs")]
+    [SerializeField] private GameObject normalPlayerPrefab;   // prefab level 0–2
+    [SerializeField] private GameObject superHappyPrefab;     // prefab level 3
 
     [Header("Spawn Settings")]
-    [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private Transform spawnPoint;
+
+    private GameObject _currentPlayer;
+    private int currentLevel = -1;
+
     private void Start()
     {
-        if (_currentPlayer == null || !_currentPlayer.activeInHierarchy)
-        {
-            SpawnPlayer(0); 
-        }
+        SpawnNormalPlayer();
+        currentLevel = 0;
     }
 
     public void LevelUp(int newLevel)
     {
-        if (newLevel < 0 || newLevel >= _playerPrefabs.Length) return;
         if (newLevel == currentLevel) return;
-
         currentLevel = newLevel;
-        SpawnPlayer(currentLevel);
-    }
 
-    private void SpawnPlayer(int level)
-    {
-        Vector3 spawnPos = _spawnPoint != null ? _spawnPoint.position : Vector3.zero;
-        Quaternion spawnRot = _spawnPoint != null ? _spawnPoint.rotation : Quaternion.identity;
-
-        if (_currentPlayer != null)
+        if (newLevel < 3)
         {
-            PoolingManager.Despawn(_currentPlayer);
+            if (_currentPlayer != null && _currentPlayer.name.Contains("SuperHappy"))
+            {
+                ReplaceWithNormal(newLevel);
+            }
+            else
+            {
+                Animator anim = _currentPlayer.GetComponent<Animator>();
+                if (anim != null)
+                    anim.SetInteger("EmotionLevel", newLevel);
+            }
         }
-
-        _currentPlayer = PoolingManager.Spawn(_playerPrefabs[level], spawnPos, spawnRot);
-
-        Debug.Log($"[PlayerLevelSystem] Spawned {_playerPrefabs[level].name} tại {spawnPos}");
+        else if (newLevel == 3)
+        {
+            ReplaceWithSuperHappy();
+        }
     }
 
+    private void SpawnNormalPlayer()
+    {
+        _currentPlayer = PoolingManager.Spawn(
+            normalPlayerPrefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
+    }
 
+    private void ReplaceWithNormal(int newLevel)
+    {
+        if (_currentPlayer != null)
+            PoolingManager.Despawn(_currentPlayer);
+
+        _currentPlayer = PoolingManager.Spawn(
+            normalPlayerPrefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
+
+        Animator anim = _currentPlayer.GetComponent<Animator>();
+        if (anim != null)
+            anim.SetInteger("EmotionLevel", newLevel);
+    }
+
+    private void ReplaceWithSuperHappy()
+    {
+        if (_currentPlayer != null)
+            PoolingManager.Despawn(_currentPlayer);
+
+        _currentPlayer = PoolingManager.Spawn(
+            superHappyPrefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
+    }
 }

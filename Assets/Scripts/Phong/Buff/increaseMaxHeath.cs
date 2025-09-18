@@ -11,7 +11,7 @@ public class increaseMaxHeath : Buff
     {
         GameEventPhong.IncreaseMaxHeath += IncreaseMaxHeath;
     }
-    
+
 
     private void OnDisable()
     {

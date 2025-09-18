@@ -104,17 +104,17 @@ public class EmotionBar : Singleton<EmotionBar>
     }
 
    public void AddEmotion(float amount)
-{
-    if (_isDraining) return; 
+   {
+        if (_isDraining) return; 
 
-    _currentEmotion = Mathf.Clamp(_currentEmotion + amount, 0, _maxEmotion);
-    UpdateUITween();
+        _currentEmotion = Mathf.Clamp(_currentEmotion + amount, 0, _maxEmotion);
+        UpdateUITween();
 
-    if (_currentEmotion >= _maxEmotion)
-    {
-        OnEmotionFull();
-    }
-}
+        if (_currentEmotion >= _maxEmotion)
+        {
+            OnEmotionFull();
+        }
+   }
 
     private void UpdateUITween()
     {

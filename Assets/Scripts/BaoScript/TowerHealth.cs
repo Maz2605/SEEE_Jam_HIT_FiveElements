@@ -1,43 +1,71 @@
 ﻿using UnityEngine;
 
-public class TowerHealth : MonoBehaviour
+public class TowerHealth : Singleton<TowerHealth>
 {
     [Header("Tower Settings")]
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private HealthBarController healthBar;
+    [SerializeField] private float _maxHealth = 100f;
+    [SerializeField] private HealthBarController _healthBar;
 
+    private float _currentHealth;
+    private bool _isDead;
 
-    private float currentHealth;
-    private bool isDead;
+    #region Properties
+    public bool IsDead => _isDead;
+    #endregion
 
+    #region Getter / Setter
+    public float GetCurrentHealth() => _currentHealth;
+    public float GetMaxHealth() => _maxHealth;
+    public bool GetIsDead() => _isDead;
 
-    private void Awake()
+    public void SetCurrentHealth(float value)
     {
-        currentHealth = maxHealth;
-
-        if (healthBar != null)
-            healthBar.Initialize(maxHealth);
+        _currentHealth += value;
     }
 
+    public void SetMaxHealth(float value)
+    {
+        _maxHealth += value;
+    }
+    #endregion
 
+    #region Unity Lifecycle
+    private void Awake()
+    {
+        _currentHealth = _maxHealth;
+
+        if (_healthBar != null)
+            _healthBar.Initialize(_maxHealth);
+    }
+    #endregion
+
+    #region Health Logic
     public void TakeDamage(float damage)
     {
-        if (isDead) return;
+        if (_isDead) return;
 
-        currentHealth -= damage;
-        if (healthBar != null)
-            healthBar.SetHealth(currentHealth);
+        _currentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (_healthBar != null)
+            _healthBar.SetHealth(_currentHealth);
+
+        if (_currentHealth <= 0)
         {
             Die();
         }
     }
 
+    public void ReceiveDamage(float damage)
+    {
+        TakeDamage(damage);
+    }
+    #endregion
+
+    #region Death Logic
     private void Die()
     {
-        if (isDead) return;
-        isDead = true;
+        if (_isDead) return;
+        _isDead = true;
 
         if (PlayerController.Instance != null)
         {
@@ -45,32 +73,13 @@ public class TowerHealth : MonoBehaviour
         }
     }
 
-    #region Getter / Setter
-    public float GetCurrentHealth() => currentHealth;
-    public float GetMaxHealth() => maxHealth;
-    public bool GetIsDead() => isDead;
-
-    public void SetCurrentHealth(float value)
-    {
-        currentHealth = Mathf.Clamp(value, 0, maxHealth);
-            healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0 && !isDead)
-            Die();
-    }
-
-    public void SetMaxHealth(float value)
-    {
-        maxHealth = Mathf.Max(1, value);
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
-        healthBar.Initialize(maxHealth);
-    }
-
     public void Revive()
     {
-        isDead = false;
-        currentHealth = maxHealth;
-        healthBar.Initialize(maxHealth);
+        _isDead = false;
+        _currentHealth = _maxHealth;
+
+        if (_healthBar != null)
+            _healthBar.Initialize(_maxHealth);
     }
     #endregion
 }

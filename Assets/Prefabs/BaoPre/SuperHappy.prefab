@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 165099582396170238}
   - component: {fileID: 8977528357586484185}
   m_Layer: 0
-  m_Name: Player 2
+  m_Name: SuperHappy
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,10 +169,9 @@ MonoBehaviour:
   _bulletSpeed: 10
   _currentLevel: 1
   _attackRange: 104.68
-  _healthTower: 0
-  _currentHealthTower: 0
-  animator: {fileID: 8977528357586484185}
+  _animator: {fileID: 8977528357586484185}
   _healthBar: {fileID: 0}
+  _towerHealth: {fileID: 6784727011960217942, guid: 203ae0c65fa151547b2acc8e0e74d326, type: 3}
 --- !u!95 &8977528357586484185
 Animator:
   serializedVersion: 5

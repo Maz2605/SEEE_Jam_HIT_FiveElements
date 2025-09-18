@@ -17,15 +17,19 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float _attackRange = 5f;
 
     [Header("Animation")]
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator _animator;
 
     [Header("UI")]
     [SerializeField] private HealthBarController _healthBar;
+
+    [Header("Tower Health")]
+    [SerializeField] private TowerHealth _towerHealth;
 
     private float attackTimer;
 
     private bool _isDead;
     private bool _isAttacking;
+    private bool _isUsingSuperHappy = false;
     private PlayerStateType _state = PlayerStateType.Idle;
 
     private readonly List<Transform> enemiesInRange = new List<Transform>();
@@ -38,6 +42,8 @@ public class PlayerController : Singleton<PlayerController>
 
     public bool IsAttacking => _isAttacking && !_isDead;
     public bool IsIdle => !_isDead && !_isAttacking;
+    public bool IsDead => _isDead;
+
 
     public void SetAttackRange(float Range)
     {
@@ -54,15 +60,14 @@ public class PlayerController : Singleton<PlayerController>
         _attackCooldown += attackCooldown;
     }
 
-
     #endregion
     private void Awake()
     {
         rangeCollider = GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
 
-        if (animator == null)
-            animator = GetComponent<Animator>();
+        if (_animator == null)
+            _animator = GetComponent<Animator>();
 
     }
     #region UPDATE LOOP
@@ -75,6 +80,7 @@ public class PlayerController : Singleton<PlayerController>
 
         if (attackTimer <= 0f && enemiesInRange.Count > 0)
         {
+            if (_towerHealth != null && _towerHealth.IsDead) return;
             Transform target = XuanEventManager.GetEnemy(transform.position).transform;
             if (target != null)
             {
@@ -120,7 +126,7 @@ public class PlayerController : Singleton<PlayerController>
     }
     public void FireBullet()
     {
-        if (_isDead || _cachedTarget == null) return;
+        if (_isDead || _cachedTarget == null || (_towerHealth != null && _towerHealth.IsDead)) return;
 
         GameObject bulletObj = PoolingManager.Spawn(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
@@ -194,13 +200,13 @@ public class PlayerController : Singleton<PlayerController>
         switch (newState)
         {
             case PlayerStateType.Idle:
-                animator.SetTrigger("Idle");
+                _animator.SetTrigger("Idle");
                 break;
             case PlayerStateType.Attack:
-                animator.SetTrigger("Attack");
+                _animator.SetTrigger("Attack");
                 break;
             case PlayerStateType.Die:
-                animator.SetTrigger("Die");
+                _animator.SetTrigger("Die");
                 break;
         }
     }

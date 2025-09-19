@@ -96,6 +96,7 @@ public class EmotionBar : Singleton<EmotionBar>
     {
         _currentEmotion = 0f;
         UpdateUIImmediate();
+        UpdateEmotionIcon(_currentEmotion / _maxEmotion);
     }
 
     private void Update()

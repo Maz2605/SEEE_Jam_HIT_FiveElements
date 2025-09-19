@@ -104,17 +104,17 @@ public class EmotionBar : Singleton<EmotionBar>
     }
 
    public void AddEmotion(float amount)
-{
-    if (_isDraining) return; 
+   {
+        if (_isDraining) return; 
 
-    _currentEmotion = Mathf.Clamp(_currentEmotion + amount, 0, _maxEmotion);
-    UpdateUITween();
+        _currentEmotion = Mathf.Clamp(_currentEmotion + amount, 0, _maxEmotion);
+        UpdateUITween();
 
-    if (_currentEmotion >= _maxEmotion)
-    {
-        OnEmotionFull();
-    }
-}
+        if (_currentEmotion >= _maxEmotion)
+        {
+            OnEmotionFull();
+        }
+   }
 
     private void UpdateUITween()
     {
@@ -167,13 +167,29 @@ public class EmotionBar : Singleton<EmotionBar>
         if (_emotionIcon == null) return;
 
         if (t <= 0.3f)
+        {
             _emotionIcon.sprite = _sadIcon;
+            GameEventPhong.LookSkill2();
+        }
+           
         else if (t <= 0.6f)
+        {
             _emotionIcon.sprite = _normalIcon;
+            GameEventPhong.UnLookSkill2();
+        }
+           
         else if (t < 1f)
+        {
             _emotionIcon.sprite = _happyIcon;
+            GameEventPhong.UnLookSkill3();
+        }
+           
         else
+        {
             _emotionIcon.sprite = _superHappyIcon;
+            GameEventPhong.UnLookUltimate();
+        }
+          
     }
 
     private void UpdateUIImmediate()

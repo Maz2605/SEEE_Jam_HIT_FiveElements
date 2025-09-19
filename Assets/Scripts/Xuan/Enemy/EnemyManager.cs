@@ -33,15 +33,15 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Start()
     {
-        //SpawnEnemy(4, 5f, "fire");
+        SpawnEnemy(4, 5f, "fire");
         //SpawnEnemy(2, 30f, "light");
-        //SpawnEnemy(2, 30f, "magic");
-        //SpawnEnemy(3, 30f, "knight1");
+        SpawnEnemy(2, 30f, "magic");
+        SpawnEnemy(3, 30f, "knight1");
         //SpawnEnemy(3, 30f, "knight2");
         //SpawnEnemy(3, 30f, "knight3");
         //SpawnDarkMagic();
         //SpawnMedusa();
-        SpawnGolem();
+        //SpawnGolem();
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;
         XuanEventManager.GetEnemy += GetEnemyByDistance;

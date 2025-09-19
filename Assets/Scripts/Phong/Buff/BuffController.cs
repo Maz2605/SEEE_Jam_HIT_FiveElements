@@ -22,7 +22,7 @@ public class BuffController : MonoBehaviour
         GameEventPhong.HandleIncreaseDuration += IncreaseDuration;
         InputManager.OnPress1 += HeathTower;
         InputManager.OnPress2 += IncreasePowerSpeed;
-        InputManager.OnPress3 += IncreaseSpeedAttack;
+        InputManager.OnPress3 += SpawnHero;
     }
 
     private void OnDisable()
@@ -31,7 +31,7 @@ public class BuffController : MonoBehaviour
         GameEventPhong.HandleIncreaseDuration -= IncreaseDuration;
         InputManager.OnPress1 -= HeathTower;
         InputManager.OnPress2 -= IncreasePowerSpeed;
-        InputManager.OnPress3 -= IncreaseSpeedAttack;
+        InputManager.OnPress3 -= SpawnHero;
     }
 
     public void HeathTower()
@@ -73,7 +73,10 @@ public class BuffController : MonoBehaviour
     {
         GameEventPhong.IncreaseDuration();
     }
-    
-    
+
+    private void SpawnHero()
+    {
+        GameEventPhong.SpawnHero();
+    }
     
 }

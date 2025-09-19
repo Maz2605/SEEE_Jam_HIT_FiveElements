@@ -3,10 +3,11 @@
 public class TowerHealth : Singleton<TowerHealth>
 {
     [Header("Tower Settings")]
+    [SerializeField] private float _currentHealth = 100f;
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private HealthBarController _healthBar;
 
-    private float _currentHealth;
+    //private float _currentHealth;
     private bool _isDead;
 
     #region Properties
@@ -42,6 +43,7 @@ public class TowerHealth : Singleton<TowerHealth>
     #region Health Logic
     public void TakeDamage(float damage)
     {
+        Debug.Log($"Tower takes {damage} damage.");
         if (_isDead) return;
 
         _currentHealth -= damage;

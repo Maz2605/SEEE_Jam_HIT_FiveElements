@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,21 +16,55 @@ public class DarkMagic : Enemy
 
     [SerializeField] private GameObject _effectSkill1;
 
-
+    private Vector3 _targetPos;
+    private bool _isMoving = false;
+    private bool _isStunned = false;
 
     private void Update()
     {
+        if (_isMoving && !_isStunned)
+        {
+            MoveToTarget();
+        }
+        // Delay su dung skill
         if (_isSkill1) return;
-
         _timeDelay += Time.deltaTime;
     }
-    public override void StartMove()
+    public override void StartMove() // goi sau khi khoi tao xong
+    {
+        SetNewTarget();
+    }
+    private void SetNewTarget()
+    {
+        _targetPos = RandomPos();
+        _isMoving = true;
+        base.GetAnimator.SetBool("IsWalk", true);
+    }
+
+    private void MoveToTarget()
+    {
+        Vector2 dir = (_targetPos - transform.position).normalized;
+        base.GetRigidbody2D.velocity = dir * base.GetSpeed;
+
+        if (Vector2.Distance(transform.position, _targetPos) < 0.1f)
+        {
+            // Đến nơi -> dừng
+            base.GetRigidbody2D.velocity = Vector2.zero;
+            base.GetAnimator.SetBool("IsWalk", false);
+            _isMoving = false;
+        }
+    }
+    public void CheckPos()
+    {
+        
+    }
+
+    public Vector3 RandomPos()
     {
         float randY = Random.Range(_yBottom, _yTop);
-        transform.DOMove(new Vector3(_xFar, randY, 0f), 2f).OnComplete(() => 
-        {
-            StartAttack();
-        });
+        float ranX = Random.Range(_xNear, _xFar);
+
+        return new Vector3(ranX, randY, 0f);
     }
     public override void StartAttack()
     {
@@ -66,7 +100,7 @@ public class DarkMagic : Enemy
 
     public void Skill2()
     {
-        StopCoroutine(base.GetCAttack);
+        /*StopCoroutine(base.GetCAttack);
         base.GetAnimator.SetTrigger("IsAttack2");
 
         for(int i=0;i<5;i++)
@@ -80,13 +114,13 @@ public class DarkMagic : Enemy
                 PoolingManager.Despawn(effect);
             });
         }
-
+*/
         Debug.Log("Dark Magic Skill 1");
     }
     public void Skill1()
     {
         _isSkill1 = true;
-        StopCoroutine(base.GetCAttack);
+        /*StopCoroutine(base.GetCAttack);
         float randY = Random.Range(_yBottom, _yTop);
         base.GetAnimator.SetBool("IsRun", true);
         transform.DOMove(new Vector3(_xNear, randY, 0f), 2f).OnComplete(() =>
@@ -102,8 +136,8 @@ public class DarkMagic : Enemy
                 _isSkill1 = false;
             });
         });
-
-        Debug.Log("Dark Magic Skill 2");
+*/
+        Debug.Log("Dark Magic Skill 1");
     }
 
     public override void Die()

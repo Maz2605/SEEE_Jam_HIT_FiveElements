@@ -33,3 +33,33 @@ MonoBehaviour:
     countCoin: 45
     emotion: 0
     animator: {fileID: 9100000, guid: 44c32f9fc7a07de4180d06c5eeb90288, type: 2}
+  - idEnemy: golem
+    isFar: 1
+    health: 234
+    speed: 1
+    damage: 12
+    speedAttack: 5
+    scoreValue: 1
+    countCoin: 45
+    emotion: 0
+    animator: {fileID: 9100000, guid: 7d5becf920fa57446a15eb7ee7bc4c21, type: 2}
+  - idEnemy: flydemon
+    isFar: 1
+    health: 555
+    speed: 1
+    damage: 12
+    speedAttack: 2
+    scoreValue: 1
+    countCoin: 45
+    emotion: 0
+    animator: {fileID: 9100000, guid: fec6ac3f80dfe5840ada9c8497346d88, type: 2}
+  - idEnemy: stayr
+    isFar: 1
+    health: 555
+    speed: 1
+    damage: 12
+    speedAttack: 2
+    scoreValue: 1
+    countCoin: 45
+    emotion: 0
+    animator: {fileID: 9100000, guid: 72002ac44d364cf4bbe76f42888b37ef, type: 2}

@@ -180,7 +180,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: IsRun
+  - m_Name: IsWalk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -240,7 +240,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsRun
+    m_ConditionEvent: IsWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5010874521264301911}
@@ -398,7 +398,7 @@ AnimatorStateMachine:
     m_Position: {x: 574.24146, y: 51.010086, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3896189801855072104}
-    m_Position: {x: 496.79324, y: 262.85373, z: 0}
+    m_Position: {x: 630, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6642996705104614226}
     m_Position: {x: 470, y: -60, z: 0}
@@ -427,7 +427,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsRun
+    m_ConditionEvent: IsWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4513144886029185249}

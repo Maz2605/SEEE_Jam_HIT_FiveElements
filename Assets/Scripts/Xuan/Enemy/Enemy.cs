@@ -45,6 +45,13 @@ public class Enemy : MonoBehaviour
     {
         set { _cAttack = value; }
     }
+    private bool _isStart = false;
+    public bool IsStart
+    {
+        get => _isStart;
+        set => _isStart = value;
+    }
+    
 
     private void OnEnable()
     {
@@ -170,7 +177,7 @@ public class Enemy : MonoBehaviour
         }
         DOVirtual.DelayedCall(0.5f, () =>
         {
-            if (_currentHealth < _health && _type == EnemyType.Enemy)
+            if (_currentHealth < _health && _type == EnemyType.Enemy && !_isStart)
             {
                 StartMove();
             }

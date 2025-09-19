@@ -15,7 +15,8 @@ public class Coin : MonoBehaviour
     {
         transform.DOMove(pos, _speed).SetEase(Ease.Linear).OnComplete(() => 
         {
-            //PoolingManager.Despawn(gameObject);
+            PoolingManager.Despawn(gameObject);
         });
+
     }
 }

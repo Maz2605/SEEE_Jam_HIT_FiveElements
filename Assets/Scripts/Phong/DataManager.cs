@@ -19,14 +19,8 @@ public class DataManager : Singleton<DataManager>
     [SerializeField] private int currentLevelSkill2 = 1;
     [SerializeField] private int currentLevelSkill3 = 1;
     [SerializeField] private int currentLevelSkillUltimate = 1;
-
-    [Header("Extra Buffs")]
-    [SerializeField] private int buffHealTower = 0;
-    [SerializeField] private int buffIncreaseDuration = 0;
-    [SerializeField] private int buffIncreaseMaxHealth = 0;
-    [SerializeField] private int buffIncreasePowerSpeed = 0;
-    [SerializeField] private int buffIncreaseSpeedAttack = 0;
-
+    
+   
     [Header("Player Attributes")]
     [SerializeField] private int coin = 0;
     [SerializeField] private float towerHealth = 500f;
@@ -92,12 +86,6 @@ public class DataManager : Singleton<DataManager>
     public int CurrentLevelSkill2 { get => currentLevelSkill2; set { currentLevelSkill2 = value; SaveCurrentLevelSkill2(currentLevelSkill2); } }
     public int CurrentLevelSkill3 { get => currentLevelSkill3; set { currentLevelSkill3 = value; SaveCurrentLevelSkill3(currentLevelSkill3); } }
     public int CurrentLevelSkillUltimate { get => currentLevelSkillUltimate; set { currentLevelSkillUltimate = value; SaveCurrentLevelSkillUltimate(currentLevelSkillUltimate); } }
-
-    public int BuffHealTower { get => buffHealTower; set { buffHealTower = value; SaveBuffHealTower(buffHealTower); } }
-    public int BuffIncreaseDuration { get => buffIncreaseDuration; set { buffIncreaseDuration = value; SaveBuffIncreaseDuration(buffIncreaseDuration); } }
-    public int BuffIncreaseMaxHealth { get => buffIncreaseMaxHealth; set { buffIncreaseMaxHealth = value; SaveBuffIncreaseMaxHealth(buffIncreaseMaxHealth); } }
-    public int BuffIncreasePowerSpeed { get => buffIncreasePowerSpeed; set { buffIncreasePowerSpeed = value; SaveBuffIncreasePowerSpeed(buffIncreasePowerSpeed); } }
-    public int BuffIncreaseSpeedAttack { get => buffIncreaseSpeedAttack; set { buffIncreaseSpeedAttack = value; SaveBuffIncreaseSpeedAttack(buffIncreaseSpeedAttack); } }
 
     public int Coin { get => coin; set { coin = value; SaveCoin(coin); } }
     public float TowerHealth { get => towerHealth; set { towerHealth = value; SaveTowerHealth(towerHealth); } }
@@ -167,12 +155,7 @@ public class DataManager : Singleton<DataManager>
         SaveCurrentLevelSkill2(currentLevelSkill2);
         SaveCurrentLevelSkill3(currentLevelSkill3);
         SaveCurrentLevelSkillUltimate(currentLevelSkillUltimate);
-
-        SaveBuffHealTower(buffHealTower);
-        SaveBuffIncreaseDuration(buffIncreaseDuration);
-        SaveBuffIncreaseMaxHealth(buffIncreaseMaxHealth);
-        SaveBuffIncreasePowerSpeed(buffIncreasePowerSpeed);
-        SaveBuffIncreaseSpeedAttack(buffIncreaseSpeedAttack);
+        
 
         SaveCoin(coin);
         SaveTowerHealth(towerHealth);
@@ -208,12 +191,7 @@ public class DataManager : Singleton<DataManager>
         currentLevelSkill2 = PlayerPrefs.GetInt(CurrentLevelSkill2Key, currentLevelSkill2);
         currentLevelSkill3 = PlayerPrefs.GetInt(CurrentLevelSkill3Key, currentLevelSkill3);
         currentLevelSkillUltimate = PlayerPrefs.GetInt(CurrentLevelSkillUltimateKey, currentLevelSkillUltimate);
-
-        buffHealTower = PlayerPrefs.GetInt(BuffHealTowerKey, buffHealTower);
-        buffIncreaseDuration = PlayerPrefs.GetInt(BuffIncreaseDurationKey, buffIncreaseDuration);
-        buffIncreaseMaxHealth = PlayerPrefs.GetInt(BuffIncreaseMaxHealthKey, buffIncreaseMaxHealth);
-        buffIncreasePowerSpeed = PlayerPrefs.GetInt(BuffIncreasePowerSpeedKey, buffIncreasePowerSpeed);
-        buffIncreaseSpeedAttack = PlayerPrefs.GetInt(BuffIncreaseSpeedAttackKey, buffIncreaseSpeedAttack);
+        
 
         coin = PlayerPrefs.GetInt(CoinKey, coin);
         towerHealth = PlayerPrefs.GetFloat(TowerHealthKey, towerHealth);
@@ -251,14 +229,8 @@ public class DataManager : Singleton<DataManager>
         currentLevelSkill2 = 1;
         currentLevelSkill3 = 1;
         currentLevelSkillUltimate = 1;
-
-        buffHealTower = 0;
-        buffIncreaseDuration = 0;
-        buffIncreaseMaxHealth = 0;
-        buffIncreasePowerSpeed = 0;
-        buffIncreaseSpeedAttack = 0;
-
-        coin = 0;
+        
+        coin = 1000;
         towerHealth = 500f;
         powerDuration = 10f;
 

@@ -11,15 +11,20 @@ public class ListObjPart : Singleton<ListObjPart>
     [SerializeField] private TextMeshProUGUI _currentName;
     [SerializeField] private TextMeshProUGUI _currentDescription;
     [SerializeField] private TextMeshProUGUI _currentCostText;
+    [SerializeField] private GameObject _btn;
+    [SerializeField] private GameObject _coin;
     [SerializeField] private int _currentlevel;
     [SerializeField] private int _currentSkillChoice;
     [SerializeField] private int _currentCost;
 
     [SerializeField] private List<ChoosingObj> _choosingObjs = new List<ChoosingObj>();
 
+    private void Awake()
+    {
+        //DataManager.Instance.ResetAll();
+    }
     private void Start()
     {
-        DataManager.Instance.ResetAll();
         ChoosingObj choosingObj = _choosingObjs[0];
         _currentImage.sprite = choosingObj.Image.sprite;
         RectTransform rt = _currentImage.GetComponent<RectTransform>();
@@ -27,6 +32,8 @@ public class ListObjPart : Singleton<ListObjPart>
         {
             rt.sizeDelta = new Vector2(200, 200);
         }
+
+        _currentSkillChoice = 1;
         _currentlevel = choosingObj.Level;
         _currentName.text = choosingObj.NameText.text;
         _currentDescription.text = choosingObj.DescriptionText.text;
@@ -66,8 +73,34 @@ public class ListObjPart : Singleton<ListObjPart>
     
     public void PressUpgrade()
     {
-        ChoosingObj choosingObj = _choosingObjs[_currentSkillChoice-1];
-        choosingObj.PressUpgrade();
+        // Xu ly coin
+        int coin = ShopManager.Instance.Coin;
+        if (coin < _currentCost)
+        {
+            ShopManager.Instance.InforNotEnough();
+            return;
+        }
+        if (coin >= _currentCost)
+        {
+            Debug.Log("Mua");
+            ChoosingObj choosingObj = _choosingObjs[_currentSkillChoice-1];
+            choosingObj.PressUpgrade();
+            DataManager.Instance.Coin -= _currentCost;
+            DataManager.Instance.SaveCoin(DataManager.Instance.Coin);
+            ShopManager.Instance.UpdateCoinText(DataManager.Instance.Coin);
+        }
         
+    }
+    
+    public void UnUpgrade()
+    {
+        _btn.SetActive(false);
+        _coin.SetActive(false);
+    }
+
+    public void Upgrade()
+    {
+        _btn.SetActive(true);
+        _coin.SetActive(true);  
     }
 }

@@ -11,6 +11,9 @@ public class BuffChoosing : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _descriptionText;
+    [SerializeField] private TextMeshProUGUI _costText;
+    
+
     [SerializeField] private int _cost;
     [SerializeField] private int _currentBuff;
 
@@ -19,11 +22,19 @@ public class BuffChoosing : MonoBehaviour
         if (_currentBuff == 1)
         {
             _cost = DataManager.Instance.PriceBuffIncreaseMaxHealth;
+            _costText.text = _cost.ToString();
         }
-        else
+        if(_currentBuff == 2)
         {
-            _cost = DataManager.Instance.BuffIncreaseDuration;
+            _cost = DataManager.Instance.PriceBuffIncreaseDuration;
+            _costText.text = _cost.ToString();
         }
+    }
+    
+    public TextMeshProUGUI CostText
+    {
+        get => _costText;
+        set => _costText = value;
     }
     
     public Image Image
@@ -55,7 +66,12 @@ public class BuffChoosing : MonoBehaviour
         get => _currentBuff;
         set => _currentBuff = value;
     }
-    
+
+    public void OnPressed()
+    {
+        ListOfBuff.Instance.CurrentBuffChoice = _currentBuff;
+        ListOfBuff.Instance.OnPressed();
+    }
     
 
 }

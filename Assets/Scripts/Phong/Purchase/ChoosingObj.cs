@@ -72,7 +72,7 @@ public class ChoosingObj : MonoBehaviour
 
     private void UpdateLevelBar()
     {
-        if(_level > 5) return;
+        if(_level > 5 || _currentSkill == 4) return;
             for (int i = 0; i < _level; i++)
             {
                 _imageList[i].gameObject.SetActive(true);
@@ -83,6 +83,12 @@ public class ChoosingObj : MonoBehaviour
     {
         ListObjPart.Instance.SetCurrentSkillChoice(_currentSkill);
         GameEventPhong.PressObject();
+        if (_currentSkill == 4)
+        {
+            ListObjPart.Instance.UnUpgrade();
+        }
+        else 
+            ListObjPart.Instance.Upgrade();
     }
 
     public void PressUpgrade()

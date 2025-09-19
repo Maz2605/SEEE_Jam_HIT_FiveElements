@@ -38,7 +38,7 @@ public class Skill2 : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnPressW += UseSkill2;         
+        InputManager.OnPressE += UseSkill2;         
         InputManager.OnLeftClick += HandleLeftClick;
         InputManager.OnMouseMove += HandleMouseMove;
         InputManager.OnRightClick += HandleRightClick;
@@ -46,7 +46,7 @@ public class Skill2 : MonoBehaviour
 
     private void OnDisable()
     {
-        InputManager.OnPressW -= UseSkill2;
+        InputManager.OnPressE -= UseSkill2;
         InputManager.OnLeftClick -= HandleLeftClick;
         InputManager.OnMouseMove -= HandleMouseMove;
         InputManager.OnRightClick -= HandleRightClick;

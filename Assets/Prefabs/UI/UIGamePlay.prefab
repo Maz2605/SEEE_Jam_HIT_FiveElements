@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e44fac7af8fdf4a8c8e6af0af09f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingImage: {fileID: 6369977555711039868}
+  loadingImage: {fileID: 8494849963909935773}
   loadingText: {fileID: 4017496167332595662}
 --- !u!1 &395790303979315042
 GameObject:
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e44fac7af8fdf4a8c8e6af0af09f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingImage: {fileID: 2692274186158180524}
+  loadingImage: {fileID: 5374284917061950940}
   loadingText: {fileID: 7881693283031483946}
 --- !u!1 &2305697499831265532
 GameObject:
@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e44fac7af8fdf4a8c8e6af0af09f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingImage: {fileID: 8173679525985228975}
+  loadingImage: {fileID: 1935807433421190878}
   loadingText: {fileID: 1874269165331717564}
 --- !u!1 &5719852179857549306
 GameObject:
@@ -3511,6 +3511,10 @@ PrefabInstance:
       propertyPath: uiSkill
       value: 
       objectReference: {fileID: 4971036415597826987}
+    - target: {fileID: 4964746534709621870, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
+      propertyPath: timeCoolDown
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4964746534709621870, guid: 95646a39975288d4c89f2fc5cacb497c, type: 3}
       propertyPath: ultimatePrefab
       value: 

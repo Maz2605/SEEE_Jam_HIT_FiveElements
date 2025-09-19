@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e44fac7af8fdf4a8c8e6af0af09f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingImage: {fileID: 8494849963909935773}
+  loadingImage: {fileID: 6369977555711039868}
   loadingText: {fileID: 4017496167332595662}
 --- !u!1 &395790303979315042
 GameObject:
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e44fac7af8fdf4a8c8e6af0af09f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingImage: {fileID: 5374284917061950940}
+  loadingImage: {fileID: 2692274186158180524}
   loadingText: {fileID: 7881693283031483946}
 --- !u!1 &2305697499831265532
 GameObject:
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e44fac7af8fdf4a8c8e6af0af09f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingImage: {fileID: 8766285080214473252}
+  loadingImage: {fileID: 6894793156751382921}
   loadingText: {fileID: 6401882841281000431}
 --- !u!1 &3927481523988146378
 GameObject:
@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e44fac7af8fdf4a8c8e6af0af09f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingImage: {fileID: 1935807433421190878}
+  loadingImage: {fileID: 8173679525985228975}
   loadingText: {fileID: 1874269165331717564}
 --- !u!1 &5719852179857549306
 GameObject:
@@ -3209,7 +3209,7 @@ GameObject:
   - component: {fileID: 329289382697666407}
   - component: {fileID: 8294947159780315723}
   - component: {fileID: 4844593220076240738}
-  - component: {fileID: 3817088772480159709}
+  - component: {fileID: 5434594628905033089}
   m_Layer: 5
   m_Name: Buff3
   m_TagString: Untagged
@@ -3331,7 +3331,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3817088772480159709
+--- !u!114 &5434594628905033089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3340,10 +3340,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8894432369532733623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9681390bdb2f00440a0557d59f8d9cd6, type: 3}
+  m_Script: {fileID: 11500000, guid: 69ad79ee21fb6ee409ff7b77cd53b39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  heroPrefabs:
+  - {fileID: 4945646606230668466, guid: bdf40e1cc3e480e41b695323e4bff746, type: 3}
+  exChangePre: {fileID: 0}
+  heroPos: {x: -3, y: -2, z: 0}
 --- !u!1 &9170967662272667258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,6 +3438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124aff166b98c00479e8a32b2fcd6d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfHealTower: 5
+  numberOfIncreasePowerSpeed: 5
+  numberOfSpeedAttack: 5
 --- !u!1001 &3499835123101494338
 PrefabInstance:
   m_ObjectHideFlags: 0

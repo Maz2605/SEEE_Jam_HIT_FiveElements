@@ -20,7 +20,6 @@ public class increaseMaxHeath : Buff
 
     private void IncreaseMaxHeath()
     {
-        PlayerController.Instance.SetHealthTower(heathIncrease);
-        DataManager.Instance.SaveTowerHealth(PlayerController.Instance.HealthTower);
+        TowerHealth.Instance.SetMaxHealth(heathIncrease);
     }
 }

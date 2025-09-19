@@ -9,7 +9,7 @@ public static class GameEventPhong
     public static Action IncreaseMaxHeath;
     public static Action IncreasePowerSpeed;
     public static Action IncreaseSpeedAttack;
-    public static Action IncreaseBaseDamage;
+    public static Action SpawnHero;
     
     public static Action HandleIncreaseMaxHeath;
     public static Action HandleIncreaseDuration;

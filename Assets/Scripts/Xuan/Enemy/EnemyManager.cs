@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +30,8 @@ public class EnemyManager : Singleton<EnemyManager>
 
     [SerializeField] private Coin _coinPrefab;
     public Coin GetCoin => _coinPrefab;
+    private Enemy _currentEnemy;
+    private Vector3 _posWall;
 
     private void Start()
     {
@@ -41,13 +43,12 @@ public class EnemyManager : Singleton<EnemyManager>
         SpawnEnemy(3, 30f, "knight3");
         //SpawnDarkMagic();
         //SpawnMedusa();
-        SpawnGolem();
+        //SpawnGolem();
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;
         XuanEventManager.GetEnemy += GetEnemyByDistance;
     }
     //
-    
     private void OnDestroy()
     {
         XuanEventManager.SpawnEnemy -= SpawnEnemy;
@@ -111,26 +112,25 @@ public class EnemyManager : Singleton<EnemyManager>
         _enemys.Add(newEnemy);
     }
 
-    public Enemy GetEnemyByDistance(Vector3 posWall)
+    public Enemy GetEnemyByDistance(Vector3 posWall, float range)
     {
-        Enemy enemy = null;
-        float minDis = 100f;
+        Enemy nearest = null;
+        float minDist = Mathf.Infinity;
 
-        foreach(Enemy e in _enemys)
+        foreach (Enemy e in _enemys)
         {
-            if(e.GetEnemyType != EnemyType.Enemy) continue;
+            if (e == null || !e.gameObject.activeInHierarchy) continue;
+            if (e.GetCurrentHealth >= e.GetHealth) continue; // bỏ qua nếu chết
 
-            Vector2 enemyPos = new Vector2(e.transform.position.x, e.transform.position.y);
-            Vector2 poswall = new Vector2(posWall.x, posWall.y);
-            float dis = Vector2.Distance(enemyPos, poswall);
-            if(dis < minDis)
+            float dist = Vector2.Distance(e.transform.position, posWall);
+            if (dist <= range && dist < minDist)
             {
-                minDis = dis;
-                enemy = e;
+                minDist = dist;
+                nearest = e;
             }
         }
 
-        return enemy;
+        return nearest;
     }
     public RuntimeAnimatorController RandomVillage()
     {

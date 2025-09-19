@@ -14,7 +14,7 @@ public class EnemyUI : MonoBehaviour
     [SerializeField] private Sprite _imo3;
     [SerializeField] private Sprite _imo4;
 
-    private float _maxHealth;
+    private float _maxImotion;
     private float _targetFill;
     private float _currentFill;
     private float _lerpSpeed = 5f;
@@ -23,20 +23,28 @@ public class EnemyUI : MonoBehaviour
     public void SetImotionBar(float maxImotion)
     {
         _imotionBar.SetActive(false);
-        _maxHealth = maxImotion;
+        _maxImotion = maxImotion;
+
         _currentFill = 0f;
         _targetFill = 0f;
+        _isStop = false;
+
         _imotion.fillAmount = 0f;
         _imotion.color = _colorGradient.Evaluate(0f);
+        _imotionIcon.sprite = _imo1;
+    }
+    public void SetActionFalseBar()
+    {
+        _imotionBar.SetActive(false);
     }
 
     public void UpdateImotionBar(float currentEnergy)
     {
-        if(!_imotionBar.activeSelf)
-        {
+        if (!_imotionBar.activeSelf)
             _imotionBar.SetActive(true);
-        }
-        _targetFill = Mathf.Clamp01(currentEnergy / _maxHealth);
+
+        _targetFill = Mathf.Clamp01(currentEnergy / _maxImotion);
+        _isStop = false; // Cho phép update lại khi có dữ liệu mới
     }
     public void ChangeIcon()
     {
@@ -61,17 +69,21 @@ public class EnemyUI : MonoBehaviour
     private void Update()
     {
         if (_isStop) return;
-        // Fill mượt
+
+        // Chạy mượt tới giá trị đích
         _currentFill = Mathf.Lerp(_currentFill, _targetFill, Time.deltaTime * _lerpSpeed);
-        if(_currentFill >= 0.9999f)
+
+        // Nếu đã gần đạt đích thì gán luôn và dừng
+        if (Mathf.Abs(_currentFill - _targetFill) < 0.001f)
         {
+            _currentFill = _targetFill;
             _isStop = true;
-            return;
         }
+
+        // Update UI
         _imotion.fillAmount = _currentFill;
-        ChangeIcon();
-        // Đổi màu theo gradient
         _imotion.color = _colorGradient.Evaluate(_currentFill);
+        ChangeIcon();
     }
 
 }

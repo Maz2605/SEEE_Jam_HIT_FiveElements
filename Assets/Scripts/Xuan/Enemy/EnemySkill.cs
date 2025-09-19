@@ -77,10 +77,7 @@ public class EnemySkill : Singleton<EnemySkill>
     {
         Ball newObj = PoolingManager.Spawn(ball, enemy.transform.position + new Vector3(0.2f, 0f, 0f), Quaternion.identity, ballParent);
         int rand = Random.Range(0, 2);
-        if(rand == 0)
-            newObj.InitBall(magicArrow, 10f, enemy.GetDamage);
-        else
-            newObj.InitBall(magicBall, 10f, enemy.GetDamage);
+        newObj.InitBall(magicBall, 10f, enemy.GetDamage);
     }
 
     public void Explosion(Enemy enemy)

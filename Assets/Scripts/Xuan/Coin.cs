@@ -6,17 +6,15 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     private float _speed = 2f;
-    private void Start()
-    {
-        
-    }
 
     public void StartCoin(Vector3 pos)
     {
-        transform.DOMove(pos, _speed).SetEase(Ease.Linear).OnComplete(() => 
+        DOVirtual.DelayedCall(0.2f, () =>
         {
-            PoolingManager.Despawn(gameObject);
+            transform.DOMove(pos, _speed).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                PoolingManager.Despawn(gameObject);
+            });
         });
-
     }
 }

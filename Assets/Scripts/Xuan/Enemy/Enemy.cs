@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D GetRigidbody2D => _rb;
 
     [SerializeField] private EnemyUI _enemyUI;
+    [SerializeField] private GameObject _effectEnemy;
 
     private Coroutine _cAttack;
     public Coroutine GetCAttack => _cAttack;
@@ -215,16 +216,19 @@ public class Enemy : MonoBehaviour
         EnemyManager.Instance.RemoveEnemy(this);
         if(_type == EnemyType.Enemy)
         {
+            GameObject obj = PoolingManager.Spawn(_effectEnemy, transform.position, Quaternion.identity);
             _type = EnemyType.Village;
             _animator.SetBool("IsDead", true);
             StopMove();
-            DOVirtual.DelayedCall(0.5f, () =>
+            DOVirtual.DelayedCall(0.65f, () =>
             {
                 _animator.runtimeAnimatorController = EnemyManager.Instance.RandomVillage();
+                _enemyUI.SetActionFalseBar();
                 _animator.SetBool("IsRun", true);
             });
-            DOVirtual.DelayedCall(1.2f, () =>
+            DOVirtual.DelayedCall(1.45f, () =>
             {
+                PoolingManager.Despawn(obj);
                 _rb.velocity = new Vector2(-_speed * 3f, _rb.velocity.y);
             });
         }
@@ -273,6 +277,7 @@ public class Enemy : MonoBehaviour
             {
                 StopMove();
                 StartAttack();
+                _isStart = true;
             }
         }
     }

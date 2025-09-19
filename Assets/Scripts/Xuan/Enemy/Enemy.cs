@@ -53,7 +53,6 @@ public class Enemy : MonoBehaviour
         set => _isStart = value;
     }
     
-
     private void OnEnable()
     {
         XuanEventManager.EnemyTakeDamage += TakeDamage;
@@ -212,6 +211,9 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Die()
     {
+        //////////////////////////////////////////
+        Debug.Log($"{name} đã chết, còn lại: {EnemyManager.Instance.EnemyCount}");
+
         gameObject.tag = "Untagged";
         EnemyManager.Instance.RemoveEnemy(this);
         if(_type == EnemyType.Enemy)
@@ -282,4 +284,5 @@ public class Enemy : MonoBehaviour
         }
     }
     #endregion
+
 }

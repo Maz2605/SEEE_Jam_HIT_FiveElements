@@ -82,10 +82,13 @@ public class PlayerController : Singleton<PlayerController>
 
         attackTimer -= Time.deltaTime;
 
+        enemiesInRange.RemoveAll(e => e == null || !e.gameObject.activeInHierarchy);
+
         if (attackTimer <= 0f && enemiesInRange.Count > 0)
         {
             if (_towerHealth != null && _towerHealth.IsDead) return;
             Enemy target = XuanEventManager.GetEnemy(transform.position,10f);
+
             if (target != null)
             {
                 PrepareAttack(target.transform);

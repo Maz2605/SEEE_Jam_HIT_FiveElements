@@ -85,7 +85,7 @@ public class PlayerController : Singleton<PlayerController>
         if (attackTimer <= 0f && enemiesInRange.Count > 0)
         {
             if (_towerHealth != null && _towerHealth.IsDead) return;
-            Transform target = XuanEventManager.GetEnemy(transform.position).transform;
+            Transform target = XuanEventManager.GetEnemy(transform.position,10f).transform;
             if (target != null)
             {
                 PrepareAttack(target);

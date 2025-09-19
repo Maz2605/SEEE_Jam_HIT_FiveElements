@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class PlayerController : Singleton<PlayerController>
@@ -10,21 +11,25 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _attackCooldown = 1f;
     [SerializeField] private float _bulletSpeed = 100f;
+    [SerializeField] private PlayerLevel _currentLevel = PlayerLevel.Normal;
 
     [Header("Range Settings")]
     [SerializeField] private float _attackRange = 5f;
 
-    [Header("Tower Health")]
-    [SerializeField] private float _healthTower;
-    [SerializeField] private float _currentHealthTower;
-
     [Header("Animation")]
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator _animator;
+
+    [Header("UI")]
+    private HealthBarController _healthBar;
+
+    [Header("Tower Health")]
+    [SerializeField] private TowerHealth _towerHealth;
 
     private float attackTimer;
 
     private bool _isDead;
     private bool _isAttacking;
+    private bool _isUsingSuperHappy = false;
     private PlayerStateType _state = PlayerStateType.Idle;
 
     private readonly List<Transform> enemiesInRange = new List<Transform>();
@@ -35,21 +40,14 @@ public class PlayerController : Singleton<PlayerController>
     public float BulletSpeed => _bulletSpeed;   
     public float  AttackCooldown => _attackCooldown;    
 
-    public float HealthTower => _healthTower;   
-
-    public float CurrentHealthTower => _currentHealthTower;
-
     public bool IsAttacking => _isAttacking && !_isDead;
     public bool IsIdle => !_isDead && !_isAttacking;
+    public bool IsDead => _isDead;
+
 
     public void SetAttackRange(float Range)
     {
         _attackRange += Range;
-    }
-
-    public void SetHealthTower(float health)
-    {
-        _healthTower += health;
     }
 
     public void SetBulletSpeed(float bulletSpeed)
@@ -62,19 +60,21 @@ public class PlayerController : Singleton<PlayerController>
         _attackCooldown += attackCooldown;
     }
 
-    public void SetCurrentHealthTower(float currentHealthTower)
-    {
-        _currentHealthTower += currentHealthTower;
-    }
     #endregion
     private void Awake()
     {
         rangeCollider = GetComponent<CircleCollider2D>();
-        if (animator == null)
-            animator = GetComponent<Animator>();
         rangeCollider.isTrigger = true;
+
+        if (_animator == null)
+            _animator = GetComponent<Animator>();
+
+        _healthBar = GameObject.FindGameObjectWithTag("HealthBarTower").GetComponent<HealthBarController>();
+        _healthBar.Initialize(30f);
+
+
     }
-    #region PlAYER ATTACK
+    #region UPDATE LOOP
     private void Update()
     {
         if (rangeCollider.radius != _attackRange)
@@ -84,57 +84,88 @@ public class PlayerController : Singleton<PlayerController>
 
         if (attackTimer <= 0f && enemiesInRange.Count > 0)
         {
-            //Transform target = GetNearestEnemy();
+            if (_towerHealth != null && _towerHealth.IsDead) return;
             Transform target = XuanEventManager.GetEnemy(transform.position).transform;
             if (target != null)
             {
-                Shoot(target);
+                PrepareAttack(target);
                 attackTimer = _attackCooldown;
             }
         }
+        
+    }
+    #endregion
+
+    #region ATTACK LOGIC
+    private Transform _cachedTarget;
+    private Tween _fireLoopTween;
+
+    private void PrepareAttack(Transform target)
+    {
+        if (_isDead) return;
+            
+        _cachedTarget = target;
+        ChangeState(PlayerStateType.Attack);
+        _isAttacking = true;
     }
 
-    private Transform GetNearestEnemy()
+    private void StartFireLoop(float interval)
     {
-        Transform nearest = null;
-        float minDistance = Mathf.Infinity;
+        _fireLoopTween?.Kill();
 
-        enemiesInRange.RemoveAll(e => e == null); 
-
-        foreach (var enemy in enemiesInRange)
+        _fireLoopTween = DOVirtual.DelayedCall(interval, () =>
         {
-            float distance = Vector3.Distance(transform.position, enemy.position);
-            if (distance < minDistance && distance <= _attackRange)
-            {
-                minDistance = distance;
-                nearest = enemy;
-            }
-        }
-        return nearest;
+            FireBullet();
+            StartFireLoop(interval);
+        });
     }
 
-    private void Shoot(Transform target)
+    private void ResetAttack()
     {
-        if (_isDead) return; 
+        _isAttacking = false;
+
+        _fireLoopTween?.Kill();
+
+        if (!_isDead) ChangeState(PlayerStateType.Idle);
+    }
+    public void FireBullet()
+    {
+        if (_isDead || _cachedTarget == null || (_towerHealth != null && _towerHealth.IsDead)) return;
 
         GameObject bulletObj = PoolingManager.Spawn(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
 
-        Vector3 direction = (target.position - _firePoint.position).normalized;
+        Vector3 direction = (_cachedTarget.position - _firePoint.position).normalized;
         bullet.Launch(direction, _bulletSpeed);
-
-        ChangeState(PlayerStateType.Attack);
-
-        _isAttacking = true;
 
         Invoke(nameof(ResetAttack), 0.2f);
     }
-    private void ResetAttack()
+
+    private void FireBulletMulti(int count, float interval)
     {
-        _isAttacking = false;
-        if (!_isDead) ChangeState(PlayerStateType.Idle);
+        for (int i = 0; i < count; i++)
+        {
+            DOVirtual.DelayedCall(i * interval, () =>
+            {
+                FireBullet();
+            });
+        }
     }
 
+    public void FireBulletByLevel()
+    {
+        if (_currentLevel == PlayerLevel.SuperHappy)
+        {
+            FireBulletMulti(4, 0f); 
+        }
+        else
+        {
+            FireBullet();
+        }
+    }
+    #endregion
+
+    #region DEATH LOGIC
     public void Die()
     {
         if (_isDead) return;
@@ -144,8 +175,12 @@ public class PlayerController : Singleton<PlayerController>
 
         ChangeState(PlayerStateType.Die);
         Debug.Log("Player died → animation Die");
-    }
 
+        // TODO: display Game Over UI, stop the game, etc.
+    }
+    #endregion
+
+    #region ENEMY DETECTION
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && !enemiesInRange.Contains(other.transform))
@@ -162,22 +197,24 @@ public class PlayerController : Singleton<PlayerController>
     #region ANIMATION CONTROL
     private void ChangeState(PlayerStateType newState)
     {
-        if (_state == newState) return; // tránh spam trigger
+        if (_state == newState) return;
 
         _state = newState;
 
         switch (newState)
         {
             case PlayerStateType.Idle:
-                animator.SetTrigger("Idle");
+                _animator.SetTrigger("Idle");
                 break;
             case PlayerStateType.Attack:
-                animator.SetTrigger("Attack");
+                _animator.SetTrigger("Attack");
                 break;
             case PlayerStateType.Die:
-                animator.SetTrigger("Die");
+                _animator.SetTrigger("Die");
                 break;
         }
     }
     #endregion
+
+
 }

@@ -6,11 +6,15 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int _damage = 50;
     [SerializeField] private float _lifetime = 2f;
     [SerializeField] private float _explosionRadius = 2f; 
-    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask _enemyLayer;
 
     [Header("Timing Settings")]
     [SerializeField] private float _spawnDelay = 0.1f;
 
+    [Header("Explosion Settings")]
+    [SerializeField] private GameObject _explosionPrefab;
+
+    private float _spinSpeed = 800f;
     private Vector3 _moveDirection;
     private float _speed;
     private float _timer;
@@ -24,6 +28,7 @@ public class Bullet : MonoBehaviour
         _timer = 0f;
         _delayTimer = 0f;
         _launched = true;
+        gameObject.SetActive(true);
     }
 
     private void Update()
@@ -43,11 +48,15 @@ public class Bullet : MonoBehaviour
         {
             PoolingManager.Despawn(gameObject);
         }
+
+        BulletSpin();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Enemy")) return;
+
+        PlayExplosion(transform.position);
 
         DamageMainEnemy(other);
 
@@ -55,6 +64,12 @@ public class Bullet : MonoBehaviour
 
         DespawnBullet();
 
+    }
+    private void PlayExplosion(Vector3 pos)
+    {
+        if (_explosionPrefab == null) return;
+
+        GameObject explosion = PoolingManager.Spawn(_explosionPrefab, pos, Quaternion.identity);
     }
 
     private void DamageMainEnemy(Collider2D other)
@@ -68,7 +83,7 @@ public class Bullet : MonoBehaviour
 
     private void DamageSplash(Collider2D mainTarget)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _explosionRadius, enemyLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _explosionRadius, _enemyLayer);
         foreach (Collider2D hit in hits)
         {
             if (hit.gameObject == mainTarget.gameObject) continue; 
@@ -83,6 +98,7 @@ public class Bullet : MonoBehaviour
 
     private void DespawnBullet()
     {
+        _launched = false;
         PoolingManager.Despawn(gameObject);
     }
 
@@ -100,5 +116,10 @@ public class Bullet : MonoBehaviour
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, transform.position + _moveDirection * 1.5f);
+    }
+
+    private void BulletSpin()
+    {
+        transform.Rotate(Vector3.forward * _spinSpeed * Time.deltaTime);
     }
 }

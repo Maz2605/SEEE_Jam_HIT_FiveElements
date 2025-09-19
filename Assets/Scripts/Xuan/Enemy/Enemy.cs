@@ -264,7 +264,7 @@ public class Enemy : MonoBehaviour
             {
                 StopMove();
                 StartExplosion();
-                TowerHealth.Instance.SetCurrentHealth(-_damage);
+                TowerHealth.Instance.TakeDamage(_damage);
             }
             else
             {

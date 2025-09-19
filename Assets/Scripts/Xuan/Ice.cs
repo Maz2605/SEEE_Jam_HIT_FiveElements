@@ -23,7 +23,7 @@ public class Ice : MonoBehaviour
     {
         if(collision.CompareTag("Wall"))
         {
-            TowerHealth.Instance.SetCurrentHealth(-_damage);
+            TowerHealth.Instance.TakeDamage(_damage);
         }
     }
 }

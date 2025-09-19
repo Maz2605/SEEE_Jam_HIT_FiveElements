@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
         {
             _animator.SetBool("IsTrigger", true);
             _rb.velocity = Vector2.zero;
-            TowerHealth.Instance.SetCurrentHealth(-_damage);
+            TowerHealth.Instance.TakeDamage(_damage);
             DOVirtual.DelayedCall(0.2f, () =>
             {
                 PoolingManager.Despawn(gameObject);

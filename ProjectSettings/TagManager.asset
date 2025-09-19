@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Stop
   - Ball
+  - AttackRange
   layers:
   - Default
   - TransparentFX

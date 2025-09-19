@@ -23,10 +23,17 @@ public class ShopManager : MonoBehaviour
     private void BuyBuffIncreaseDuration()
     {
         // Neu coin du
+        
     }
 
     private void BuyBuffIncreaseMaxHeath()
     {
         // Neu coin du
+        GameEventPhong.BuyBuffIncreaseMaxHeath();
+    }
+
+    private void BuySkin()
+    {
+        
     }
 }

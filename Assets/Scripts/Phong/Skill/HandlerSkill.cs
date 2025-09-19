@@ -14,21 +14,7 @@ public class HandlerSkill : MonoBehaviour
        _damage =  DataManager.Instance.DamageSkill1;
     }
 
-    private void OnEnable()
-    {
-        GameEventPhong.UpgradeSkill1 += UpgradeSkill;
-    }
-
-    private void OnDisable()
-    {
-        GameEventPhong.UpgradeSkill1 -= UpgradeSkill;
-    }
-
-    private void UpgradeSkill()
-    {
-        _damage += _upgradeDamage;
-        DataManager.Instance.SaveDataSkill1(_damage);
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {

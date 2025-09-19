@@ -1,31 +1,27 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class HealthBarController : MonoBehaviour
 {
-    [SerializeField] private Image fillImage; 
-    [SerializeField] private Gradient gradient;
-
+    [SerializeField] private Image frontFill;   
     private float maxHP;
     private float currentHP;
+
+    [SerializeField] private float tweenSpeed = 0.3f;
 
     public void Initialize(float maxHealth)
     {
         maxHP = maxHealth;
         currentHP = maxHP;
-        UpdateBar();
+        frontFill.fillAmount = 1f; 
     }
 
     public void SetHealth(float health)
     {
         currentHP = Mathf.Clamp(health, 0, maxHP);
-        UpdateBar();
-    }
-
-    private void UpdateBar()
-    {
         float t = currentHP / maxHP;
-        fillImage.fillAmount = t;
-        fillImage.color = gradient.Evaluate(t); 
+
+        frontFill.DOFillAmount(t, tweenSpeed).SetEase(Ease.OutCubic);
     }
 }

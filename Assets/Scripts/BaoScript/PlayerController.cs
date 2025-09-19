@@ -20,7 +20,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Animator _animator;
 
     [Header("UI")]
-    [SerializeField] private HealthBarController _healthBar;
+    private HealthBarController _healthBar;
 
     [Header("Tower Health")]
     [SerializeField] private TowerHealth _towerHealth;
@@ -68,6 +68,10 @@ public class PlayerController : Singleton<PlayerController>
 
         if (_animator == null)
             _animator = GetComponent<Animator>();
+
+        _healthBar = GameObject.FindGameObjectWithTag("HealthBarTower").GetComponent<HealthBarController>();
+        _healthBar.Initialize(30f);
+
 
     }
     #region UPDATE LOOP

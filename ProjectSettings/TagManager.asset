@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Stop
   - Ball
+  - HealthBarTower
   layers:
   - Default
   - TransparentFX

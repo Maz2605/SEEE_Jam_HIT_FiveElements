@@ -5,7 +5,7 @@
 //public class HealTower : Buff
 //{
 //    public float healAmount = 100f;
-    
+
 //    private void OnEnable()
 //    {
 //        GameEventPhong.HealTower += HealthTower;
@@ -16,8 +16,8 @@
 //        GameEventPhong.HealTower -= HealthTower;
 //    }
 
-//    //private void HealthTower()
-//    //{
-//    //    PlayerController.Instance.SetCurrentHealthTower(healAmount);
-//    //}
+//    private void HealthTower()
+//    {
+//        PlayerController.Instance.SetCurrentHealthTower(healAmount);
+//    }
 //}

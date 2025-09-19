@@ -17,11 +17,16 @@ public class ListObjPart : Singleton<ListObjPart>
 
     [SerializeField] private List<ChoosingObj> _choosingObjs = new List<ChoosingObj>();
 
-    private void Awake()
+    private void Start()
     {
         DataManager.Instance.ResetAll();
         ChoosingObj choosingObj = _choosingObjs[0];
         _currentImage.sprite = choosingObj.Image.sprite;
+        RectTransform rt = _currentImage.GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            rt.sizeDelta = new Vector2(200, 200);
+        }
         _currentlevel = choosingObj.Level;
         _currentName.text = choosingObj.NameText.text;
         _currentDescription.text = choosingObj.DescriptionText.text;
@@ -46,6 +51,11 @@ public class ListObjPart : Singleton<ListObjPart>
     {
         ChoosingObj choosingObj = _choosingObjs[_currentSkillChoice-1];
         _currentImage.sprite = choosingObj.Image.sprite;
+        RectTransform rt = _currentImage.GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            rt.sizeDelta = new Vector2(200, 200);
+        }
         _currentlevel = choosingObj.Level;
         _currentName.text = choosingObj.NameText.text;
         _currentDescription.text = choosingObj.DescriptionText.text;

@@ -38,7 +38,14 @@ public class HeroFlight : MonoBehaviour
 
     private void ShootEnemy()
     {
-        if (enemiesInRange.Count == 0) return;
+        // dọn sạch enemy null (đã chết)
+        enemiesInRange.RemoveAll(e => e == null);
+
+        if (enemiesInRange.Count == 0)
+        {
+            CancelInvoke(nameof(ShootEnemy));
+            return;
+        }
 
         // chọn enemy ngẫu nhiên
         int randomIndex = Random.Range(0, enemiesInRange.Count);

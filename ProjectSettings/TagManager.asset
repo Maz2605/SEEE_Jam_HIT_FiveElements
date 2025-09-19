@@ -9,7 +9,7 @@ TagManager:
   - Wall
   - Stop
   - Ball
-  - HealthBarTower
+  - AttackRange
   layers:
   - Default
   - TransparentFX

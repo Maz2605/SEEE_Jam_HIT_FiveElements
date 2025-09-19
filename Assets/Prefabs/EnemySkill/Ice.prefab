@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5676838005896470273}
   - component: {fileID: 2980560409630833801}
   - component: {fileID: 1366415111172649857}
+  - component: {fileID: 3642338070295958936}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Untagged
@@ -193,3 +194,15 @@ PolygonCollider2D:
       - {x: 1.574074, y: -0.5555556}
       - {x: 1.574074, y: -0.46296296}
   m_UseDelaunayMesh: 0
+--- !u!114 &3642338070295958936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559870541981013905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb0438f95080aa4aadf477aeb665a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

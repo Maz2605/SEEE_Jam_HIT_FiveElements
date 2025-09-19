@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Golem : Enemy
 {
-    [SerializeField] private GameObject _effectSkill1;
+    [SerializeField] private Ice _ice;
     private bool _isUseSkill;
     private void Update()
     {
@@ -49,13 +49,16 @@ public class Golem : Enemy
         base.GetAnimator.SetTrigger("IsAttack");
         DOVirtual.DelayedCall(0.7f, () =>
         {
-            GameObject news = PoolingManager.Spawn(_effectSkill1, transform.position + new Vector3(-2f, 0.2f, 0f), Quaternion.identity);
+            Ice news = PoolingManager.Spawn(_ice, transform.position + new Vector3(-2f, 0.2f, 0f), Quaternion.identity);
+            news.InitDamage(base.GetDamage);
             DOVirtual.DelayedCall(0.4f, () =>
             {
-                GameObject news = PoolingManager.Spawn(_effectSkill1, transform.position + new Vector3(-4f, 0.2f, 0f), Quaternion.identity);
+                Ice news = PoolingManager.Spawn(_ice, transform.position + new Vector3(-4f, 0.2f, 0f), Quaternion.identity);
+                news.InitDamage(base.GetDamage);
                 DOVirtual.DelayedCall(0.4f, () =>
                 {
-                    GameObject news = PoolingManager.Spawn(_effectSkill1, transform.position + new Vector3(-6f, 0.2f, 0f), Quaternion.identity);
+                    Ice news = PoolingManager.Spawn(_ice, transform.position + new Vector3(-6f, 0.2f, 0f), Quaternion.identity);
+                    news.InitDamage(base.GetDamage);
                 });
             });
             

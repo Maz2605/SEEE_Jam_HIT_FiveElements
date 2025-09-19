@@ -736,4 +736,4 @@ MonoBehaviour:
   _animator: {fileID: 6561497992104357831}
   _collider2D: {fileID: 5201562633600024788}
   _enemyUI: {fileID: 2815030553265305373}
-  _effectSkill1: {fileID: 4559870541981013905, guid: a6d640a7812b3bd4e8dff1aabb28ca03, type: 3}
+  _ice: {fileID: 3642338070295958936, guid: a6d640a7812b3bd4e8dff1aabb28ca03, type: 3}

@@ -183,6 +183,7 @@ public class Enemy : MonoBehaviour
             }
         });
     }
+
     public void TakeDamage(Enemy enemy, float damage)
     {
         Debug.Log("Enemy Take Damage" + damage);
@@ -248,7 +249,9 @@ public class Enemy : MonoBehaviour
             coin.StartCoin(finalDir * force);
         }
     }
-    //Va Cham
+
+
+    #region Collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Wall"))
@@ -257,6 +260,7 @@ public class Enemy : MonoBehaviour
             {
                 StopMove();
                 StartExplosion();
+                TowerHealth.Instance.SetCurrentHealth(-_damage);
             }
             else
             {
@@ -272,4 +276,5 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    #endregion
 }

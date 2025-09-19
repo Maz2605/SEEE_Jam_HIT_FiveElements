@@ -34,14 +34,14 @@ public class EnemyManager : Singleton<EnemyManager>
     private void Start()
     {
         SpawnEnemy(4, 5f, "fire");
-        //SpawnEnemy(2, 30f, "light");
+        SpawnEnemy(2, 30f, "light");
         SpawnEnemy(2, 30f, "magic");
         SpawnEnemy(3, 30f, "knight1");
-        //SpawnEnemy(3, 30f, "knight2");
-        //SpawnEnemy(3, 30f, "knight3");
+        SpawnEnemy(3, 30f, "knight2");
+        SpawnEnemy(3, 30f, "knight3");
         //SpawnDarkMagic();
         //SpawnMedusa();
-        //SpawnGolem();
+        SpawnGolem();
 
         XuanEventManager.SpawnEnemy += SpawnEnemy;
         XuanEventManager.GetEnemy += GetEnemyByDistance;
@@ -61,7 +61,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public void SpawnBoss(float timeWare,string idEnemy)
     {
         float time = timeWare/2;
-        StartCoroutine(SpawnBossRoutine(time, idEnemy));
+        
     }
     public void SpawnDarkMagic()
     {
@@ -97,14 +97,6 @@ public class EnemyManager : Singleton<EnemyManager>
             if(safe >= number) yield break;
         }
     }
-    IEnumerator SpawnBossRoutine(float time, string idEnemy)
-    {
-        yield return new WaitForSeconds(time);
-        EnemyStats data = _bossData.enemyStatsList.Find(x => x.idEnemy == idEnemy);
-        if (data == null) yield break;
-        SpawnEnemy(data, _bossSpawnPoint.position);
-    }
-
     public void SpwanRandomPoints(EnemyStats data)
     {
         int randomIndex = Random.Range(0, _spawnPoints.Count);

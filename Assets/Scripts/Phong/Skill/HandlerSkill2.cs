@@ -17,23 +17,7 @@ public class HandlerSkill2 : MonoBehaviour
         _timer = DataManager.Instance.TimerSkill2;
     }
 
-    private void OnEnable()
-    {
-        GameEventPhong.UpgradeSkill2 += UpgradeSkill;
-    }
-
-    private void OnDisable()
-    {
-        GameEventPhong.UpgradeSkill2 -= UpgradeSkill;
-    }
-
-    private void UpgradeSkill()
-    {
-      
-        _timer += _upgradeTimer;
-        
-        DataManager.Instance.SaveTimerSkill2(_timer);
-    }
+   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -14,15 +14,17 @@ public class Skill3 : MonoBehaviour
     
     private bool _isCooldown = false;
     [SerializeField] private bool _isLook = true;
-    [SerializeField] private float _buffSpeedAttack;
-    [SerializeField] private float _upgradeBuffSpeedAttack = 0.2f;
-    [SerializeField] private float _buffRangeAttack;
-    [SerializeField] private float _upgradeBuffRangeAttack = 0.2f;
+    [SerializeField] private float _buffSpeedAttack = 10f;
+    [SerializeField] private float _timer = 5f;
+
+    [SerializeField] private float _buffRangeAttack = 10f;
+ 
 
     private void Awake()
     {
         _buffRangeAttack = DataManager.Instance.BuffRangeAttack;
         _buffSpeedAttack = DataManager.Instance.BuffSpeedAttack;
+        _timer = DataManager.Instance.TimerSkill3;
     }
 
     public void SetLook(bool isLook)
@@ -31,25 +33,15 @@ public class Skill3 : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameEventPhong.UpgradeSkill3 += UpgradeSkill;
         InputManager.OnPressR += UseSkill3;
     }
 
     private void OnDisable()
     {
-        GameEventPhong.UpgradeSkill3 -= UpgradeSkill;
         InputManager.OnPressR -= UseSkill3;
 
     }
-
-    private void UpgradeSkill()
-    {
-        _buffRangeAttack += _upgradeBuffRangeAttack;
-        _buffSpeedAttack += _upgradeBuffSpeedAttack;
-        
-        DataManager.Instance.SaveBuffRangeAttack(_buffRangeAttack);
-        DataManager.Instance.SaveBuffSpeedAttack(_buffSpeedAttack);
-    }
+    
 
     private void UseSkill3()
     {
@@ -85,7 +77,7 @@ public class Skill3 : MonoBehaviour
     {
         PlayerController.Instance.SetAttackRange(_buffRangeAttack);
         
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(_timer, () =>
         {
             PlayerController.Instance.SetAttackRange(-_buffRangeAttack);
         });
@@ -95,7 +87,7 @@ public class Skill3 : MonoBehaviour
     {
         PlayerController.Instance.SetBulletSpeed(_buffSpeedAttack);
         
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(_timer, () =>
         {
             PlayerController.Instance.SetBulletSpeed(-_buffSpeedAttack);
         });

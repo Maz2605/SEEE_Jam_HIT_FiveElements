@@ -13,5 +13,10 @@ public class LevelData : ScriptableObject
 
     [Header("Boss Settings")]
     public int bossCount;                      
-    public List<GameObject> bossPrefabs;        
+    public List<GameObject> bossPrefabs;
+
+    // so luong enemy spawn moi wave
+    // so luong wave
+    //loai enemy spawn ra
+    //loai boss spawn ra
 }

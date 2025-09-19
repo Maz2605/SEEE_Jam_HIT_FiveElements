@@ -1,38 +1,34 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class MedusaBoss : Enemy
 {
-    private float _xFar = 5f;
-    private float _xNear = -3f;
-    private float _yTop = 4f;
-    private float _yBottom = -4f;
-
-    private float _timeDelaySkill = 8f;
-    private float _timeDelay;
-    private bool _isSkill1 = false;
-
-    [SerializeField] private GameObject _effectSkill1;
-    private void Start()
-    {
-        base.GetAnimator.SetBool("IsStart", true);
-    }
-
+    [SerializeField] private Ball _green;
+    [SerializeField] private Ball _power;
+    private bool _isUseSkill;
     private void Update()
     {
-        if (_isSkill1) return;
-        _timeDelay += Time.deltaTime;
+        if (!base.IsStart) CheckPosStart();
     }
     public override void StartMove()
     {
-        float randY = Random.Range(_yBottom, _yTop);
-        transform.DOMove(new Vector3(0f, 0f, 0f), 2f).OnComplete(() =>
+        if (base.IsStart) return;
+
+        base.GetAnimator.SetBool("IsWalk", true);
+
+        base.GetRigidbody2D.velocity = new Vector2(-base.GetSpeed, 0f);
+    }
+    private void CheckPosStart()
+    {
+        if (Vector3.Distance(transform.position, new Vector3(3f, -2f, 0f)) <= 0.2f)
         {
-            base.GetAnimator.SetBool("IsStart", false);
+            base.GetRigidbody2D.velocity = Vector2.zero;
+            base.IsStart = true;
             StartAttack();
-        });
+        }
     }
     public override void StartAttack()
     {
@@ -41,8 +37,6 @@ public class MedusaBoss : Enemy
     }
     public override IEnumerator AttackWall()
     {
-        Debug.Log("Dark Magic Start Attack");
-
         while (base.GetCurrentHealth < base.GetHealth && base.GetEnemyType == EnemyType.Enemy)
         {
             Attack();
@@ -52,46 +46,46 @@ public class MedusaBoss : Enemy
 
     public override void Attack()
     {
-        if (_isSkill1) return;
-        if (_timeDelay <= _timeDelaySkill)
+        if (_isUseSkill) return;
+
+        _isUseSkill = true;
+        if (Random.Range(0, 2) == 1) 
         {
-            Debug.Log("Skill Normal");
-            //Attack
-            EnemySkill.Instance.UseKill(this);
-            return;
+            base.GetAnimator.SetTrigger("IsAttack");
+
+            DOVirtual.DelayedCall(0.7f, () =>
+            {
+                Ball news = PoolingManager.Spawn(_green, transform.position + new Vector3(-1f,0f, 0f), Quaternion.identity);
+                news.InitSpecialBall(Vector2.left, 8f, base.GetDamage);
+            });
         }
-        _timeDelay = 0f;
-        int rand = Random.Range(0, 2);
-        if (rand == 0) Skill1();
-        else Skill2();
-    }
+        else 
+        {
+            base.GetAnimator.SetTrigger("IsSpecial");
+            EnemyManager.Instance.SpawnEnemy(4, 1f, "fire");
+            DOVirtual.DelayedCall(0.7f, () =>
+            {
+                Ball news = PoolingManager.Spawn(_power, transform.position + new Vector3(-1f, 1f, 0f), Quaternion.identity);
+                news.InitSpecialBall(Vector2.left, 8f, base.GetDamage);
+            });
 
-    public void Skill2()
-    {
-
-        Debug.Log("Dark Magic Skill 2");
-    }
-    public void Skill1()
-    {
-        
-        Debug.Log("Dark Magic Skill 2");
-    }
-    public void SkillSpecial()
-    {
-
+        }
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            _isUseSkill = false;
+        });
     }
 
     public override void Die()
     {
         gameObject.tag = "Untagged";
         EnemyManager.Instance.RemoveEnemy(this);
-
-        base.SpawnCoin();
         base.GetAnimator.SetBool("IsDead", true);
 
-        DOVirtual.DelayedCall(1f, () =>
+        DOVirtual.DelayedCall(2f, () =>
         {
-            PoolingManager.Despawn(this.gameObject);
+            PoolingManager.Despawn(gameObject);
+            SpawnCoin();
         });
     }
 }

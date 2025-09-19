@@ -35,35 +35,38 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Start()
     {
-        SpawnEnemy(4, 5f, "fire");
-        SpawnEnemy(2, 30f, "light");
-        SpawnEnemy(2, 30f, "magic");
-        SpawnEnemy(3, 30f, "knight1");
-        SpawnEnemy(3, 30f, "knight2");
-        SpawnEnemy(3, 30f, "knight3");
-        //SpawnDarkMagic();
-        //SpawnMedusa();
-        //SpawnGolem();
-
-        XuanEventManager.SpawnEnemy += SpawnEnemy;
         XuanEventManager.GetEnemy += GetEnemyByDistance;
     }
     //
     private void OnDestroy()
     {
-        XuanEventManager.SpawnEnemy -= SpawnEnemy;
         XuanEventManager.GetEnemy -= GetEnemyByDistance;
     }
-    public void SpawnEnemy(int number, float timeWave, string idEnemy)
+    public void SpawnBoss(string bossId)
     {
-        float time = timeWave / number;
-        StartCoroutine(SpawnEnemyRoutine(number, time, idEnemy));
+        switch (bossId.ToLower())
+        {
+            case "golem":
+                SpawnGolem();
+                break;
+            case "medusa":
+                SpawnMedusa();
+                break;
+            case "dark":
+                SpawnDarkMagic();
+                break;
+            default:
+                Debug.LogWarning($"❌ Don't have boss is ID {bossId}");
+                break;
+        }
     }
-    public void SpawnBoss(float timeWare,string idEnemy)
+
+    public void SpawnBoss(float timeWare, string idEnemy)
     {
-        float time = timeWare/2;
-        
+        float time = timeWare / 2;
+
     }
+
     public void SpawnDarkMagic()
     {
         DarkMagic darkMagic = PoolingManager.Spawn(this._darkMagic, _bossSpawnPoint.position, Quaternion.identity, _enemyPerant);
@@ -72,7 +75,7 @@ public class EnemyManager : Singleton<EnemyManager>
     }
     public void SpawnMedusa()
     {
-        MedusaBoss medusa = PoolingManager.Spawn(this._medusa, new Vector3(18f,0f,0f), Quaternion.identity, _enemyPerant);
+        MedusaBoss medusa = PoolingManager.Spawn(this._medusa, new Vector3(18f, 0f, 0f), Quaternion.identity, _enemyPerant);
         medusa.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "medusa"));
         _enemys.Add(medusa);
     }
@@ -84,27 +87,6 @@ public class EnemyManager : Singleton<EnemyManager>
         _enemys.Add(_golem);
     }
 
-    IEnumerator SpawnEnemyRoutine(int number, float time, string idEnemy)
-    {
-        int safe = 0;
-        EnemyStats data = _enemyData.enemyStatsList.Find(x => x.idEnemy == idEnemy);
-        if (data == null) yield break;
-        
-        while (true)
-        {
-            SpwanRandomPoints(data);
-            yield return new WaitForSeconds(time);
-            safe++;
-            if(safe >= number) yield break;
-        }
-    }
-    public void SpwanRandomPoints(EnemyStats data)
-    {
-        int randomIndex = Random.Range(0, _spawnPoints.Count);
-        Transform spawnPoint = _spawnPoints[randomIndex];
-
-        SpawnEnemy(data, spawnPoint.position);
-    }
     public void SpawnEnemy(EnemyStats data, Vector3 pos)
     {
         Enemy newEnemy = PoolingManager.Spawn(_enemyPrefab, pos, Quaternion.identity, _enemyPerant);
@@ -120,7 +102,7 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Enemy e in _enemys)
         {
             if (e == null || !e.gameObject.activeInHierarchy) continue;
-            if (e.GetCurrentHealth >= e.GetHealth) continue; // bỏ qua nếu chết
+            if (e.GetCurrentHealth >= e.GetHealth) continue;
 
             float dist = Vector2.Distance(e.transform.position, posWall);
             if (dist <= range && dist < minDist)
@@ -157,5 +139,33 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             PoolingManager.Despawn(explosion);
         });
+    }
+
+    public EnemyData GetEnemyData() => _enemyData;
+    public EnemyData GetBossData() => _bossData;
+
+    public Transform GetRandomSpawnPoint()
+    {
+        if (_spawnPoints.Count == 0) return null;
+        int rand = Random.Range(0, _spawnPoints.Count);
+        return _spawnPoints[rand];
+    }
+
+    public bool AreAllEnemiesDead()
+    {
+        for (int i = _enemys.Count - 1; i >= 0; i--)
+        {
+            if (_enemys[i] == null || !_enemys[i].gameObject.activeInHierarchy)
+            {
+                _enemys.RemoveAt(i);
+            }
+        }
+
+        return _enemys.Count == 0;
+    }
+
+    public Transform GetBossSpawnPoint()
+    {
+        return _bossSpawnPoint;
     }
 }

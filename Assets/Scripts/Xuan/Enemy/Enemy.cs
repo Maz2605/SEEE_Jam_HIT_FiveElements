@@ -69,6 +69,12 @@ public class Enemy : MonoBehaviour
 
     public void InitState(EnemyStats data)
     {
+        if(data == null)
+        {
+            Debug.LogError("Data Enemy is null");
+            return;
+        }
+
         _idEnemy = data.idEnemy;
         _health = data.health;
         _isFar = data.isFar;

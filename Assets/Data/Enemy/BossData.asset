@@ -26,16 +26,16 @@ MonoBehaviour:
   - idEnemy: medusa
     isFar: 1
     health: 555
-    speed: 1
+    speed: 2
     damage: 12
-    speedAttack: 2
+    speedAttack: 6
     scoreValue: 1
     countCoin: 45
     emotion: 0
     animator: {fileID: 9100000, guid: 44c32f9fc7a07de4180d06c5eeb90288, type: 2}
   - idEnemy: golem
     isFar: 1
-    health: 234
+    health: 555
     speed: 1
     damage: 12
     speedAttack: 5
@@ -46,9 +46,9 @@ MonoBehaviour:
   - idEnemy: flydemon
     isFar: 1
     health: 555
-    speed: 1
+    speed: 2
     damage: 12
-    speedAttack: 2
+    speedAttack: 5
     scoreValue: 1
     countCoin: 45
     emotion: 0

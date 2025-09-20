@@ -62,7 +62,7 @@ public class MedusaBoss : Enemy
         else 
         {
             base.GetAnimator.SetTrigger("IsSpecial");
-            EnemyManager.Instance.SpawnEnemy(4, 1f, "fire");
+            //EnemyManager.Instance.SpawnEnemy(4, 1f, "fire");
             DOVirtual.DelayedCall(0.7f, () =>
             {
                 Ball news = PoolingManager.Spawn(_power, transform.position + new Vector3(-1f, 1f, 0f), Quaternion.identity);

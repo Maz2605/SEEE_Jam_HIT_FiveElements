@@ -21,7 +21,7 @@ public class Golem : Enemy
     }
     private void CheckPosStart()
     {
-        if(Vector3.Distance(transform.position ,new Vector3(2f,-2f,0f)) <= 0.1f)
+        if(Vector3.Distance(transform.position ,new Vector3(3f,-0.45f,0f)) <= 0.1f)
         {
             base.GetRigidbody2D.velocity = Vector2.zero;
             base.IsStart = true;

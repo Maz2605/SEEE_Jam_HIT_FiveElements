@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class BuffController : MonoBehaviour
 {
-
     
-
     private void OnEnable()
     {
         GameEventPhong.HandleIncreaseMaxHeath += IncreaseMaxHeath;

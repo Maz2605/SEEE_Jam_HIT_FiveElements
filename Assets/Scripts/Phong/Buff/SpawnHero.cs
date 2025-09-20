@@ -14,22 +14,18 @@ public class SpawnHero : Buff
     private void OnEnable()
     {
         GameEventPhong.SpawnHero += SpawnHero1;
-        GameEventPhong.LockSpawnHero += LockBuff;
-        GameEventPhong.UnLockSapwnHero += UnLockBuff;
+
     }
 
     private void OnDisable()
     {
         GameEventPhong.SpawnHero -= SpawnHero1;
-        GameEventPhong.LockSpawnHero -= LockBuff;
-        GameEventPhong.UnLockSapwnHero -= UnLockBuff;
+
     }
 
     private void SpawnHero1()
     {
-
-        if (IsUseBuff)
-        {
+        
             int chosenHero = UnityEngine.Random.Range(0, heroPrefabs.Count);
             if (chosenHero == 0)
             {
@@ -41,7 +37,6 @@ public class SpawnHero : Buff
             {
                 Instantiate(heroPrefabs[chosenHero], heroPos2, Quaternion.identity);
             }
-        }
-        LockBuff();
+      
     }
 }

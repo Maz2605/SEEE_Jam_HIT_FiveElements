@@ -32,6 +32,8 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private GameObject _effectExplosion;
 
     [SerializeField] private Coin _coinPrefab;
+    [SerializeField] private Transform _coinEnemy;
+    public Transform CoinEnemy => _coinEnemy;
     public Coin GetCoin => _coinPrefab;
     private Enemy _currentEnemy;
     private Vector3 _posWall;
@@ -40,7 +42,6 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         XuanEventManager.GetEnemy += GetEnemyByDistance;
     }
-    //
     private void OnDestroy()
     {
         XuanEventManager.GetEnemy -= GetEnemyByDistance;
@@ -55,8 +56,8 @@ public class EnemyManager : Singleton<EnemyManager>
             case "medusa":
                 SpawnMedusa();
                 break;
-            case "dark":
-                SpawnDarkMagic();
+            case "flydemon":
+                SpawnFlyDemon();
                 break;
             default:
                 Debug.LogWarning($"❌ Don't have boss is ID {bossId}");
@@ -78,7 +79,7 @@ public class EnemyManager : Singleton<EnemyManager>
     }
     public void SpawnMedusa()
     {
-        MedusaBoss medusa = PoolingManager.Spawn(this._medusa, new Vector3(18f,0f,0f), Quaternion.identity, _enemyPerant);
+        MedusaBoss medusa = PoolingManager.Spawn(this._medusa, _bossSpawnPoint.position, Quaternion.identity, _enemyPerant);
         medusa.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "medusa"));
         _enemys.Add(medusa);
     }
@@ -88,6 +89,12 @@ public class EnemyManager : Singleton<EnemyManager>
         Golem golem = PoolingManager.Spawn(this._golem, _bossSpawnPoint.position, Quaternion.identity, _enemyPerant);
         golem.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "golem"));
         _enemys.Add(golem);
+    }
+    public void SpawnFlyDemon()
+    {
+        FlyDemon flyDemon = PoolingManager.Spawn(this._flydemon, _bossSpawnPoint.position, Quaternion.identity, _enemyPerant);
+        flyDemon.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "flydemon"));
+        _enemys.Add(flyDemon);
     }
 
     public void SpawnEnemy(EnemyStats data, Vector3 pos)

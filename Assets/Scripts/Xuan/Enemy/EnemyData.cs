@@ -19,16 +19,8 @@ public class EnemyStats
     public float speedAttack;
     public float scoreValue;
     public int countCoin;
-    public EnemyEmotion emotion;
     // Enemy Animation
     public RuntimeAnimatorController animator;
-}
-
-public enum EnemyEmotion
-{
-    Normal,
-    Angry,
-    Happy,
 }
 
 public enum EnemyType

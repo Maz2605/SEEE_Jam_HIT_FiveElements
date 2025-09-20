@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &796325888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,6 @@ MonoBehaviour:
   _currentLevel: 1
   _attackRange: 5
   _animator: {fileID: 0}
-  _healthBar: {fileID: 0}
   _towerHealth: {fileID: 0}
 --- !u!58 &796325889
 CircleCollider2D:
@@ -303,6 +302,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &983343179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8294947159780315723, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+  m_PrefabInstance: {fileID: 1350872458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1319710751
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +389,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 532964577863688911, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 532964577863688911, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 532964577863688911, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4105981297680104993, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -459,10 +481,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5434594628905033089, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+      propertyPath: _image
+      value: 
+      objectReference: {fileID: 983343179}
+    - target: {fileID: 5434594628905033089, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+      propertyPath: _isUseBuff
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520797316913328817, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+      propertyPath: _image
+      value: 
+      objectReference: {fileID: 2094458207}
     - target: {fileID: 7855697436257345221, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
       propertyPath: m_Name
       value: UIGamePlay (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8140995255031094471, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+      propertyPath: _image
+      value: 
+      objectReference: {fileID: 1900522925}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -598,6 +636,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &1900522925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 532964577863688911, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+  m_PrefabInstance: {fileID: 1350872458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2094458207 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1794680298819805149, guid: 9d5059d26cf40134db74f597c1d7f987, type: 3}
+  m_PrefabInstance: {fileID: 1350872458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2101116718
 GameObject:
   m_ObjectHideFlags: 0

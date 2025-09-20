@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class SpawnHero : MonoBehaviour
+public class SpawnHero : Buff
 {
     public List<GameObject> heroPrefabs = new List<GameObject>();
     public GameObject exChangePre;
@@ -14,30 +14,34 @@ public class SpawnHero : MonoBehaviour
     private void OnEnable()
     {
         GameEventPhong.SpawnHero += SpawnHero1;
+        GameEventPhong.LockSpawnHero += LockBuff;
+        GameEventPhong.UnLockSapwnHero += UnLockBuff;
     }
 
     private void OnDisable()
     {
         GameEventPhong.SpawnHero -= SpawnHero1;
+        GameEventPhong.LockSpawnHero -= LockBuff;
+        GameEventPhong.UnLockSapwnHero -= UnLockBuff;
     }
 
     private void SpawnHero1()
     {
 
-
-        int chosenHero = UnityEngine.Random.Range(0, heroPrefabs.Count);
-        if (chosenHero == 0)
+        if (IsUseBuff)
         {
-            Instantiate(exChangePre, heroPos1, Quaternion.identity);
-            DOVirtual.DelayedCall(0.3f,
-                () =>
-                {
-                    Instantiate(heroPrefabs[chosenHero], heroPos1, Quaternion.identity);
-                });
+            int chosenHero = UnityEngine.Random.Range(0, heroPrefabs.Count);
+            if (chosenHero == 0)
+            {
+                Instantiate(exChangePre, heroPos1, Quaternion.identity);
+                DOVirtual.DelayedCall(0.3f,
+                    () => { Instantiate(heroPrefabs[chosenHero], heroPos1, Quaternion.identity); });
+            }
+            else
+            {
+                Instantiate(heroPrefabs[chosenHero], heroPos2, Quaternion.identity);
+            }
         }
-        else
-        {
-            Instantiate(heroPrefabs[chosenHero], heroPos2, Quaternion.identity);
-        }
+        LockBuff();
     }
 }

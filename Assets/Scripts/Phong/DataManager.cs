@@ -13,18 +13,23 @@ public class DataManager : Singleton<DataManager>
     [Header("Skill 3 Buffs")]
     [SerializeField] private float buffRangeAttack = 1.5f;
     [SerializeField] private float buffSpeedAttack = 1.2f;
+    [SerializeField] private float buffHealTower = 100f;
+    [SerializeField] private float buffIncreasePowerSpeed = 1.1f;
 
     [Header("Skill Current Level")]
     [SerializeField] private int currentLevelSkill1 = 1;
     [SerializeField] private int currentLevelSkill2 = 1;
     [SerializeField] private int currentLevelSkill3 = 1;
     [SerializeField] private int currentLevelSkillUltimate = 1;
-    
-   
+
     [Header("Player Attributes")]
     [SerializeField] private int coin = 0;
     [SerializeField] private float towerHealth = 500f;
     [SerializeField] private float powerDuration = 10f;
+
+    [Header("Audio Settings")]
+    [SerializeField] private float musicVolume = 1f; // ✅ mới
+    [SerializeField] private float sfxVolume = 1f;   // ✅ mới
 
     [Header("Skill Upgrade Prices")]
     [SerializeField] private int priceSkill1 = 100;
@@ -47,21 +52,20 @@ public class DataManager : Singleton<DataManager>
     private const string TimerSkill3Key = "TimerSkill3";
     private const string BuffRangeAttackKey = "BuffRangeAttack";
     private const string BuffSpeedAttackKey = "BuffSpeedAttack";
+    private const string BuffHealTowerKey = "BuffHealTower";
+    private const string BuffIncreasePowerSpeedKey = "BuffIncreasePowerSpeed";
 
     private const string CurrentLevelSkill1Key = "CurrentLevelSkill1";
     private const string CurrentLevelSkill2Key = "CurrentLevelSkill2";
     private const string CurrentLevelSkill3Key = "CurrentLevelSkill3";
     private const string CurrentLevelSkillUltimateKey = "CurrentLevelSkillUltimate";
 
-    private const string BuffHealTowerKey = "BuffHealTower";
-    private const string BuffIncreaseDurationKey = "BuffIncreaseDuration";
-    private const string BuffIncreaseMaxHealthKey = "BuffIncreaseMaxHealth";
-    private const string BuffIncreasePowerSpeedKey = "BuffIncreasePowerSpeed";
-    private const string BuffIncreaseSpeedAttackKey = "BuffIncreaseSpeedAttack";
-
     private const string CoinKey = "PlayerCoin";
     private const string TowerHealthKey = "TowerHealth";
     private const string PowerDurationKey = "PowerDuration";
+
+    private const string MusicVolumeKey = "MusicVolume"; // ✅ mới
+    private const string SfxVolumeKey = "SfxVolume";     // ✅ mới
 
     private const string PriceSkill1Key = "PriceSkill1";
     private const string PriceSkill2Key = "PriceSkill2";
@@ -73,7 +77,7 @@ public class DataManager : Singleton<DataManager>
     private const string PriceSkin3Key = "PriceSkin3";
 
     // =========================
-    // 🔹 PROPERTIES (auto save)
+    // 🔹 PROPERTIES
     // =========================
     public float DamageSkill1 { get => damageSkill1; set { damageSkill1 = value; SaveDataSkill1(damageSkill1); } }
     public float DamageSkillUltimate { get => damageSkillUltimate; set { damageSkillUltimate = value; SaveDataSkillUltimate(damageSkillUltimate); } }
@@ -81,6 +85,8 @@ public class DataManager : Singleton<DataManager>
     public float TimerSkill3 { get => timerSkill3; set { timerSkill3 = value; SaveTimerSkill3(timerSkill3); } }
     public float BuffRangeAttack { get => buffRangeAttack; set { buffRangeAttack = value; SaveBuffRangeAttack(buffRangeAttack); } }
     public float BuffSpeedAttack { get => buffSpeedAttack; set { buffSpeedAttack = value; SaveBuffSpeedAttack(buffSpeedAttack); } }
+    public float BuffHealTower { get => buffHealTower; set { buffHealTower = value; SaveBuffHealTower(buffHealTower); } }
+    public float BuffIncreasePowerSpeed { get => buffIncreasePowerSpeed; set { buffIncreasePowerSpeed = value; SaveBuffIncreasePowerSpeed(buffIncreasePowerSpeed); } }
 
     public int CurrentLevelSkill1 { get => currentLevelSkill1; set { currentLevelSkill1 = value; SaveCurrentLevelSkill1(currentLevelSkill1); } }
     public int CurrentLevelSkill2 { get => currentLevelSkill2; set { currentLevelSkill2 = value; SaveCurrentLevelSkill2(currentLevelSkill2); } }
@@ -90,6 +96,9 @@ public class DataManager : Singleton<DataManager>
     public int Coin { get => coin; set { coin = value; SaveCoin(coin); } }
     public float TowerHealth { get => towerHealth; set { towerHealth = value; SaveTowerHealth(towerHealth); } }
     public float PowerDuration { get => powerDuration; set { powerDuration = value; SavePowerDuration(powerDuration); } }
+
+    public float MusicVolume { get => musicVolume; set { musicVolume = value; SaveMusicVolume(musicVolume); } } // ✅ mới
+    public float SfxVolume { get => sfxVolume; set { sfxVolume = value; SaveSfxVolume(sfxVolume); } }           // ✅ mới
 
     public int PriceSkill1 { get => priceSkill1; set { priceSkill1 = value; SavePriceSkill1(priceSkill1); } }
     public int PriceSkill2 { get => priceSkill2; set { priceSkill2 = value; SavePriceSkill2(priceSkill2); } }
@@ -106,7 +115,7 @@ public class DataManager : Singleton<DataManager>
     }
 
     // =========================
-    // 🔹 SAVE (luôn PlayerPrefs.Save())
+    // 🔹 SAVE
     // =========================
     public void SaveDataSkill1(float damage) { PlayerPrefs.SetFloat(DamageSkill1Key, damage); PlayerPrefs.Save(); }
     public void SaveDataSkillUltimate(float damage) { PlayerPrefs.SetFloat(DamageSkillUltimateKey, damage); PlayerPrefs.Save(); }
@@ -114,21 +123,20 @@ public class DataManager : Singleton<DataManager>
     public void SaveTimerSkill3(float timer) { PlayerPrefs.SetFloat(TimerSkill3Key, timer); PlayerPrefs.Save(); }
     public void SaveBuffRangeAttack(float value) { PlayerPrefs.SetFloat(BuffRangeAttackKey, value); PlayerPrefs.Save(); }
     public void SaveBuffSpeedAttack(float value) { PlayerPrefs.SetFloat(BuffSpeedAttackKey, value); PlayerPrefs.Save(); }
+    public void SaveBuffHealTower(float value) { PlayerPrefs.SetFloat(BuffHealTowerKey, value); PlayerPrefs.Save(); }
+    public void SaveBuffIncreasePowerSpeed(float value) { PlayerPrefs.SetFloat(BuffIncreasePowerSpeedKey, value); PlayerPrefs.Save(); }
 
     public void SaveCurrentLevelSkill1(int value) { PlayerPrefs.SetInt(CurrentLevelSkill1Key, value); PlayerPrefs.Save(); }
     public void SaveCurrentLevelSkill2(int value) { PlayerPrefs.SetInt(CurrentLevelSkill2Key, value); PlayerPrefs.Save(); }
     public void SaveCurrentLevelSkill3(int value) { PlayerPrefs.SetInt(CurrentLevelSkill3Key, value); PlayerPrefs.Save(); }
     public void SaveCurrentLevelSkillUltimate(int value) { PlayerPrefs.SetInt(CurrentLevelSkillUltimateKey, value); PlayerPrefs.Save(); }
 
-    public void SaveBuffHealTower(int value) { PlayerPrefs.SetInt(BuffHealTowerKey, value); PlayerPrefs.Save(); }
-    public void SaveBuffIncreaseDuration(int value) { PlayerPrefs.SetInt(BuffIncreaseDurationKey, value); PlayerPrefs.Save(); }
-    public void SaveBuffIncreaseMaxHealth(int value) { PlayerPrefs.SetInt(BuffIncreaseMaxHealthKey, value); PlayerPrefs.Save(); }
-    public void SaveBuffIncreasePowerSpeed(int value) { PlayerPrefs.SetInt(BuffIncreasePowerSpeedKey, value); PlayerPrefs.Save(); }
-    public void SaveBuffIncreaseSpeedAttack(int value) { PlayerPrefs.SetInt(BuffIncreaseSpeedAttackKey, value); PlayerPrefs.Save(); }
-
     public void SaveCoin(int value) { PlayerPrefs.SetInt(CoinKey, value); PlayerPrefs.Save(); }
     public void SaveTowerHealth(float value) { PlayerPrefs.SetFloat(TowerHealthKey, value); PlayerPrefs.Save(); }
     public void SavePowerDuration(float value) { PlayerPrefs.SetFloat(PowerDurationKey, value); PlayerPrefs.Save(); }
+
+    public void SaveMusicVolume(float value) { PlayerPrefs.SetFloat(MusicVolumeKey, value); PlayerPrefs.Save(); } // ✅ mới
+    public void SaveSfxVolume(float value) { PlayerPrefs.SetFloat(SfxVolumeKey, value); PlayerPrefs.Save(); }     // ✅ mới
 
     public void SavePriceSkill1(int value) { PlayerPrefs.SetInt(PriceSkill1Key, value); PlayerPrefs.Save(); }
     public void SavePriceSkill2(int value) { PlayerPrefs.SetInt(PriceSkill2Key, value); PlayerPrefs.Save(); }
@@ -150,16 +158,20 @@ public class DataManager : Singleton<DataManager>
         SaveTimerSkill3(timerSkill3);
         SaveBuffRangeAttack(buffRangeAttack);
         SaveBuffSpeedAttack(buffSpeedAttack);
+        SaveBuffHealTower(buffHealTower);
+        SaveBuffIncreasePowerSpeed(buffIncreasePowerSpeed);
 
         SaveCurrentLevelSkill1(currentLevelSkill1);
         SaveCurrentLevelSkill2(currentLevelSkill2);
         SaveCurrentLevelSkill3(currentLevelSkill3);
         SaveCurrentLevelSkillUltimate(currentLevelSkillUltimate);
-        
 
         SaveCoin(coin);
         SaveTowerHealth(towerHealth);
         SavePowerDuration(powerDuration);
+
+        SaveMusicVolume(musicVolume); // ✅ mới
+        SaveSfxVolume(sfxVolume);     // ✅ mới
 
         SavePriceSkill1(priceSkill1);
         SavePriceSkill2(priceSkill2);
@@ -186,16 +198,20 @@ public class DataManager : Singleton<DataManager>
         timerSkill3 = PlayerPrefs.GetFloat(TimerSkill3Key, timerSkill3);
         buffRangeAttack = PlayerPrefs.GetFloat(BuffRangeAttackKey, buffRangeAttack);
         buffSpeedAttack = PlayerPrefs.GetFloat(BuffSpeedAttackKey, buffSpeedAttack);
+        buffHealTower = PlayerPrefs.GetFloat(BuffHealTowerKey, buffHealTower);
+        buffIncreasePowerSpeed = PlayerPrefs.GetFloat(BuffIncreasePowerSpeedKey, buffIncreasePowerSpeed);
 
         currentLevelSkill1 = PlayerPrefs.GetInt(CurrentLevelSkill1Key, currentLevelSkill1);
         currentLevelSkill2 = PlayerPrefs.GetInt(CurrentLevelSkill2Key, currentLevelSkill2);
         currentLevelSkill3 = PlayerPrefs.GetInt(CurrentLevelSkill3Key, currentLevelSkill3);
         currentLevelSkillUltimate = PlayerPrefs.GetInt(CurrentLevelSkillUltimateKey, currentLevelSkillUltimate);
-        
 
         coin = PlayerPrefs.GetInt(CoinKey, coin);
         towerHealth = PlayerPrefs.GetFloat(TowerHealthKey, towerHealth);
         powerDuration = PlayerPrefs.GetFloat(PowerDurationKey, powerDuration);
+
+        musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey, musicVolume); // ✅ mới
+        sfxVolume = PlayerPrefs.GetFloat(SfxVolumeKey, sfxVolume);       // ✅ mới
 
         priceSkill1 = PlayerPrefs.GetInt(PriceSkill1Key, priceSkill1);
         priceSkill2 = PlayerPrefs.GetInt(PriceSkill2Key, priceSkill2);
@@ -224,15 +240,20 @@ public class DataManager : Singleton<DataManager>
         timerSkill3 = 5f;
         buffRangeAttack = 1.5f;
         buffSpeedAttack = 1.2f;
+        buffHealTower = 100f;
+        buffIncreasePowerSpeed = 1.1f;
 
         currentLevelSkill1 = 1;
         currentLevelSkill2 = 1;
         currentLevelSkill3 = 1;
         currentLevelSkillUltimate = 1;
-        
+
         coin = 1000;
         towerHealth = 500f;
         powerDuration = 10f;
+
+        musicVolume = 1f; // ✅ default
+        sfxVolume = 1f;   // ✅ default
 
         priceSkill1 = 100;
         priceSkill2 = 150;

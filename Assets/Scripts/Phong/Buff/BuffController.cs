@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class BuffController : MonoBehaviour
 {
-    public int numberOfHealTower = 0;
-    public int numberOfIncreasePowerSpeed = 0;
-    public int numberOfSpeedAttack = 0;
+
     
 
     private void OnEnable()
@@ -30,33 +28,15 @@ public class BuffController : MonoBehaviour
 
     public void HeathTower()
     {
-        if (numberOfHealTower > 0)
-        {
-            GameEventPhong.HealTower();
-            DataManager.Instance.SaveBuffHealTower(numberOfHealTower-1);
-            numberOfHealTower--;
-        }
+        GameEventPhong.HealTower();
     }
 
     public void IncreasePowerSpeed()
     {
-        if (numberOfIncreasePowerSpeed > 0)
-        {
-            GameEventPhong.IncreasePowerSpeed();
-            DataManager.Instance.SaveBuffIncreasePowerSpeed(numberOfIncreasePowerSpeed-1);
-            numberOfIncreasePowerSpeed--;
-        }
+        GameEventPhong.IncreasePowerSpeed();
     }
 
-    public void IncreaseSpeedAttack()
-    {
-        if (numberOfSpeedAttack > 0)
-        {
-            GameEventPhong.IncreaseSpeedAttack();
-            DataManager.Instance.SaveBuffSpeedAttack(numberOfSpeedAttack-1);
-            numberOfSpeedAttack--;
-        }
-    }
+
 
     public void IncreaseMaxHeath()
     {

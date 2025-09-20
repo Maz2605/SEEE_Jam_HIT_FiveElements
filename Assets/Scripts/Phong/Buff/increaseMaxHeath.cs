@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class increaseMaxHeath : Buff
+public class increaseMaxHeath : MonoBehaviour
 {
     public float heathIncrease;
 

@@ -10,13 +10,20 @@ public static class GameEventPhong
     public static Action IncreasePowerSpeed;
     public static Action IncreaseSpeedAttack;
     public static Action SpawnHero;
+    public static Action UnLockBuffHealTower;
+    public static Action LockBuffHealTower;
+    public static Action UnLockBuffIncreasePowerSpeed;
+    public static Action LockBuffIncreasePowerSpeed;
+    public static Action UnLockSapwnHero;
+    public static Action LockSpawnHero;
     
     public static Action HandleIncreaseMaxHeath;
     public static Action HandleIncreaseDuration;
 
     public static Func<bool,int> GetIsLookSkill;
 
-    public static Action AppearStore;
+    public static Action AppearAward;
+    public static Action DisAppearAward;
 
     public static Action UpgradeSkill1;
     public static Action UpgradeSkill2;

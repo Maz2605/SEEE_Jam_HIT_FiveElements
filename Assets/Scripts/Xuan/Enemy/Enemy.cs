@@ -53,16 +53,15 @@ public class Enemy : MonoBehaviour
         set => _isStart = value;
     }
     
-
     private void OnEnable()
     {
-        XuanEventManager.EnemyTakeDamage += TakeDamage;
+        
         XuanEventManager.ReduceSpeed += ReductSpeed;
         XuanEventManager.EnemyBeFrozen += BeFrozen;
     }
     private void OnDisable()
     {
-        XuanEventManager.EnemyTakeDamage -= TakeDamage;
+        
         XuanEventManager.ReduceSpeed -= ReductSpeed;
         XuanEventManager.EnemyBeFrozen -= BeFrozen;
     }
@@ -171,6 +170,7 @@ public class Enemy : MonoBehaviour
         StopMove();
         _currentHealth += damage;
         _enemyUI.UpdateImotionBar(_currentHealth);
+        gameObject.tag = "Untagged";
         if (_currentHealth >= _health)
         {
             _currentHealth = _health;
@@ -178,6 +178,7 @@ public class Enemy : MonoBehaviour
         }
         DOVirtual.DelayedCall(0.5f, () =>
         {
+            gameObject.tag = "Enemy";
             if (_currentHealth < _health && _type == EnemyType.Enemy && !_isStart)
             {
                 StartMove();
@@ -187,7 +188,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(Enemy enemy, float damage)
     {
-        Debug.Log("Enemy Take Damage" + damage);
+        Debug.Log(gameObject.transform.position + " Enemy Take Damage" + damage);
         enemy.Hit(damage);
     }
     public void ReductSpeed(Enemy enemy, float r, float time)
@@ -212,6 +213,9 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Die()
     {
+        //////////////////////////////////////////
+        Debug.Log($"{name} đã chết, còn lại: {EnemyManager.Instance.EnemyCount}");
+
         gameObject.tag = "Untagged";
         EnemyManager.Instance.RemoveEnemy(this);
         if(_type == EnemyType.Enemy)
@@ -282,4 +286,5 @@ public class Enemy : MonoBehaviour
         }
     }
     #endregion
+
 }

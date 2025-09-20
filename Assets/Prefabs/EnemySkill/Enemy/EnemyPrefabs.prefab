@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5886540372529354503}
   - component: {fileID: 1531934858114659525}
   - component: {fileID: 4086666740197909818}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyPrefabs
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8282609231279480593}
   - component: {fileID: 5377364463767171598}
   - component: {fileID: 4450030738112565151}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1965126157768540489}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ImotionBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 8101190638175692731}
   - component: {fileID: 2118279067903424306}
   - component: {fileID: 5214089133871095742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 8553303963005604295}
   - component: {fileID: 8778507219161650963}
   - component: {fileID: 5012027903524720717}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 6273340558708403885}
   - component: {fileID: 5706215107952448886}
   - component: {fileID: 5028943238169219881}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UIEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 6721661499643212981}
   - component: {fileID: 2086426784683353875}
   - component: {fileID: 3035776072474473773}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 1394601892906142038}
   - component: {fileID: 1139166637278980217}
   - component: {fileID: 2672914903481527485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Imotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

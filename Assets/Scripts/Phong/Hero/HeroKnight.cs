@@ -94,7 +94,7 @@ public class HeroKnight : MonoBehaviour
 
             Enemy enemyComp = targetEnemy.GetComponent<Enemy>();
             if (enemyComp != null)
-                XuanEventManager.EnemyTakeDamage(enemyComp, _damage);
+                enemyComp.GetComponent<Enemy>().TakeDamage(enemyComp, _damage);
         }
     }
 

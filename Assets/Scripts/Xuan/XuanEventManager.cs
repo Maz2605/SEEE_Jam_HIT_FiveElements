@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class XuanEventManager : Singleton<XuanEventManager>
 {
-    public static Action<Enemy, float> EnemyTakeDamage;
 
     public static Action<Enemy, float> EnemyBeFrozen;
 

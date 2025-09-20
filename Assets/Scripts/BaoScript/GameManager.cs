@@ -10,7 +10,8 @@ public enum GameState
     SpawnBosses,
     WaitBosses,
     BetweenWaves,
-    Finished
+    Finished,
+    GameOver
 }
 
 public class GameManager : MonoBehaviour
@@ -216,6 +217,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("▶️ Store đã đóng → Spawn enemy");
         ChangeState(GameState.SpawnEnemies);
+    }
+
+    public void GameOver()
+    {
+
     }
     #endregion
 }

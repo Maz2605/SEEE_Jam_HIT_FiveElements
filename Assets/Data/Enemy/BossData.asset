@@ -24,30 +24,30 @@ MonoBehaviour:
     animator: {fileID: 9100000, guid: 67646336bb7998c42bb04d509ad63517, type: 2}
   - idEnemy: medusa
     isFar: 1
-    health: 1555
-    speed: 2
-    damage: 12
-    speedAttack: 6
+    health: 1000
+    speed: 1.5
+    damage: 15
+    speedAttack: 5
     scoreValue: 1
-    countCoin: 45
+    countCoin: 70
     animator: {fileID: 9100000, guid: 44c32f9fc7a07de4180d06c5eeb90288, type: 2}
   - idEnemy: golem
     isFar: 1
-    health: 123
-    speed: 1
-    damage: 12
-    speedAttack: 5
+    health: 250
+    speed: 0.75
+    damage: 15
+    speedAttack: 3
     scoreValue: 1
-    countCoin: 45
+    countCoin: 40
     animator: {fileID: 9100000, guid: 7d5becf920fa57446a15eb7ee7bc4c21, type: 2}
   - idEnemy: flydemon
     isFar: 1
-    health: 1111
+    health: 500
     speed: 2
-    damage: 12
-    speedAttack: 5
+    damage: 10
+    speedAttack: 7
     scoreValue: 1
-    countCoin: 45
+    countCoin: 55
     animator: {fileID: 9100000, guid: fec6ac3f80dfe5840ada9c8497346d88, type: 2}
   - idEnemy: stayr
     isFar: 1

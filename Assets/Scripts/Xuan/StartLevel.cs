@@ -23,7 +23,8 @@ public class StartLevel : MonoBehaviour
     }
 
     public void OnLevel(int index)
-    { 
+    {
+        TowerHealth.Instance.InitTower();
         _map.SetActive(true);
         _uiGamePlay.SetActive(true);
         GameEventPhong.AppearAward?.Invoke(); // Khoi tao UI choise Buff
@@ -52,5 +53,6 @@ public class StartLevel : MonoBehaviour
         {
             PoolingManager.Despawn(heroKnight.gameObject);
         }
+        ObjectManager.Instance.DeactivateAllObjects();
     }
 }

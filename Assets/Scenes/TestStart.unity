@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 329807257}
   - component: {fileID: 329807258}
   - component: {fileID: 329807259}
+  - component: {fileID: 329807260}
   m_Layer: 0
   m_Name: UITEst
   m_TagString: Untagged
@@ -354,6 +355,18 @@ MonoBehaviour:
   obj: {fileID: 564838810}
   enemyListSpawn: {fileID: 849885034}
   _uiGamePlay: {fileID: 463861192}
+--- !u!114 &329807260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329807256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96504aff0e3a2e74c83dcf522aebc7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &405075915
 GameObject:
   m_ObjectHideFlags: 0

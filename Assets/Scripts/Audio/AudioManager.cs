@@ -42,16 +42,15 @@ public class AudioManager : Singleton<AudioManager>
         if (_musicSource == null || _soundSource == null)
         {
             Debug.LogError("AudioSource not assigned in AudioManager!");
+            
         }
+        
+        PlayMusicStartGame();
     }
 
     private void Start()
     {
-        //if (DataManager.Instance != null && DataManager.Instance.GameData != null)
-        //{
-        //    SetMusicVolume(DataManager.Instance.GameData.MusicVolume);
-        //    SetSoundVolume(DataManager.Instance.GameData.SoundVolume);
-        //}
+        
     }
 
     #region Volume & Save
@@ -60,10 +59,8 @@ public class AudioManager : Singleton<AudioManager>
         if (_musicSource != null)
         {
             _musicSource.volume = Mathf.Clamp01(volume);
-            //if (DataManager.Instance != null && DataManager.Instance.GameData != null)
-            //{
-            //    DataManager.Instance.GameData.MusicVolume = _musicSource.volume;
-            //}
+            DataManager.Instance.MusicVolume = _musicSource.volume;
+            DataManager.Instance.SaveMusicVolume(DataManager.Instance.MusicVolume);
         }
     }
 
@@ -72,10 +69,8 @@ public class AudioManager : Singleton<AudioManager>
         if (_soundSource != null)
         {
             _soundSource.volume = Mathf.Clamp01(volume);
-            //if (DataManager.Instance != null && DataManager.Instance.GameData != null)
-            //{
-            //    DataManager.Instance.GameData.SoundVolume = _soundSource.volume;
-            //}
+            DataManager.Instance.SfxVolume = _soundSource.volume;
+            DataManager.Instance.SaveSfxVolume(DataManager.Instance.SfxVolume);
         }
     }
 
@@ -92,7 +87,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (DataManager.Instance != null)
         {
-            //DataManager.Instance.SaveGameData();
+            
         }
     }
     #endregion
@@ -134,8 +129,7 @@ public class AudioManager : Singleton<AudioManager>
         _musicSource.Play();
 
         float targetVol = 1f;
-        //if (DataManager.Instance != null && DataManager.Instance.GameData != null)
-        //    targetVol = DataManager.Instance.GameData.MusicVolume;
+        
 
         _musicSource.DOFade(targetVol, fadeDuration).SetUpdate(true);
     }

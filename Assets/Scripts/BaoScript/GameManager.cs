@@ -14,7 +14,7 @@ public enum GameState
     GameOver
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public static System.Action OnWaveCompleted;
     public static System.Action OnAllWavesFinished;

@@ -12,14 +12,13 @@ GameObject:
   - component: {fileID: 4834648511043132516}
   - component: {fileID: 1794680298819805149}
   - component: {fileID: 2587746004379768482}
-  - component: {fileID: 7520797316913328817}
   m_Layer: 5
   m_Name: Buff2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4904077453803389980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -134,21 +133,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7520797316913328817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39238928594446993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8078a922a0d3f7d49aece89486a71d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isUseBuff: 1
-  _image: {fileID: 0}
-  powerSpeed: 1
 --- !u!1 &273270173705610369
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,14 +868,13 @@ GameObject:
   - component: {fileID: 774509972393265741}
   - component: {fileID: 532964577863688911}
   - component: {fileID: 4882476979924815142}
-  - component: {fileID: 8140995255031094471}
   m_Layer: 5
   m_Name: Buff1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2717984873383332853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1006,21 +989,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8140995255031094471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180812028489049619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162b01301b2726a4f96257e49d91e93c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isUseBuff: 1
-  _image: {fileID: 0}
-  healAmount: 100
 --- !u!1 &1653494436523259338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,7 +2819,7 @@ RectTransform:
   m_GameObject: {fileID: 7855697436257345221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8425341067179655173}
@@ -3112,14 +3080,13 @@ GameObject:
   - component: {fileID: 329289382697666407}
   - component: {fileID: 8294947159780315723}
   - component: {fileID: 4844593220076240738}
-  - component: {fileID: 5434594628905033089}
   m_Layer: 5
   m_Name: Buff3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1085950333056188136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3234,26 +3201,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5434594628905033089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8894432369532733623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ad79ee21fb6ee409ff7b77cd53b39a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isUseBuff: 1
-  _image: {fileID: 0}
-  heroPrefabs:
-  - {fileID: 4945646606230668466, guid: bdf40e1cc3e480e41b695323e4bff746, type: 3}
-  - {fileID: 8304507853652348933, guid: d5c8268fdcdf8e841950c59e42a3ffbb, type: 3}
-  exChangePre: {fileID: 9132862166446132932, guid: d145d2eb56a483042b3ff5d860d8ba87, type: 3}
-  heroPos1: {x: -3, y: -2, z: 0}
-  heroPos2: {x: 0, y: 3.54, z: 0}
 --- !u!1 &9170967662272667258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3266,6 +3213,9 @@ GameObject:
   - component: {fileID: 7964476571602500122}
   - component: {fileID: 8405802206997975231}
   - component: {fileID: 1879099428263888587}
+  - component: {fileID: 3923038790324132261}
+  - component: {fileID: 9057489848101536214}
+  - component: {fileID: 429846028217924485}
   m_Layer: 5
   m_Name: BuffPart
   m_TagString: Untagged
@@ -3345,9 +3295,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124aff166b98c00479e8a32b2fcd6d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfHealTower: 5
-  numberOfIncreasePowerSpeed: 5
-  numberOfSpeedAttack: 5
+--- !u!114 &3923038790324132261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170967662272667258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162b01301b2726a4f96257e49d91e93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isUseBuff: 1
+  healAmount: 100
+--- !u!114 &9057489848101536214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170967662272667258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8078a922a0d3f7d49aece89486a71d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isUseBuff: 1
+  powerSpeed: 1
+--- !u!114 &429846028217924485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170967662272667258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ad79ee21fb6ee409ff7b77cd53b39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isUseBuff: 0
+  heroPrefabs:
+  - {fileID: 4945646606230668466, guid: bdf40e1cc3e480e41b695323e4bff746, type: 3}
+  - {fileID: 8304507853652348933, guid: d5c8268fdcdf8e841950c59e42a3ffbb, type: 3}
+  exChangePre: {fileID: 9132862166446132932, guid: d145d2eb56a483042b3ff5d860d8ba87, type: 3}
+  heroPos1: {x: -3, y: -2, z: 0}
+  heroPos2: {x: 0, y: 3.54, z: 0}
 --- !u!1001 &3499835123101494338
 PrefabInstance:
   m_ObjectHideFlags: 0

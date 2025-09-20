@@ -10,27 +10,21 @@ public class HealTower : Buff
     private void OnEnable()
     {
         GameEventPhong.HealTower += HealthTower;
-        GameEventPhong.LockBuffHealTower += LockBuff;
-        GameEventPhong.UnLockBuffHealTower += UnLockBuff1;
+
     }
 
     private void OnDisable()
     {
         GameEventPhong.HealTower -= HealthTower;
-        GameEventPhong.LockBuffHealTower -= LockBuff;
-        GameEventPhong.UnLockBuffHealTower -= UnLockBuff1;
+
     }
 
     private void HealthTower()
     {
-        if(IsUseBuff)
-            TowerHealth.Instance.SetCurrentHealth(healAmount);
-        IsUseBuff = false;
-        LockBuff();
+        
+        TowerHealth.Instance.SetCurrentHealth(healAmount);
+       
+       
     }
 
-    public void UnLockBuff1()
-    {
-        UnLockBuff();
-    }
 }

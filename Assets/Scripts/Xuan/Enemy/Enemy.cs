@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
         gameObject.tag = "Enemy";
         _collider2D.enabled = true;
 
+        _isStart = false;
         //Sau khi khoi tao xong bat dau di chuyen
         StartMove();
     }
@@ -301,6 +302,8 @@ public class Enemy : MonoBehaviour
         {
             if (_type == EnemyType.Enemy)
             {
+                Debug.Log("Enemy Stop and Attack" + _idEnemy);
+
                 StopMove();
                 StartAttack();
                 _isStart = true;

@@ -26,10 +26,12 @@ public class DataManager : Singleton<DataManager>
     [SerializeField] private int coin = 0;
     [SerializeField] private float towerHealth = 500f;
     [SerializeField] private float powerDuration = 10f;
+    [SerializeField] private float attackRange = 5f;   // ✅ mới
+    [SerializeField] private float bulletSpeed = 10f;  // ✅ mới
 
     [Header("Audio Settings")]
-    [SerializeField] private float musicVolume = 1f; // ✅ mới
-    [SerializeField] private float sfxVolume = 1f;   // ✅ mới
+    [SerializeField] private float musicVolume = 1f;
+    [SerializeField] private float sfxVolume = 1f;
 
     [Header("Skill Upgrade Prices")]
     [SerializeField] private int priceSkill1 = 100;
@@ -63,9 +65,11 @@ public class DataManager : Singleton<DataManager>
     private const string CoinKey = "PlayerCoin";
     private const string TowerHealthKey = "TowerHealth";
     private const string PowerDurationKey = "PowerDuration";
+    private const string AttackRangeKey = "AttackRange";   // ✅ mới
+    private const string BulletSpeedKey = "BulletSpeed";   // ✅ mới
 
-    private const string MusicVolumeKey = "MusicVolume"; // ✅ mới
-    private const string SfxVolumeKey = "SfxVolume";     // ✅ mới
+    private const string MusicVolumeKey = "MusicVolume";
+    private const string SfxVolumeKey = "SfxVolume";
 
     private const string PriceSkill1Key = "PriceSkill1";
     private const string PriceSkill2Key = "PriceSkill2";
@@ -97,8 +101,11 @@ public class DataManager : Singleton<DataManager>
     public float TowerHealth { get => towerHealth; set { towerHealth = value; SaveTowerHealth(towerHealth); } }
     public float PowerDuration { get => powerDuration; set { powerDuration = value; SavePowerDuration(powerDuration); } }
 
-    public float MusicVolume { get => musicVolume; set { musicVolume = value; SaveMusicVolume(musicVolume); } } // ✅ mới
-    public float SfxVolume { get => sfxVolume; set { sfxVolume = value; SaveSfxVolume(sfxVolume); } }           // ✅ mới
+    public float AttackRange { get => attackRange; set { attackRange = value; SaveAttackRange(attackRange); } }   // ✅ mới
+    public float BulletSpeed { get => bulletSpeed; set { bulletSpeed = value; SaveBulletSpeed(bulletSpeed); } } // ✅ mới
+
+    public float MusicVolume { get => musicVolume; set { musicVolume = value; SaveMusicVolume(musicVolume); } }
+    public float SfxVolume { get => sfxVolume; set { sfxVolume = value; SaveSfxVolume(sfxVolume); } }
 
     public int PriceSkill1 { get => priceSkill1; set { priceSkill1 = value; SavePriceSkill1(priceSkill1); } }
     public int PriceSkill2 { get => priceSkill2; set { priceSkill2 = value; SavePriceSkill2(priceSkill2); } }
@@ -134,9 +141,11 @@ public class DataManager : Singleton<DataManager>
     public void SaveCoin(int value) { PlayerPrefs.SetInt(CoinKey, value); PlayerPrefs.Save(); }
     public void SaveTowerHealth(float value) { PlayerPrefs.SetFloat(TowerHealthKey, value); PlayerPrefs.Save(); }
     public void SavePowerDuration(float value) { PlayerPrefs.SetFloat(PowerDurationKey, value); PlayerPrefs.Save(); }
+    public void SaveAttackRange(float value) { PlayerPrefs.SetFloat(AttackRangeKey, value); PlayerPrefs.Save(); }   // ✅ mới
+    public void SaveBulletSpeed(float value) { PlayerPrefs.SetFloat(BulletSpeedKey, value); PlayerPrefs.Save(); } // ✅ mới
 
-    public void SaveMusicVolume(float value) { PlayerPrefs.SetFloat(MusicVolumeKey, value); PlayerPrefs.Save(); } // ✅ mới
-    public void SaveSfxVolume(float value) { PlayerPrefs.SetFloat(SfxVolumeKey, value); PlayerPrefs.Save(); }     // ✅ mới
+    public void SaveMusicVolume(float value) { PlayerPrefs.SetFloat(MusicVolumeKey, value); PlayerPrefs.Save(); }
+    public void SaveSfxVolume(float value) { PlayerPrefs.SetFloat(SfxVolumeKey, value); PlayerPrefs.Save(); }
 
     public void SavePriceSkill1(int value) { PlayerPrefs.SetInt(PriceSkill1Key, value); PlayerPrefs.Save(); }
     public void SavePriceSkill2(int value) { PlayerPrefs.SetInt(PriceSkill2Key, value); PlayerPrefs.Save(); }
@@ -169,9 +178,11 @@ public class DataManager : Singleton<DataManager>
         SaveCoin(coin);
         SaveTowerHealth(towerHealth);
         SavePowerDuration(powerDuration);
+        SaveAttackRange(attackRange);   // ✅ mới
+        SaveBulletSpeed(bulletSpeed);   // ✅ mới
 
-        SaveMusicVolume(musicVolume); // ✅ mới
-        SaveSfxVolume(sfxVolume);     // ✅ mới
+        SaveMusicVolume(musicVolume);
+        SaveSfxVolume(sfxVolume);
 
         SavePriceSkill1(priceSkill1);
         SavePriceSkill2(priceSkill2);
@@ -209,9 +220,11 @@ public class DataManager : Singleton<DataManager>
         coin = PlayerPrefs.GetInt(CoinKey, coin);
         towerHealth = PlayerPrefs.GetFloat(TowerHealthKey, towerHealth);
         powerDuration = PlayerPrefs.GetFloat(PowerDurationKey, powerDuration);
+        attackRange = PlayerPrefs.GetFloat(AttackRangeKey, attackRange);   // ✅ mới
+        bulletSpeed = PlayerPrefs.GetFloat(BulletSpeedKey, bulletSpeed);   // ✅ mới
 
-        musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey, musicVolume); // ✅ mới
-        sfxVolume = PlayerPrefs.GetFloat(SfxVolumeKey, sfxVolume);       // ✅ mới
+        musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey, musicVolume);
+        sfxVolume = PlayerPrefs.GetFloat(SfxVolumeKey, sfxVolume);
 
         priceSkill1 = PlayerPrefs.GetInt(PriceSkill1Key, priceSkill1);
         priceSkill2 = PlayerPrefs.GetInt(PriceSkill2Key, priceSkill2);
@@ -251,9 +264,11 @@ public class DataManager : Singleton<DataManager>
         coin = 1000;
         towerHealth = 500f;
         powerDuration = 10f;
+        attackRange = 5f;   // ✅ default
+        bulletSpeed = 10f;  // ✅ default
 
-        musicVolume = 1f; // ✅ default
-        sfxVolume = 1f;   // ✅ default
+        musicVolume = 1f;
+        sfxVolume = 1f;
 
         priceSkill1 = 100;
         priceSkill2 = 150;

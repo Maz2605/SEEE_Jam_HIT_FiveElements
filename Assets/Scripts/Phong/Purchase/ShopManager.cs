@@ -60,4 +60,11 @@ public class ShopManager : Singleton<ShopManager>
             .Append(_inforText.DOFade(0f, 0.2f))   // fade out
             .OnComplete(() => _inforText.gameObject.SetActive(false)); // ẩn hẳn
     }
+
+    public void OutShop()
+    {
+        // Out shop 
+        
+        gameObject.SetActive(false);
+    }
 }

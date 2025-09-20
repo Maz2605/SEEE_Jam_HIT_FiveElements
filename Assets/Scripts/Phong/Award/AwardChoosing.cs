@@ -40,5 +40,8 @@ public class AwardChoosing : MonoBehaviour
     {
         // Next wave
         GameEventPhong.DisAppearAward();
+        
+        // Xu ly NextWave
+        
     }
 }

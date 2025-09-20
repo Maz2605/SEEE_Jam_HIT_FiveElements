@@ -10,22 +10,20 @@ public class IncreasePowerSpeed : Buff
     private void OnEnable()
     {
         GameEventPhong.IncreasePowerSpeed += IncreasePowerSpeedBuff;
-        GameEventPhong.LockBuffIncreasePowerSpeed += LockBuff;
-        GameEventPhong.UnLockBuffIncreasePowerSpeed += UnLockBuff;
+
     }
 
     private void OnDisable()
     {
         GameEventPhong.IncreasePowerSpeed -= IncreasePowerSpeedBuff;
-        GameEventPhong.LockBuffIncreasePowerSpeed -= LockBuff;
-        GameEventPhong.UnLockBuffIncreasePowerSpeed -= UnLockBuff;
+
     }
 
     private void IncreasePowerSpeedBuff()
     {
-        if(IsUseBuff)
+        
             EmotionBar.Instance.SetPassiveGainPerSecond(powerSpeed);
-        IsUseBuff = false;
-        LockBuff();
+        
+        
     }
 }

@@ -31,7 +31,7 @@ public class StoreManager : MonoBehaviour
 
     private void Start()
     {
-        //AppearStore();
+        AppearStore();
     }
 
     private void MovebackGround()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DarkMagic : Enemy
 {
-    private float _xFar = 5f;
+    /*private float _xFar = 5f;
     private float _xNear = -3f;
     private float _yTop = 4f;
     private float _yBottom = -4f;
@@ -100,7 +100,7 @@ public class DarkMagic : Enemy
 
     public void Skill2()
     {
-        /*StopCoroutine(base.GetCAttack);
+        *//*StopCoroutine(base.GetCAttack);
         base.GetAnimator.SetTrigger("IsAttack2");
 
         for(int i=0;i<5;i++)
@@ -114,13 +114,13 @@ public class DarkMagic : Enemy
                 PoolingManager.Despawn(effect);
             });
         }
-*/
+*//*
         Debug.Log("Dark Magic Skill 1");
     }
     public void Skill1()
     {
         _isSkill1 = true;
-        /*StopCoroutine(base.GetCAttack);
+        *//*StopCoroutine(base.GetCAttack);
         float randY = Random.Range(_yBottom, _yTop);
         base.GetAnimator.SetBool("IsRun", true);
         transform.DOMove(new Vector3(_xNear, randY, 0f), 2f).OnComplete(() =>
@@ -136,7 +136,7 @@ public class DarkMagic : Enemy
                 _isSkill1 = false;
             });
         });
-*/
+*//*
         Debug.Log("Dark Magic Skill 1");
     }
 
@@ -152,6 +152,6 @@ public class DarkMagic : Enemy
         {
             PoolingManager.Despawn(this.gameObject);
         });
-    }
+    }*/
 
 }

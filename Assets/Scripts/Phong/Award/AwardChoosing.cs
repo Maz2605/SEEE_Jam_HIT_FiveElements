@@ -9,20 +9,7 @@ public class AwardChoosing : MonoBehaviour
 
     public void OnPressed()
     {
-        if (_buffChoice == 1)
-        {
-            GameEventPhong.UnLockBuffHealTower();
-        }
-
-        if (_buffChoice == 2)
-        {
-            GameEventPhong.UnLockBuffIncreasePowerSpeed();
-        }
-
-        if (_buffChoice == 3)
-        {
-            GameEventPhong.UnLockSapwnHero();
-        }
+        
         Sequence seq = DOTween.Sequence();
         GameObject part = this.gameObject;
         CanvasGroup cg = part.GetComponent<CanvasGroup>();
@@ -40,11 +27,25 @@ public class AwardChoosing : MonoBehaviour
     {
         // Next wave
         GameEventPhong.DisAppearAward();
+        //GameManager.Instance.ContinueNextWave();
+        DOVirtual.DelayedCall(5f, () => SpawnBuff());
+    }
 
-        var gm = FindObjectOfType<GameManager>();
-        if (gm != null)
+    public void SpawnBuff()
+    {
+        if (_buffChoice == 1)
         {
-            gm.ContinueNextWave();
+            GameEventPhong.HealTower();
+        }
+
+        if (_buffChoice == 2)
+        {
+            GameEventPhong.IncreasePowerSpeed();
+        }
+
+        if (_buffChoice == 3)
+        {
+            GameEventPhong.SpawnHero();
         }
     }
 }

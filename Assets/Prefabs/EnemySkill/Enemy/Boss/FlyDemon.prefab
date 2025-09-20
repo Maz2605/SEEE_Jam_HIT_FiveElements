@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4072178075323719670}
   - component: {fileID: 896652863530181306}
   - component: {fileID: 8894382426641032005}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 8241516224369917327}
   - component: {fileID: 5945402591323257989}
   - component: {fileID: 1236481112778250538}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1029240693304333974}
   - component: {fileID: 6447011119938439357}
   - component: {fileID: 8658488204079260688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4656589844039352122}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ImotionBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 6742631469961769311}
   - component: {fileID: 5375367037555261342}
   - component: {fileID: 8220719922716221474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Imotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 4578585847832525406}
   - component: {fileID: 8684494397055077210}
   - component: {fileID: 3030037368575256379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlyDemon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 3999763550022044578}
   - component: {fileID: 8323410286597503341}
   - component: {fileID: 5423005928777917049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UIEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 2004741724942830994}
   - component: {fileID: 4066850007598361069}
   - component: {fileID: 6973151898012745379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -31,7 +31,7 @@ public class TowerHealth : Singleton<TowerHealth>
     #endregion
 
     #region Unity Lifecycle
-    private void Awake()
+    public void InitTower()
     {
         _currentHealth = _maxHealth;
 
@@ -53,6 +53,7 @@ public class TowerHealth : Singleton<TowerHealth>
 
         if (_currentHealth <= 0)
         {
+            UIWinLose.Instance.ShowLose();
             Die();
         }
     }

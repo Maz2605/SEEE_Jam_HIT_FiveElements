@@ -7,5 +7,6 @@ public class ExplosionAutoDespawn : MonoBehaviour
     public void DespawnSelf()
     {
         PoolingManager.Despawn(gameObject);
+        ObjectManager.Instance.UnregisterObject(gameObject);
     }
 }

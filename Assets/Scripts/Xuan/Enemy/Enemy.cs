@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
         gameObject.tag = "Enemy";
         _collider2D.enabled = true;
 
+        _isStart = false;
         //Sau khi khoi tao xong bat dau di chuyen
         StartMove();
     }
@@ -237,6 +238,7 @@ public class Enemy : MonoBehaviour
         if(_type == EnemyType.Enemy)
         {
             GameObject obj = PoolingManager.Spawn(_effectEnemy, transform.position, Quaternion.identity);
+            ObjectManager.Instance.RegisterObject(gameObject);
             _type = EnemyType.Village;
             _animator.SetBool("IsDead", true);
             StopMove();
@@ -251,9 +253,9 @@ public class Enemy : MonoBehaviour
                 PoolingManager.Despawn(obj);
 
                 _rb.velocity = (transform.position - _posDoor).normalized * -_speed * 8f;
-                _collider2D.enabled = true;
                 DOVirtual.DelayedCall(2f, () =>
                 {
+                    ObjectManager.Instance.UnregisterObject(gameObject);
                     PoolingManager.Despawn(gameObject);
                 });
             });
@@ -302,6 +304,8 @@ public class Enemy : MonoBehaviour
         {
             if (_type == EnemyType.Enemy)
             {
+                Debug.Log("Enemy Stop and Attack" + _idEnemy);
+
                 StopMove();
                 StartAttack();
                 _isStart = true;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7697404639282609904}
   - component: {fileID: 9047021434749950807}
   - component: {fileID: 3626938201789285392}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UIEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 3267572595624783625}
   - component: {fileID: 7035988115601103232}
   - component: {fileID: 6487900570789394206}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 3655543209491834840}
   - component: {fileID: 3007395605935010312}
   - component: {fileID: 5533725015937165107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 718265722429882553}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ImotionBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 2565680212263938359}
   - component: {fileID: 1673943840366920069}
   - component: {fileID: 3558933540282416184}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 8016724189413020179}
   - component: {fileID: 7798792143852735801}
   - component: {fileID: 8490718178233269649}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 7506185398378564728}
   - component: {fileID: 6182686297719693406}
   - component: {fileID: 560355879461975032}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Imotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 8524799105708151635}
   - component: {fileID: 3881489161793847339}
   - component: {fileID: 7482050624497222916}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Medusa
   m_TagString: Enemy
   m_Icon: {fileID: 0}

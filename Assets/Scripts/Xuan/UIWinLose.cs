@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIWinLose : MonoBehaviour
+public class UIWinLose : Singleton<UIWinLose>
 {
     [SerializeField] private GameObject _backGround;
     [SerializeField] private GameObject _win;
     [SerializeField] private GameObject _lose;
-
-    private void Awake()
-    {
-        
-    }
 
     public void ShowWin()
     {

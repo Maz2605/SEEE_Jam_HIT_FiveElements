@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7527199397233514514}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ImotionBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 746437808570005618}
   - component: {fileID: 2481222468976856909}
   - component: {fileID: 6166048348838340965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4212168965137034737}
   - component: {fileID: 3820235627794731431}
   - component: {fileID: 4548093129489180141}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 1666337567190799221}
   - component: {fileID: 2157994735633013391}
   - component: {fileID: 6561497992104357831}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 7123390537823069474}
   - component: {fileID: 5260914229002401858}
   - component: {fileID: 2157380197072326898}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: emotionBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 7059693736460205057}
   - component: {fileID: 2770060467710053308}
   - component: {fileID: 105207612939322207}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Imotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 8985740886953055147}
   - component: {fileID: 5601340862200826461}
   - component: {fileID: 2815030553265305373}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UIEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 3551799388217534087}
   - component: {fileID: 5201562633600024788}
   - component: {fileID: 1816901967669764297}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Golem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -736,4 +736,5 @@ MonoBehaviour:
   _animator: {fileID: 6561497992104357831}
   _collider2D: {fileID: 5201562633600024788}
   _enemyUI: {fileID: 2815030553265305373}
+  _effectEnemy: {fileID: 0}
   _ice: {fileID: 3642338070295958936, guid: a6d640a7812b3bd4e8dff1aabb28ca03, type: 3}

@@ -8,6 +8,7 @@ public class EmotionBar : Singleton<EmotionBar>
     [SerializeField] private Slider _emotionSlider;
     [SerializeField] private float _maxEmotion = 100f;
     [SerializeField] private float _passiveGainPerSecond = 2f;
+    [SerializeField] float _supHapDur = 3f;
 
     [Header("Color Settings")]
     [SerializeField] private Image _fillImage;
@@ -47,6 +48,9 @@ public class EmotionBar : Singleton<EmotionBar>
 
     public float EmotionPercent => _maxEmotion > 0 ? _currentEmotion / _maxEmotion : 0f;
     public bool IsDraining => _isDraining;
+
+    public float GetSupHapDur() => _supHapDur;
+    
 
     public void SetMaxEmotion(float value)
     {
@@ -90,12 +94,18 @@ public class EmotionBar : Singleton<EmotionBar>
     {
         _isDraining = value;
     }
+    public void SetSupHapDur(float value)
+    {
+        _supHapDur += value;
+        _supHapDur = Mathf.Max(0f, _supHapDur);
+    }
     #endregion
 
     private void Start()
     {
         _currentEmotion = 0f;
         UpdateUIImmediate();
+        UpdateEmotionIcon(_currentEmotion / _maxEmotion);
     }
 
     private void Update()
@@ -208,12 +218,11 @@ public class EmotionBar : Singleton<EmotionBar>
         _isDraining = true;
 
         float endEmotion = 0f;
-        float duration = 3f;
 
         DOTween.To(() => _currentEmotion,
                    x => { _currentEmotion = x; UpdateUITween(); },
                    endEmotion,
-                   duration)
+                   _supHapDur)
                .SetEase(Ease.Linear)
                .OnComplete(() => { _isDraining = false; });
     }

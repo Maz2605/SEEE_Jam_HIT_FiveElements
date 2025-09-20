@@ -14,21 +14,7 @@ public class HandlerSkill : MonoBehaviour
        _damage =  DataManager.Instance.DamageSkill1;
     }
 
-    private void OnEnable()
-    {
-        GameEventPhong.UpgradeSkill1 += UpgradeSkill;
-    }
-
-    private void OnDisable()
-    {
-        GameEventPhong.UpgradeSkill1 -= UpgradeSkill;
-    }
-
-    private void UpgradeSkill()
-    {
-        _damage += _upgradeDamage;
-        DataManager.Instance.SaveDataSkill1(_damage);
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,7 +22,7 @@ public class HandlerSkill : MonoBehaviour
         {
             Debug.Log("-50 mau ");
             // Enemy take damage
-            XuanEventManager.EnemyTakeDamage(other.gameObject.GetComponent<Enemy>(),_damage);
+            other.GetComponent<Enemy>().TakeDamage(other.gameObject.GetComponent<Enemy>(), _damage);
         }
     }
 

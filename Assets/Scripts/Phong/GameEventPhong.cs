@@ -34,5 +34,6 @@ public static class GameEventPhong
     [Header("Shop")]
     public static Action BuyBuffIncreaseMaxHeath;
     public static Action BuyBuffIncreaseDuration;
+    public static Action PressObject;
 
 }

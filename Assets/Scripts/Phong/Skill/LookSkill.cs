@@ -37,28 +37,28 @@ public class LookSkill : Singleton<LookSkill>
     
     public void UnlookSkill2()
     {
-        lookSkill2Iamge.enabled = false;
+        lookSkill2Iamge.gameObject.SetActive(false);
         skill2.SetLook(false);
     }
 
     public void UnlookSkill3()
     {
         UnlookSkill2();
-        lookSkill3Iamge.enabled = false;
+        lookSkill3Iamge.gameObject.SetActive(false);
         skill3.SetLook(false);
     }
 
     public void UnlookUltimate()
     {
         UnlookSkill3();
-        lookUltimateIamge.enabled = false;
+        lookUltimateIamge.gameObject.SetActive(false);
         ultimate.SetLook(false);
     }
 
     public void LookSkill2()
     {
         LookSkill3();
-        lookSkill2Iamge.enabled = true;
+        lookSkill2Iamge.gameObject.SetActive(true);
         skill2.SetLook(true);
         skill2.CancelSkill();
     }
@@ -66,13 +66,13 @@ public class LookSkill : Singleton<LookSkill>
     public void LookSkill3()
     {
         LookUltimate();
-        lookSkill3Iamge.enabled = true;
+        lookSkill3Iamge.gameObject.SetActive(true);
         skill3.SetLook(true);
     }
 
     public void LookUltimate()
     {
-        lookUltimateIamge.enabled = true;
+        lookUltimateIamge.gameObject.SetActive(true);
         ultimate.SetLook(true);
     }
 }

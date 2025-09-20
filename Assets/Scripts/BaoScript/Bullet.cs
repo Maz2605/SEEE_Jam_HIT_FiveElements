@@ -59,6 +59,7 @@ public class Bullet : MonoBehaviour
         PlayExplosion(transform.position);
 
         DamageMainEnemy(other);
+        
 
         DamageSplash(other);
 
@@ -77,7 +78,8 @@ public class Bullet : MonoBehaviour
         Enemy refMain = other.GetComponent<Enemy>();
         if (refMain != null)
         {
-            XuanEventManager.EnemyTakeDamage(refMain, _damage);
+            Debug.Log("Main enemy damaged");
+            refMain.TakeDamage(refMain,_damage);
         }
     }
 
@@ -91,7 +93,8 @@ public class Bullet : MonoBehaviour
             Enemy refEnemy = hit.GetComponent<Enemy>();
             if (refEnemy != null)
             {
-                XuanEventManager.EnemyTakeDamage(refEnemy, Mathf.CeilToInt(_damage * 0.5f));
+                Debug.Log("Splash enemy damaged");
+                refEnemy.TakeDamage(refEnemy, Mathf.CeilToInt(_damage * 0.5f));
             }
         }
     }

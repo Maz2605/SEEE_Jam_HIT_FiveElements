@@ -1,39 +1,63 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : Singleton<ShopManager>
 {
 
-    [SerializeField] private float _IncreaseDurationPrice = 100f;
-    [SerializeField] private float _IncreaseMaxHeath = 100f;
-    private void OnEnable()
+    public GameObject skillPart;
+    public GameObject buffPart;
+    public GameObject SkinPart;
+    public TextMeshProUGUI _inforText;
+    public TextMeshProUGUI text;
+
+    [SerializeField] private int _coin;
+
+    public int Coin
     {
-        GameEventPhong.BuyBuffIncreaseDuration += BuyBuffIncreaseDuration;
-        GameEventPhong.BuyBuffIncreaseMaxHeath += BuyBuffIncreaseMaxHeath;
+        get => _coin;
+        set => _coin = value;
     }
 
-    private void OnDisable()
+    private void Awake()
     {
-        GameEventPhong.BuyBuffIncreaseDuration -= BuyBuffIncreaseDuration;
-        GameEventPhong.BuyBuffIncreaseMaxHeath -= BuyBuffIncreaseMaxHeath;
+        DataManager.Instance.ResetAll();
+        OnPressSkill();
+        _coin = DataManager.Instance.Coin;
+        text.text = _coin.ToString();
     }
 
-    private void BuyBuffIncreaseDuration()
+    public void UpdateCoinText(int coin)
     {
-        // Neu coin du
-        
+        _coin = coin;
+        text.text = coin.ToString();
     }
 
-    private void BuyBuffIncreaseMaxHeath()
+    public void OnPressSkill()
     {
-        // Neu coin du
-        GameEventPhong.BuyBuffIncreaseMaxHeath();
+        skillPart.SetActive(true);
+        buffPart.SetActive(false);
     }
 
-    private void BuySkin()
+    public void OnPressBuff()
     {
-        
+        skillPart.SetActive(false);
+        buffPart.SetActive(true);
+    }
+
+    public void InforNotEnough()
+    {
+        _inforText.gameObject.SetActive(true);
+        _inforText.color = new Color(_inforText.color.r, _inforText.color.g, _inforText.color.b, 0f); // reset alpha = 0
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(_inforText.DOFade(1f, 0.2f))   // fade in nhanh
+            .AppendInterval(1f)                    // giữ 2 giây
+            .Append(_inforText.DOFade(0f, 0.2f))   // fade out
+            .OnComplete(() => _inforText.gameObject.SetActive(false)); // ẩn hẳn
     }
 }

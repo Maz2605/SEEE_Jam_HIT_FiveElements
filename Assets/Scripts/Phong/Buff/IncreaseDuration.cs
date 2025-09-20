@@ -19,7 +19,8 @@ public class IncreaseDuration : Buff
 
     private void IncreaseDurationBuff()
     {
-        
+        DataManager.Instance.PowerDuration *= 1.1f;
+        DataManager.Instance.SavePowerDuration(DataManager.Instance.PowerDuration);
     }
     
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
+    public int EnemyCount => _enemys.Count;
+
+
     [SerializeField] private List<Enemy> _enemys;
     [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private Transform _enemyPerant;
@@ -61,10 +64,10 @@ public class EnemyManager : Singleton<EnemyManager>
         }
     }
 
-    public void SpawnBoss(float timeWare, string idEnemy)
+    public void SpawnBoss(float timeWare,string idEnemy)
     {
-        float time = timeWare / 2;
-
+        float time = timeWare/2;
+        
     }
 
     public void SpawnDarkMagic()
@@ -75,7 +78,7 @@ public class EnemyManager : Singleton<EnemyManager>
     }
     public void SpawnMedusa()
     {
-        MedusaBoss medusa = PoolingManager.Spawn(this._medusa, new Vector3(18f, 0f, 0f), Quaternion.identity, _enemyPerant);
+        MedusaBoss medusa = PoolingManager.Spawn(this._medusa, new Vector3(18f,0f,0f), Quaternion.identity, _enemyPerant);
         medusa.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "medusa"));
         _enemys.Add(medusa);
     }
@@ -84,7 +87,7 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         Golem golem = PoolingManager.Spawn(this._golem, _bossSpawnPoint.position, Quaternion.identity, _enemyPerant);
         golem.InitState(_bossData.enemyStatsList.Find(x => x.idEnemy == "golem"));
-        _enemys.Add(_golem);
+        _enemys.Add(golem);
     }
 
     public void SpawnEnemy(EnemyStats data, Vector3 pos)
@@ -102,16 +105,15 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (Enemy e in _enemys)
         {
             if (e == null || !e.gameObject.activeInHierarchy) continue;
-            if (e.GetCurrentHealth >= e.GetHealth) continue;
+            if (e.GetEnemyType != EnemyType.Enemy) continue; 
 
-            float dist = Vector2.Distance(e.transform.position, posWall);
+            float dist = Vector2.Distance(e.transform.position, posWall);          
             if (dist <= range && dist < minDist)
             {
                 minDist = dist;
                 nearest = e;
             }
         }
-
         return nearest;
     }
     public RuntimeAnimatorController RandomVillage()

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7eccb37e409bc444b172d2d0adc2bec, type: 3}
+  m_Name: LevelData
+  m_EditorClassIdentifier: 
+  waves:
+  - enemyCount: 1
+    enemyIDs:
+    - knight
+    bossCount: 0
+    bossIDs: []
+  - enemyCount: 5
+    enemyIDs:
+    - knight2
+    bossCount: 0
+    bossIDs: []
+  - enemyCount: 10
+    enemyIDs:
+    - knight1
+    bossCount: 0
+    bossIDs: []
+  - enemyCount: 11
+    enemyIDs:
+    - light
+    bossCount: 0
+    bossIDs: []
+  - enemyCount: 0
+    enemyIDs: []
+    bossCount: 1
+    bossIDs:
+    - golem

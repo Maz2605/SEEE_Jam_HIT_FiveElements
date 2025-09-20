@@ -8,13 +8,7 @@ public class BuffController : MonoBehaviour
     public int numberOfHealTower = 0;
     public int numberOfIncreasePowerSpeed = 0;
     public int numberOfSpeedAttack = 0;
-
-    private void Awake()
-    {
-        numberOfHealTower = DataManager.Instance.BuffHealTower;
-        numberOfIncreasePowerSpeed = DataManager.Instance.BuffIncreasePowerSpeed;
-        numberOfSpeedAttack = DataManager.Instance.BuffIncreaseSpeedAttack;
-    }
+    
 
     private void OnEnable()
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public enum GameState
     GameOver
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public static System.Action OnWaveCompleted;
     public static System.Action OnAllWavesFinished;
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelData levelData;
     [SerializeField] private EnemyManager enemyManager;
 
-    private int _currentWaveIndex = -2;
+    private int _currentWaveIndex = -1;
     private GameState _state = GameState.Idle;
 
     private float _spawnDelayEnemy = 0.5f;
@@ -33,7 +34,11 @@ public class GameManager : MonoBehaviour
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;
 
-
+    public int CurrentWaveIndex
+    {
+               get { return _currentWaveIndex; }
+                set { _currentWaveIndex = value; }
+    }
     private void Awake()
     {
         InitEnemyCache();
@@ -42,7 +47,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GameEventPhong.AppearAward?.Invoke();
+        //Tat di ko chi goi khi nhan nut level
+        //GameEventPhong.AppearAward?.Invoke();   
     }
 
     private void Update()
@@ -142,6 +148,13 @@ public class GameManager : MonoBehaviour
 
         if (newState == GameState.BetweenWaves)
         {
+            if(_currentWaveIndex == levelData.waves.Count - 1)
+            {
+                Debug.Log("🏁 Đã hoàn thành toàn bộ waves!");
+                ChangeState(GameState.Finished);
+                return;
+            }
+
             Debug.Log($"✅ Wave {_currentWaveIndex + 1} completed → Hiện popup Award");
             OnWaveCompleted?.Invoke();
 
@@ -157,6 +170,10 @@ public class GameManager : MonoBehaviour
         if (newState == GameState.Finished)
         {
             OnAllWavesFinished?.Invoke();
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                UIWinLose.Instance.ShowWin();
+            });
         }
     }
 

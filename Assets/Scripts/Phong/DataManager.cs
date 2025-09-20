@@ -246,7 +246,7 @@ public class DataManager : Singleton<DataManager>
     public void ResetAll()
     {
         PlayerPrefs.DeleteAll();
-
+    
         damageSkill1 = 50f;
         damageSkillUltimate = 1000f;
         timerSkill2 = 5f;
@@ -255,32 +255,32 @@ public class DataManager : Singleton<DataManager>
         buffSpeedAttack = 1.2f;
         buffHealTower = 100f;
         buffIncreasePowerSpeed = 1.1f;
-
+    
         currentLevelSkill1 = 1;
         currentLevelSkill2 = 1;
         currentLevelSkill3 = 1;
         currentLevelSkillUltimate = 1;
-
+    
         coin = 1000;
         towerHealth = 500f;
         powerDuration = 10f;
         attackRange = 5f;   // ✅ default
         bulletSpeed = 10f;  // ✅ default
-
+    
         musicVolume = 1f;
         sfxVolume = 1f;
-
+    
         priceSkill1 = 100;
         priceSkill2 = 150;
         priceSkill3 = 200;
-
+    
         priceBuffIncreaseDuration = 300;
         priceBuffIncreaseMaxHealth = 400;
-
+    
         priceSkin1 = 500;
         priceSkin2 = 750;
         priceSkin3 = 1000;
-
+    
         SaveAll();
         Debug.Log("🔄 Dữ liệu + giá đã reset về mặc định!");
     }

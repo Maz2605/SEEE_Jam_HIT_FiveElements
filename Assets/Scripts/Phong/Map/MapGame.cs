@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MapGame : MonoBehaviour
 {
-    [SerializeField] private GameObject _shop;
-
+    
+    
     public void OpenShop()
     {
-        _shop.SetActive(true);
+        
         gameObject.SetActive(false);
     }
 
@@ -22,6 +22,8 @@ public class MapGame : MonoBehaviour
     public void GoToLevel(int level)
     {
         //Go to level
+        
+        UiManager.Instance.OpenGamePlay();
     }
 
     public void OutMapGame()

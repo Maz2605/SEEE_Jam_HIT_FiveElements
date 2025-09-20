@@ -33,7 +33,7 @@ MonoBehaviour:
     animator: {fileID: 9100000, guid: 44c32f9fc7a07de4180d06c5eeb90288, type: 2}
   - idEnemy: golem
     isFar: 1
-    health: 2222
+    health: 123
     speed: 1
     damage: 12
     speedAttack: 5

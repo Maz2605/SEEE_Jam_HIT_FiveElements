@@ -207,6 +207,11 @@ public class Enemy : MonoBehaviour
     {
         enemy.Hit(damage);
     }
+
+    public void TakeDamage(float damage)
+    {
+        Hit(damage);
+    }
     public void ReductSpeed(Enemy enemy, float r, float time)
     {
         enemy.SetSpeed(r, time);
@@ -231,7 +236,8 @@ public class Enemy : MonoBehaviour
     {
         //////////////////////////////////////////
         //Debug.Log($"{name} đã chết, còn lại: {EnemyManager.Instance.EnemyCount}");
-
+        DataManager.Instance.Coin += _countCoin;
+        DataManager.Instance.SaveCoin(DataManager.Instance.Coin);
         gameObject.tag = "Untagged";
         _collider2D.enabled = false;
         EnemyManager.Instance.RemoveEnemy(this);
@@ -245,6 +251,8 @@ public class Enemy : MonoBehaviour
             DOVirtual.DelayedCall(0.65f, () =>
             {
                 _animator.runtimeAnimatorController = EnemyManager.Instance.RandomVillage();
+                gameObject.tag = "Untagged";
+                gameObject.layer = LayerMask.NameToLayer("Default");
                 _enemyUI.SetActionFalseBar();
                 _animator.SetBool("IsRun", true);
             });
@@ -264,6 +272,7 @@ public class Enemy : MonoBehaviour
     }
     public void SpawnCoin()
     {
+        
         for (int i = 0; i < _countCoin; i++)
         {
             // Spawn tại vị trí enemy (có thể thêm chút random nhỏ)

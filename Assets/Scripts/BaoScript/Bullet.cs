@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
         _delayTimer = 0f;
         _launched = true;
         gameObject.SetActive(true);
+
     }
 
     private void Update()
@@ -71,6 +72,7 @@ public class Bullet : MonoBehaviour
         if (_explosionPrefab == null) return;
 
         GameObject explosion = PoolingManager.Spawn(_explosionPrefab, pos, Quaternion.identity);
+        ObjectManager.Instance.RegisterObject(explosion);
     }
 
     private void DamageMainEnemy(Collider2D other)
@@ -103,6 +105,8 @@ public class Bullet : MonoBehaviour
     {
         _launched = false;
         PoolingManager.Despawn(gameObject);
+
+        ObjectManager.Instance.UnregisterObject(gameObject);
     }
 
 

@@ -13,11 +13,15 @@ public class Ball : MonoBehaviour
         _animator.runtimeAnimatorController = run;
         _rb.velocity = new Vector2(-speedBall, _rb.velocity.y);
         _damage = damage;
+
+        ObjectManager.Instance.RegisterObject(gameObject);
     }
     public void InitSpecialBall(Vector2 dir, float speedBall, float damage)
     {
         _rb.velocity = dir.normalized * speedBall;
         _damage = damage;
+
+        ObjectManager.Instance.RegisterObject(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,6 +33,7 @@ public class Ball : MonoBehaviour
             TowerHealth.Instance.TakeDamage(_damage);
             DOVirtual.DelayedCall(0.4f, () =>
             {
+                ObjectManager.Instance.UnregisterObject(gameObject);
                 PoolingManager.Despawn(gameObject);
             });
         }

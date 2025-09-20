@@ -238,6 +238,7 @@ public class Enemy : MonoBehaviour
         if(_type == EnemyType.Enemy)
         {
             GameObject obj = PoolingManager.Spawn(_effectEnemy, transform.position, Quaternion.identity);
+            ObjectManager.Instance.RegisterObject(gameObject);
             _type = EnemyType.Village;
             _animator.SetBool("IsDead", true);
             StopMove();
@@ -254,6 +255,7 @@ public class Enemy : MonoBehaviour
                 _rb.velocity = (transform.position - _posDoor).normalized * -_speed * 8f;
                 DOVirtual.DelayedCall(2f, () =>
                 {
+                    ObjectManager.Instance.UnregisterObject(gameObject);
                     PoolingManager.Despawn(gameObject);
                 });
             });

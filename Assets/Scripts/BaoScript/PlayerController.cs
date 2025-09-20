@@ -137,7 +137,7 @@ public class PlayerController : Singleton<PlayerController>
 
         GameObject bulletObj = PoolingManager.Spawn(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
-
+        ObjectManager.Instance.RegisterObject(bullet.gameObject);
         Vector3 direction = (_cachedTarget.position - _firePoint.position).normalized;
         bullet.Launch(direction, _bulletSpeed);
 

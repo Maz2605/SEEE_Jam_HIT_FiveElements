@@ -12,7 +12,7 @@ public class DataManager : Singleton<DataManager>
 
     [Header("Skill 3 Buffs")]
     [SerializeField] private float buffRangeAttack = 1.5f;
-    [SerializeField] private float buffSpeedAttack = 1.2f;
+    [SerializeField] private float buffSpeedAttack = 1.5f;
     [SerializeField] private float buffHealTower = 100f;
     [SerializeField] private float buffIncreasePowerSpeed = 1.1f;
 

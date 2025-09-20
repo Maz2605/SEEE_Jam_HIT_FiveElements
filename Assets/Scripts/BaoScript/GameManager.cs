@@ -69,9 +69,8 @@ public class GameManager : Singleton<GameManager>
                     WaveData wave = levelData.waves[_currentWaveIndex];
 
                     // Nếu wave này có boss -> sang SpawnBosses
-                    if (wave.bossCount > 0 && wave.bossIDs.Count > 0)   
+                    if (wave.bosses != null && wave.bosses.Count > 0)
                     {
-                        Debug.Log($"Wave {_currentWaveIndex + 1} có boss → chuyển sang SpawnBosses");
                         ChangeState(GameState.SpawnBosses);
                     }
                     else
@@ -107,23 +106,36 @@ public class GameManager : Singleton<GameManager>
     #region SPAWN METHODS
     private void SpawnEnemies()
     {
-        if (_currentWaveIndex >= levelData.waves.Count) return;
+        if (_currentWaveIndex < 0 || _currentWaveIndex >= levelData.waves.Count) return;
 
         WaveData wave = levelData.waves[_currentWaveIndex];
+        bool hasEnemies = wave.enemies != null && wave.enemies.Count > 0;
+        bool hasBosses = wave.bosses != null && wave.bosses.Count > 0;
 
-        if (wave.bossCount == 0 || wave.bossIDs.Count == 0)
+        // Nếu wave chỉ có boss thì nhảy sang spawn boss luôn
+        if (!hasEnemies && hasBosses)
         {
-            ShowWaveText($"Wave {_currentWaveIndex + 1}");
+            ChangeState(GameState.SpawnBosses);
+            return;
         }
 
-        foreach (string enemyId in wave.enemyIDs)
+        if (hasEnemies)
         {
-            if (_enemyStatsCache.TryGetValue(enemyId, out var stats))
+            if (!hasBosses) ShowWaveText($"Wave {_currentWaveIndex + 1}");
+
+            foreach (var entry in wave.enemies)
             {
-                for (int i = 0; i < wave.enemyCount; i++)
+                if (_enemyStatsCache.TryGetValue(entry.enemyID, out var stats))
                 {
-                    Transform point = enemyManager.GetRandomSpawnPoint();
-                    enemyManager.SpawnEnemy(stats, point.position);
+                    for (int i = 0; i < entry.count; i++)
+                    {
+                        Transform point = enemyManager.GetRandomSpawnPoint();
+                        enemyManager.SpawnEnemy(stats, point.position);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"EnemyID '{entry.enemyID}' không có trong cache.");
                 }
             }
         }
@@ -133,22 +145,35 @@ public class GameManager : Singleton<GameManager>
 
     private void SpawnBosses()
     {
-        if (_currentWaveIndex >= levelData.waves.Count) return;
+        if (_currentWaveIndex < 0 || _currentWaveIndex >= levelData.waves.Count) return;
+
+        WaveData wave = levelData.waves[_currentWaveIndex];
+        if (wave.bosses == null || wave.bosses.Count == 0)
+        {
+            ChangeState(GameState.BetweenWaves);
+            return;
+        }
 
         ShowWaveText("Boss Wave!");
 
-        WaveData wave = levelData.waves[_currentWaveIndex];
-
-        foreach (string bossId in wave.bossIDs)
+        foreach (var entry in wave.bosses)
         {
-            for (int i = 0; i < wave.bossCount; i++)
+            if (_bossStatsCache.TryGetValue(entry.enemyID, out var _))
             {
-                enemyManager.SpawnBoss(bossId);
+                for (int i = 0; i < entry.count; i++)
+                {
+                    enemyManager.SpawnBoss(entry.enemyID);
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"BossID '{entry.enemyID}' không có trong cache.");
             }
         }
 
         ChangeState(GameState.WaitBosses);
     }
+
     #endregion
     #region UI HELPERS
     private void ShowWaveText(string text)
@@ -239,7 +264,7 @@ public class GameManager : Singleton<GameManager>
         if (_currentWaveIndex < levelData.waves.Count)
         {
             GameEventPhong.DisAppearAward?.Invoke();
-            StartCoroutine(WaitThenSpawn(3f)); // chờ 1 giây rồi spawn wave
+            //StartCoroutine(WaitThenSpawn(3f)); // chờ 1 giây rồi spawn wave
         }
         else
         {

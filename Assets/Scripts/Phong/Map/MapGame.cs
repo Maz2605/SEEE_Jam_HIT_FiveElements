@@ -22,6 +22,7 @@ public class MapGame : MonoBehaviour
     public void GoToLevel(int level)
     {
         //Go to level
+        TutorialManager.Instance.StartTutorial();
         XuanEventManager.OnStartLevel(level);
         UiManager.Instance.OpenGamePlay();
     }

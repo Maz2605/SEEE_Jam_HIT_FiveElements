@@ -11,7 +11,7 @@ public class UiManager : Singleton<UiManager>
     public GameObject shopUI;
     public GameObject gamePlayUI;
     public GameObject introUI;
-   
+    public GameObject tutorialUI;
 
     public void OpenMenu()
     {
@@ -94,7 +94,23 @@ public class UiManager : Singleton<UiManager>
         introUI.SetActive(false);
     }
 
-
+    public void OpenTutorial()
+    {
+        menuUI.SetActive(false);
+        settingUI.SetActive(false);
+        mapUI.SetActive(false);
+        openSenceUI.SetActive(false);
+        shopUI.SetActive(false);
+        gamePlayUI.SetActive(false);
+        introUI.SetActive(false);
+        
+        tutorialUI.SetActive(true);
+        
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.StartTutorial();
+        }
+    }
 
     public void QuitGame()
     {

@@ -42,5 +42,18 @@ public static class GameEventPhong
     public static Action BuyBuffIncreaseMaxHeath;
     public static Action BuyBuffIncreaseDuration;
     public static Action PressObject;
+    
+    [Header("UI")]
+    public static Action OpenShop;
+    public static Action CloseShop;
+
+    public static Action OpenMenu;
+    public static Action CloseMenu;
+    
+    public static Action OpenSettings;
+    public static Action CloseSettings;
+
+    public static Action OpenMap;
+    public static Action CloseMap;
 
 }

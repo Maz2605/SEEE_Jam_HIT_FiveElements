@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private LevelData levelData;
     [SerializeField] private EnemyManager enemyManager;
 
-    private int _currentWaveIndex = -2;
+    private int _currentWaveIndex = -1;
     private GameState _state = GameState.Idle;
 
     private float _spawnDelayEnemy = 0.5f;
@@ -32,6 +33,7 @@ public class GameManager : Singleton<GameManager>
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;
+
 
 
     private void Awake()
@@ -142,6 +144,13 @@ public class GameManager : Singleton<GameManager>
 
         if (newState == GameState.BetweenWaves)
         {
+            if(_currentWaveIndex == levelData.waves.Count - 1)
+            {
+                Debug.Log("🏁 Đã hoàn thành toàn bộ waves!");
+                ChangeState(GameState.Finished);
+                return;
+            }
+
             Debug.Log($"✅ Wave {_currentWaveIndex + 1} completed → Hiện popup Award");
             OnWaveCompleted?.Invoke();
 
@@ -157,6 +166,10 @@ public class GameManager : Singleton<GameManager>
         if (newState == GameState.Finished)
         {
             OnAllWavesFinished?.Invoke();
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                UIWinLose.Instance.ShowWin();
+            });
         }
     }
 

@@ -53,6 +53,7 @@ public class TowerHealth : Singleton<TowerHealth>
 
         if (_currentHealth <= 0)
         {
+            UIWinLose.Instance.ShowLose();
             Die();
         }
     }

@@ -13,4 +13,6 @@ public class XuanEventManager : Singleton<XuanEventManager>
     public static Action<int, float, string> SpawnEnemy;
 
     public static Func<Vector3,float,Enemy> GetEnemy;
+
+    public static Action<int> OnStartLevel; 
 }

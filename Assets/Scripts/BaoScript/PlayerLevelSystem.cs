@@ -14,7 +14,8 @@ public class PlayerLevelSystem : MonoBehaviour
 
     private void Start()
     {
-        SpawnNormalPlayer();
+        //chi spawn play khi bat dau level
+        //SpawnNormalPlayer();
         currentLevel = 0;
     }
 
@@ -42,7 +43,7 @@ public class PlayerLevelSystem : MonoBehaviour
         }
     }
 
-    private void SpawnNormalPlayer()
+    public void SpawnNormalPlayer()
     {
         _currentPlayer = PoolingManager.Spawn(
             normalPlayerPrefab,

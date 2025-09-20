@@ -33,9 +33,6 @@ public class GameManager : Singleton<GameManager>
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;
-
-
-
     private void Awake()
     {
         InitEnemyCache();
@@ -44,7 +41,8 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        GameEventPhong.AppearAward?.Invoke();
+        //Tat di ko chi goi khi nhan nut level
+        //GameEventPhong.AppearAward?.Invoke();   
     }
 
     private void Update()

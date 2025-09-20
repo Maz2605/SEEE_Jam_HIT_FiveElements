@@ -251,7 +251,6 @@ public class Enemy : MonoBehaviour
                 PoolingManager.Despawn(obj);
 
                 _rb.velocity = (transform.position - _posDoor).normalized * -_speed * 8f;
-                _collider2D.enabled = true;
                 DOVirtual.DelayedCall(2f, () =>
                 {
                     PoolingManager.Despawn(gameObject);

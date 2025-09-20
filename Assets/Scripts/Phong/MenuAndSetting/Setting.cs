@@ -34,6 +34,6 @@ public class Setting : MonoBehaviour
         DataManager.Instance.SaveMusicVolume(DataManager.Instance.MusicVolume);
         DataManager.Instance.SaveSfxVolume(DataManager.Instance.SfxVolume);
         
-        Au
+        
     }
 }

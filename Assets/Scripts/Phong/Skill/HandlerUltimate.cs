@@ -55,7 +55,7 @@ public class HandlerUltimate : MonoBehaviour
         {
             foreach (var enemy in _enemies)
             {
-                XuanEventManager.EnemyTakeDamage(enemy, _damage);
+                enemy.GetComponent<Enemy>().TakeDamage(enemy.gameObject.GetComponent<Enemy>(), _damage);
             }
         }
     }

@@ -105,7 +105,7 @@ MonoBehaviour:
   _explosionRadius: 2
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _spawnDelay: 0
   _explosionPrefab: {fileID: 7326648420543631554, guid: b1641a4841e3adb4481bb7c94f9eab47, type: 3}
 --- !u!58 &834721446682967190

@@ -19,7 +19,7 @@ public class FlightBullet : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             // Gay sat thuong
-            XuanEventManager.EnemyTakeDamage(collision.gameObject.GetComponent<Enemy>(), damage);
+            collision.GetComponent<Enemy>().TakeDamage(collision.gameObject.GetComponent<Enemy>(),damage);
             Instantiate(boomPrefab, collision.gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

@@ -32,6 +32,8 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private GameObject _effectExplosion;
 
     [SerializeField] private Coin _coinPrefab;
+    [SerializeField] private Transform _coinEnemy;
+    public Transform CoinEnemy => _coinEnemy;
     public Coin GetCoin => _coinPrefab;
     private Enemy _currentEnemy;
     private Vector3 _posWall;

@@ -251,7 +251,7 @@ public class Enemy : MonoBehaviour
                 PoolingManager.Despawn(obj);
 
                 _rb.velocity = (transform.position - _posDoor).normalized * -_speed * 8f;
-
+                _collider2D.enabled = true;
                 DOVirtual.DelayedCall(2f, () =>
                 {
                     PoolingManager.Despawn(gameObject);
@@ -267,7 +267,7 @@ public class Enemy : MonoBehaviour
             // Spawn tại vị trí enemy (có thể thêm chút random nhỏ)
             Vector3 spawnPos = transform.position + new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0);
 
-            Coin coin = PoolingManager.Spawn(EnemyManager.Instance.GetCoin, spawnPos, Quaternion.identity);
+            Coin coin = PoolingManager.Spawn(EnemyManager.Instance.GetCoin, spawnPos, Quaternion.identity, EnemyManager.Instance.CoinEnemy);
 
             // Hướng bay về góc trái trên, thêm random để coin không chồng nhau
             Vector3 baseDir = new Vector3(1.3f, 1f, 0f).normalized; // góc trái trên
@@ -292,6 +292,10 @@ public class Enemy : MonoBehaviour
                 StopMove();
                 StartExplosion();
                 TowerHealth.Instance.TakeDamage(_damage);
+            }
+            else
+            {
+                PoolingManager.Despawn(gameObject);
             }
         }
         if(collision.CompareTag("Stop") && _isFar)

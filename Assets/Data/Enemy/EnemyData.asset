@@ -43,7 +43,7 @@ MonoBehaviour:
   - idEnemy: knight1
     isFar: 0
     health: 100
-    speed: 0.2
+    speed: 1
     damage: 5
     speedAttack: 1.2
     scoreValue: 1
@@ -52,7 +52,7 @@ MonoBehaviour:
   - idEnemy: knight2
     isFar: 0
     health: 100
-    speed: 0.2
+    speed: 1
     damage: 5
     speedAttack: 1.2
     scoreValue: 1
@@ -61,7 +61,7 @@ MonoBehaviour:
   - idEnemy: knight3
     isFar: 0
     health: 100
-    speed: 0.2
+    speed: 1
     damage: 5
     speedAttack: 1.2
     scoreValue: 1

@@ -188,7 +188,6 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(Enemy enemy, float damage)
     {
-        Debug.Log(gameObject.transform.position + " Enemy Take Damage" + damage);
         enemy.Hit(damage);
     }
     public void ReductSpeed(Enemy enemy, float r, float time)

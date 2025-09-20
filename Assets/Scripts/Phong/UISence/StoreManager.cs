@@ -7,6 +7,9 @@ using DG.Tweening; // cần DOTween
 
 public class StoreManager : MonoBehaviour
 {
+    public static Action OnStoreClosed;
+
+    public GameObject panelRoot;
     public Image backGround;
     public RectTransform start;
     public RectTransform end;
@@ -27,7 +30,7 @@ public class StoreManager : MonoBehaviour
 
     private void Start()
     {
-        AppearStore();
+        //AppearStore();
     }
 
     private void MovebackGround()
@@ -40,8 +43,14 @@ public class StoreManager : MonoBehaviour
     private void MovebackGroundReverse()
     {
         backGround.rectTransform.DOMove(start.position, 1.5f).SetEase(Ease.InOutQuad)
-            .OnComplete(() => gameObject.SetActive(false));
-
+            .OnComplete(() =>
+            {
+                foreach (var part in storePrefabs)
+                {
+                    panelRoot.SetActive(false);
+                    part.SetActive(false);
+                }
+            });
     }
 
     private void AppearStore()
@@ -118,6 +127,7 @@ public class StoreManager : MonoBehaviour
         seq.AppendCallback(() =>
         {
             MovebackGroundReverse();
+            OnStoreClosed?.Invoke();
         });
     }
 

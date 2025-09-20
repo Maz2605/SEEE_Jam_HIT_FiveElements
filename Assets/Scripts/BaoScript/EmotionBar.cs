@@ -35,6 +35,8 @@ public class EmotionBar : Singleton<EmotionBar>
     [Header("Player Level")]
     [SerializeField] private PlayerLevelSystem _playerLevelSystem;
 
+    [SerializeField] private GameObject panelUI;
+
     private float _currentEmotion;
 
     private bool _isDraining = false;
@@ -110,6 +112,9 @@ public class EmotionBar : Singleton<EmotionBar>
 
     private void Update()
     {
+        if (panelUI != null && panelUI.activeSelf)
+            return;
+
         AddEmotion(_passiveGainPerSecond * Time.deltaTime);
     }
 

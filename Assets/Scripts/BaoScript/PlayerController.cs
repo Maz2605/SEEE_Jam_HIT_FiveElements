@@ -84,7 +84,7 @@ public class PlayerController : Singleton<PlayerController>
 
         enemiesInRange.RemoveAll(e => e == null || !e.gameObject.activeInHierarchy);
 
-        if (attackTimer <= 0f && enemiesInRange.Count > 0)
+        if (attackTimer <= 0f)
         {
             if (_towerHealth != null && _towerHealth.IsDead) return;
             Enemy target = XuanEventManager.GetEnemy(transform.position,10f);
@@ -180,20 +180,6 @@ public class PlayerController : Singleton<PlayerController>
         Debug.Log("Player died → animation Die");
 
         // TODO: display Game Over UI, stop the game, etc.
-    }
-    #endregion
-
-    #region ENEMY DETECTION
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy") && !enemiesInRange.Contains(other.transform))
-            enemiesInRange.Add(other.transform);
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-            enemiesInRange.Remove(other.transform);
     }
     #endregion
 

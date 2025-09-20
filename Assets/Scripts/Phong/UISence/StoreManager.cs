@@ -55,6 +55,7 @@ public class StoreManager : MonoBehaviour
 
     private void AppearStore()
     {
+        panelRoot.SetActive(true);
         MovebackGround();
 
         DOVirtual.DelayedCall(1.5f, () =>

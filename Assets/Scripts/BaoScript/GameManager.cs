@@ -23,12 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelData levelData;
     [SerializeField] private EnemyManager enemyManager;
 
-    private int _currentWaveIndex = -2;
-    private GameState _state = GameState.Idle;
 
-    private float _spawnDelayEnemy = 0.5f;
-    private float _betweenWavesDelay = 2f;
-    private float _timer;
+    private int _currentWaveIndex = -1;
+    private GameState _state = GameState.Idle;
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;
@@ -188,7 +185,7 @@ public class GameManager : MonoBehaviour
         if (_currentWaveIndex < levelData.waves.Count)
         {
             GameEventPhong.DisAppearAward?.Invoke();
-            StartCoroutine(WaitThenSpawn(3f)); // chờ 1 giây rồi spawn wave
+            StartCoroutine(WaitThenSpawn(3f)); 
         }
         else
         {

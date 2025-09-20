@@ -23,8 +23,9 @@ MonoBehaviour:
     - knight2
     bossCount: 0
     bossIDs: []
-  - enemyCount: 0
-    enemyIDs: []
+  - enemyCount: 11
+    enemyIDs:
+    - 
     bossCount: 1
     bossIDs:
     - golem

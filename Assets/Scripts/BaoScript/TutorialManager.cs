@@ -5,9 +5,12 @@ using TMPro;
 [System.Serializable]
 public class TutorialStep
 {
-    public string instructionText;
-    public GameObject highlightTarget;
-    public bool blockInput;
+    [TextArea]
+    public string instructionText;     // Nội dung hướng dẫn
+    public Transform spawnPoint;       // Điểm spawn highlight (do bạn đặt sẵn trong scene)
+    public Vector3 rotationEuler;
+    public GameObject targetToHide;
+    public bool hideOnNext;
 }
 
 public class TutorialManager : MonoBehaviour
@@ -21,6 +24,7 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Steps")]
     [SerializeField] private List<TutorialStep> steps = new List<TutorialStep>();
+    [SerializeField] private UnityEngine.UI.Button nextButton;
 
     private int currentStep = -1;
     private GameObject currentHighlight;
@@ -32,6 +36,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        nextButton.onClick.AddListener(NextStep);
         StartTutorial();
     }
 
@@ -39,12 +44,23 @@ public class TutorialManager : MonoBehaviour
     {
         currentStep = -1;
         tutorialPanel.SetActive(true);
+        nextButton.gameObject.SetActive(true);
         NextStep();
     }
 
     public void NextStep()
     {
+        if (currentStep >= 0 && currentStep < steps.Count)
+        {
+            var prevStep = steps[currentStep];
+            if (prevStep.hideOnNext && prevStep.targetToHide != null)
+            {
+                prevStep.targetToHide.SetActive(false);
+            }
+        }
+
         currentStep++;
+
         if (currentStep >= steps.Count)
         {
             EndTutorial();
@@ -55,17 +71,33 @@ public class TutorialManager : MonoBehaviour
         instructionText.text = step.instructionText;
 
         if (currentHighlight != null) Destroy(currentHighlight);
-        if (step.highlightTarget != null)
+
+        if (step.spawnPoint != null)
         {
-            currentHighlight = Instantiate(highlightPrefab, step.highlightTarget.transform.position, Quaternion.identity, tutorialPanel.transform);
-            currentHighlight.transform.SetAsLastSibling(); // đảm bảo ở trên cùng
+            // Tạo highlight tại spawnPoint + xoay theo rotationEuler
+            currentHighlight = Instantiate(
+                highlightPrefab,
+                step.spawnPoint.position,
+                Quaternion.Euler(step.rotationEuler),
+                tutorialPanel.transform
+            );
+            currentHighlight.transform.SetAsLastSibling();
         }
+
+
+        Time.timeScale = 0f;
     }
+
 
     private void EndTutorial()
     {
         tutorialPanel.SetActive(false);
+        instructionText.gameObject.SetActive(false);
         if (currentHighlight != null) Destroy(currentHighlight);
+
+        nextButton.gameObject.SetActive(false);
+
+        Time.timeScale = 1f;
         Debug.Log("Tutorial finished!");
     }
 }

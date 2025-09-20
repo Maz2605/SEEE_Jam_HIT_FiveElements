@@ -17,4 +17,8 @@ public class XuanEventManager : Singleton<XuanEventManager>
     public static Action<int> OnStartLevel; 
 
     public static Action OnBackLevel;
+
+    public static Action OnNextLevel;
+
+    public static Action OnRetryLevel;
 }

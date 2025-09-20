@@ -236,19 +236,23 @@ public class Enemy : MonoBehaviour
     {
         //////////////////////////////////////////
         //Debug.Log($"{name} đã chết, còn lại: {EnemyManager.Instance.EnemyCount}");
-
+        DataManager.Instance.Coin += _countCoin;
+        DataManager.Instance.SaveCoin(DataManager.Instance.Coin);
         gameObject.tag = "Untagged";
         _collider2D.enabled = false;
         EnemyManager.Instance.RemoveEnemy(this);
         if(_type == EnemyType.Enemy)
         {
             GameObject obj = PoolingManager.Spawn(_effectEnemy, transform.position, Quaternion.identity);
+            ObjectManager.Instance.RegisterObject(gameObject);
             _type = EnemyType.Village;
             _animator.SetBool("IsDead", true);
             StopMove();
             DOVirtual.DelayedCall(0.65f, () =>
             {
                 _animator.runtimeAnimatorController = EnemyManager.Instance.RandomVillage();
+                gameObject.tag = "Untagged";
+                gameObject.layer = LayerMask.NameToLayer("Default");
                 _enemyUI.SetActionFalseBar();
                 _animator.SetBool("IsRun", true);
             });
@@ -259,6 +263,7 @@ public class Enemy : MonoBehaviour
                 _rb.velocity = (transform.position - _posDoor).normalized * -_speed * 8f;
                 DOVirtual.DelayedCall(2f, () =>
                 {
+                    ObjectManager.Instance.UnregisterObject(gameObject);
                     PoolingManager.Despawn(gameObject);
                 });
             });
@@ -267,6 +272,7 @@ public class Enemy : MonoBehaviour
     }
     public void SpawnCoin()
     {
+        
         for (int i = 0; i < _countCoin; i++)
         {
             // Spawn tại vị trí enemy (có thể thêm chút random nhỏ)

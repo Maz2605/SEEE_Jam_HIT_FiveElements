@@ -49,8 +49,38 @@ MonoBehaviour:
   fireBall: {fileID: 9100000, guid: 10efb508cde8024469b3c55b3d13225c, type: 2}
   lightBall: {fileID: 9100000, guid: fc4cdd9559059f0468677736fdaf6bcc, type: 2}
   magicBall: {fileID: 9100000, guid: 556461bef0736fe4cb5780ec5e8701db, type: 2}
-  magicArrow: {fileID: 9100000, guid: 442ffc9656dd1584bbb12735c8db82e2, type: 2}
   darkBall: {fileID: 9100000, guid: ee780f36f63a54b45895f70566078991, type: 2}
+--- !u!1 &1369009096017263691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7206827000013313900}
+  m_Layer: 0
+  m_Name: CoinEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7206827000013313900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369009096017263691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 698679281919898266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4167356559076943256
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +144,7 @@ Transform:
   m_Children:
   - {fileID: 4251145783621439153}
   - {fileID: 6518739638986356880}
+  - {fileID: 7206827000013313900}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1403643111111248079
@@ -140,21 +171,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _bossSpawnPoint: {fileID: 0}
   _enemyData: {fileID: 11400000, guid: 020b44a61d7c13a45928f8f541617bb6, type: 2}
   _bossData: {fileID: 11400000, guid: ac607f5ab75977142bfd92c18d9644cf, type: 2}
   _darkMagic: {fileID: 0}
-  _medusa: {fileID: 0}
-  _golem: {fileID: 0}
-  _flydemon: {fileID: 0}
+  _medusa: {fileID: 7482050624497222916, guid: 14f6cff65a2ce634c90c6b026ffe0d2e, type: 3}
+  _golem: {fileID: 1816901967669764297, guid: ba94a2557837c4a43aa64e033348da30, type: 3}
+  _flydemon: {fileID: 3030037368575256379, guid: 22acbfb68e9388f458348efd438ebd8b, type: 3}
   _stayr: {fileID: 0}
   _boy: {fileID: 9100000, guid: 173fccd796963354f8a5b1d07fa92f82, type: 2}
   _gird: {fileID: 9100000, guid: fce1730a18d262f419e70535ff39d13e, type: 2}
   _effectExplosion: {fileID: 6176778899653607890, guid: c484469333e12c54185e8ac0f344e815, type: 3}
   _coinPrefab: {fileID: 8682063624782643701, guid: 0bb8597af0c5dba46ae15f27855dedb4, type: 3}
+  _coinEnemy: {fileID: 7206827000013313900}

@@ -1,62 +1,106 @@
 ﻿using System.Collections;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+
+public enum GameState
+{
+    Idle,
+    SpawnEnemies,
+    WaitEnemies,
+    SpawnBosses,
+    WaitBosses,
+    BetweenWaves,
+    Finished,
+    GameOver
+}
 
 public class GameManager : MonoBehaviour
 {
+    public static System.Action OnWaveCompleted;
+    public static System.Action OnAllWavesFinished;
+
     [Header("Level Settings")]
-    [SerializeField] private LevelData levelData;       
+    [SerializeField] private LevelData levelData;
     [SerializeField] private EnemyManager enemyManager;
 
-    private int _currentWaveIndex = 0;
+    private int _currentWaveIndex = -2;
+    private GameState _state = GameState.Idle;
 
-    private WaitForSeconds _spawnDelayEnemy = new WaitForSeconds(0.5f);
-    private WaitForSeconds _betweenWavesDelay = new WaitForSeconds(2f);
+    private float _spawnDelayEnemy = 0.5f;
+    private float _betweenWavesDelay = 2f;
+    private float _timer;
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;
 
+
     private void Awake()
     {
-        _enemyStatsCache = new Dictionary<string, EnemyStats>();
-        foreach (var stats in enemyManager.GetEnemyData().enemyStatsList)
-        {
-            if (!_enemyStatsCache.ContainsKey(stats.idEnemy))
-                _enemyStatsCache.Add(stats.idEnemy, stats);
-        }
-
-        _bossStatsCache = new Dictionary<string, EnemyStats>();
-        foreach (var stats in enemyManager.GetBossData().enemyStatsList)
-        {
-            if (!_bossStatsCache.ContainsKey(stats.idEnemy))
-                _bossStatsCache.Add(stats.idEnemy, stats);
-        }
+        InitEnemyCache();
+        InitBossCache();
     }
 
     private void Start()
     {
-        StartCoroutine(RunWaves());
+        GameEventPhong.AppearAward?.Invoke();
     }
 
-    private IEnumerator RunWaves()
+    private void Update()
     {
-        while (_currentWaveIndex < levelData.waves.Count)
+        switch (_state)
         {
-            WaveData wave = levelData.waves[_currentWaveIndex];
+            case GameState.SpawnEnemies:
+                SpawnEnemies();
+                break;
 
-            // --- Spawn Enemies ---
-            yield return StartCoroutine(SpawnWaveEnemies(wave));
+            case GameState.WaitEnemies:
+                if (enemyManager.AreAllEnemiesDead())
+                {
+                    WaveData wave = levelData.waves[_currentWaveIndex];
 
-            // --- Spawn Bosses ---
-            yield return StartCoroutine(SpawnWaveBosses(wave));
+                    // Nếu wave này có boss -> sang SpawnBosses
+                    if (wave.bossCount > 0 && wave.bossIDs.Count > 0)   
+                    {
+                        Debug.Log($"Wave {_currentWaveIndex + 1} có boss → chuyển sang SpawnBosses");
+                        ChangeState(GameState.SpawnBosses);
+                    }
+                    else
+                    {
+                        Debug.Log($"Wave {_currentWaveIndex + 1} KHÔNG có boss → chuyển sang BetweenWaves");
+                        // Nếu KHÔNG có boss -> sang BetweenWaves ngay
+                        ChangeState(GameState.BetweenWaves);
+                    }
+                }
+                break;
 
-            _currentWaveIndex++;
-            yield return _betweenWavesDelay;
+            case GameState.SpawnBosses:
+                SpawnBosses();
+                break;
+
+            case GameState.WaitBosses:
+                if (enemyManager.AreAllEnemiesDead())
+                {
+                    Debug.Log($"Boss wave {_currentWaveIndex + 1} đã xong → BetweenWaves");
+                    ChangeState(GameState.BetweenWaves);
+                }
+                break;
+
+            case GameState.BetweenWaves:
+                break;
+
+            case GameState.Finished:
+                Debug.Log("✅ All waves finished!");
+                break;
         }
     }
 
-    private IEnumerator SpawnWaveEnemies(WaveData wave)
+    #region SPAWN METHODS
+    private void SpawnEnemies()
     {
+        if (_currentWaveIndex >= levelData.waves.Count) return;
+
+        WaveData wave = levelData.waves[_currentWaveIndex];
+
         foreach (string enemyId in wave.enemyIDs)
         {
             if (_enemyStatsCache.TryGetValue(enemyId, out var stats))
@@ -65,16 +109,19 @@ public class GameManager : MonoBehaviour
                 {
                     Transform point = enemyManager.GetRandomSpawnPoint();
                     enemyManager.SpawnEnemy(stats, point.position);
-                    yield return _spawnDelayEnemy;
                 }
             }
         }
 
-        yield return new WaitUntil(() => enemyManager.AreAllEnemiesDead());
+        ChangeState(GameState.WaitEnemies);
     }
 
-    private IEnumerator SpawnWaveBosses(WaveData wave)
+    private void SpawnBosses()
     {
+        if (_currentWaveIndex >= levelData.waves.Count) return;
+
+        WaveData wave = levelData.waves[_currentWaveIndex];
+
         foreach (string bossId in wave.bossIDs)
         {
             for (int i = 0; i < wave.bossCount; i++)
@@ -83,8 +130,98 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        yield return new WaitUntil(() => enemyManager.AreAllEnemiesDead());
+        ChangeState(GameState.WaitBosses);
+    }
+    #endregion
+
+    #region HELPERS
+    private void ChangeState(GameState newState)
+    {
+        Debug.Log($"🔄 ChangeState: {_state} → {newState} (Wave {_currentWaveIndex + 1})");
+        _state = newState;
+
+        if (newState == GameState.BetweenWaves)
+        {
+            Debug.Log($"✅ Wave {_currentWaveIndex + 1} completed → Hiện popup Award");
+            OnWaveCompleted?.Invoke();
+
+            var awardController = GameObject.Find("Award"); 
+            if (awardController != null && !awardController.activeSelf)
+            {
+                awardController.SetActive(true);
+            }
+
+            GameEventPhong.AppearAward?.Invoke();
+        }
+
+        if (newState == GameState.Finished)
+        {
+            OnAllWavesFinished?.Invoke();
+        }
     }
 
 
+    private void InitEnemyCache()
+    {
+        _enemyStatsCache = new Dictionary<string, EnemyStats>();
+        foreach (var stats in enemyManager.GetEnemyData().enemyStatsList)
+        {
+            if (!_enemyStatsCache.ContainsKey(stats.idEnemy))
+                _enemyStatsCache.Add(stats.idEnemy, stats);
+        }
+    }
+
+    private void InitBossCache()
+    {
+        _bossStatsCache = new Dictionary<string, EnemyStats>();
+        foreach (var stats in enemyManager.GetBossData().enemyStatsList)
+        {
+            if (!_bossStatsCache.ContainsKey(stats.idEnemy))
+                _bossStatsCache.Add(stats.idEnemy, stats);
+        }
+    }
+
+    public void ContinueNextWave()
+    {
+        _currentWaveIndex++;
+
+        if (_currentWaveIndex < levelData.waves.Count)
+        {
+            GameEventPhong.DisAppearAward?.Invoke();
+            StartCoroutine(WaitThenSpawn(3f)); // chờ 1 giây rồi spawn wave
+        }
+        else
+        {
+            Debug.Log("🏁 Đã hoàn thành toàn bộ waves!");
+            ChangeState(GameState.Finished);
+        }
+    }
+
+    private IEnumerator WaitThenSpawn(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeState(GameState.SpawnEnemies);
+    }
+
+    private void OnEnable()
+    {
+        StoreManager.OnStoreClosed += HandleStoreClosed;
+    }
+
+    private void OnDisable()
+    {
+        StoreManager.OnStoreClosed -= HandleStoreClosed;
+    }
+
+    private void HandleStoreClosed()
+    {
+        Debug.Log("▶️ Store đã đóng → Spawn enemy");
+        ChangeState(GameState.SpawnEnemies);
+    }
+
+    public void GameOver()
+    {
+
+    }
+    #endregion
 }

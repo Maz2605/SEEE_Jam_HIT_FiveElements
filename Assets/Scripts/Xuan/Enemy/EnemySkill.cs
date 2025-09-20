@@ -13,7 +13,6 @@ public class EnemySkill : Singleton<EnemySkill>
     [SerializeField] private RuntimeAnimatorController fireBall;
     [SerializeField] private RuntimeAnimatorController lightBall;
     [SerializeField] private RuntimeAnimatorController magicBall;
-    [SerializeField] private RuntimeAnimatorController magicArrow;
     [SerializeField] private RuntimeAnimatorController darkBall;
     //
     public void UseKill(Enemy enemy)
@@ -28,29 +27,6 @@ public class EnemySkill : Singleton<EnemySkill>
                 SpawnLightBall(enemy);
                 break;
             case "magic":
-                SpawnMagicBall(enemy);
-                break;
-
-            //Enemy Type Zoombie Will Explosion
-            case "zombie1":
-                Explosion(enemy);
-                break;
-            case "zombie2":
-                Explosion(enemy);
-                break;
-            case "zombie3":
-                Explosion(enemy);
-                break;
-            case "zombie4":
-                Explosion(enemy);
-                break;
-
-            //boss
-            case "dark":
-                SpawnDarkBall(enemy);
-                break;
-
-            case "medusa":
                 SpawnMagicBall(enemy);
                 break;
 
@@ -80,13 +56,4 @@ public class EnemySkill : Singleton<EnemySkill>
         newObj.InitBall(magicBall, 10f, enemy.GetDamage);
     }
 
-    public void Explosion(Enemy enemy)
-    {
-        //Code here
-        enemy.GetAnimator.SetBool("IsExplo", true);
-        DOVirtual.DelayedCall(1f, () =>
-        {
-            PoolingManager.Despawn(enemy.gameObject);
-        });
-    }
 }

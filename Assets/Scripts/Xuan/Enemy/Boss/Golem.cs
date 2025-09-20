@@ -21,8 +21,9 @@ public class Golem : Enemy
     }
     private void CheckPosStart()
     {
-        if(Vector3.Distance(transform.position ,new Vector3(2f,0f,0f)) <= 0.1f)
+        if(Vector3.Distance(transform.position ,new Vector3(1.4f,-0.45f,0f)) <= 0.1f)
         {
+            base.GetRigidbody2D.velocity = Vector2.zero;
             base.IsStart = true;
             StartAttack();
         }
@@ -47,6 +48,14 @@ public class Golem : Enemy
 
         _isUseSkill = true;
         base.GetAnimator.SetTrigger("IsAttack");
+        SkillIce();
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            _isUseSkill = false;
+        });
+    }
+    public void SkillIce()
+    {
         DOVirtual.DelayedCall(0.7f, () =>
         {
             Ice news = PoolingManager.Spawn(_ice, transform.position + new Vector3(-2f, 0.2f, 0f), Quaternion.identity);
@@ -55,18 +64,13 @@ public class Golem : Enemy
             {
                 Ice news = PoolingManager.Spawn(_ice, transform.position + new Vector3(-4f, 0.2f, 0f), Quaternion.identity);
                 news.InitDamage(base.GetDamage);
-                DOVirtual.DelayedCall(0.4f, () =>
+                /*DOVirtual.DelayedCall(0.4f, () =>
                 {
                     Ice news = PoolingManager.Spawn(_ice, transform.position + new Vector3(-6f, 0.2f, 0f), Quaternion.identity);
                     news.InitDamage(base.GetDamage);
-                });
+                });*/
             });
-            
-        });
 
-        DOVirtual.DelayedCall(3f, () =>
-        {
-            _isUseSkill = false;
         });
     }
 

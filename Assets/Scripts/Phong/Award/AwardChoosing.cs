@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -40,8 +40,11 @@ public class AwardChoosing : MonoBehaviour
     {
         // Next wave
         GameEventPhong.DisAppearAward();
-        
-        // Xu ly NextWave
-        
+
+        var gm = FindObjectOfType<GameManager>();
+        if (gm != null)
+        {
+            gm.ContinueNextWave();
+        }
     }
 }

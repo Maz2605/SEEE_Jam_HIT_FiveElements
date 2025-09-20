@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum GameState
@@ -24,12 +25,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private LevelData levelData;
     [SerializeField] private EnemyManager enemyManager;
 
+    [Header("UI")]
+    [SerializeField] private TMP_Text _waveText;   
+    [SerializeField] private float _waveTextDuration = 2f;
+
+    [Header("Hero Settings")]
+    private GameObject _currentHero;
+
     private int _currentWaveIndex = -1;
     private GameState _state = GameState.Idle;
-
-    private float _spawnDelayEnemy = 0.5f;
-    private float _betweenWavesDelay = 2f;
-    private float _timer;
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;
@@ -107,6 +111,11 @@ public class GameManager : Singleton<GameManager>
 
         WaveData wave = levelData.waves[_currentWaveIndex];
 
+        if (wave.bossCount == 0 || wave.bossIDs.Count == 0)
+        {
+            ShowWaveText($"Wave {_currentWaveIndex + 1}");
+        }
+
         foreach (string enemyId in wave.enemyIDs)
         {
             if (_enemyStatsCache.TryGetValue(enemyId, out var stats))
@@ -126,6 +135,8 @@ public class GameManager : Singleton<GameManager>
     {
         if (_currentWaveIndex >= levelData.waves.Count) return;
 
+        ShowWaveText("Boss Wave!");
+
         WaveData wave = levelData.waves[_currentWaveIndex];
 
         foreach (string bossId in wave.bossIDs)
@@ -139,13 +150,36 @@ public class GameManager : Singleton<GameManager>
         ChangeState(GameState.WaitBosses);
     }
     #endregion
+    #region UI HELPERS
+    private void ShowWaveText(string text)
+    {
+        if (_waveText == null) return;
 
+        _waveText.text = text;
+        _waveText.gameObject.SetActive(true);
+        _waveText.alpha = 0;
+
+        // hiệu ứng fade in/out
+        _waveText.DOFade(1f, 0.5f).OnComplete(() =>
+        {
+            DOVirtual.DelayedCall(_waveTextDuration, () =>
+            {
+                _waveText.DOFade(0f, 0.5f);
+            });
+        });
+    }
+    #endregion
     #region HELPERS
     private void ChangeState(GameState newState)
     {
         Debug.Log($"🔄 ChangeState: {_state} → {newState} (Wave {_currentWaveIndex + 1})");
         _state = newState;
-
+        if(_currentHero != null)
+        {
+            GameObject hero = _currentHero;
+            Destroy(hero);
+            _currentHero = null;
+        }
         if (newState == GameState.BetweenWaves)
         {
             if(_currentWaveIndex == levelData.waves.Count - 1)
@@ -211,6 +245,20 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log("🏁 Đã hoàn thành toàn bộ waves!");
             ChangeState(GameState.Finished);
+        }
+
+        DOVirtual.DelayedCall(6f, () =>
+        {
+            GetHero();
+        });
+    }
+
+    private void GetHero()
+    {
+        HeroFlight hero = FindObjectOfType<HeroFlight>();
+        if(hero != null)
+        {
+            _currentHero = hero.gameObject;
         }
     }
 

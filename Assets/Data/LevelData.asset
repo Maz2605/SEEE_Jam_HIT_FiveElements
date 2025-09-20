@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: LevelData
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 2
+  - enemyCount: 10
     enemyIDs:
     - fire
+    - knight
     bossCount: 0
     bossIDs: []
   - enemyCount: 2

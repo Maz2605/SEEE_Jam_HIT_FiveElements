@@ -6,14 +6,19 @@ public class HeroKnight : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private float _speed = 5f;
-    [SerializeField] private float _damage = 10f;
+    [SerializeField] private float _damage = 60f;
+    [SerializeField] private float _attackCooldown = 0.5f;
+    [SerializeField] private float _explosionRadius = 2f;
+    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private GameObject _explosionPrefab;
 
     private Rigidbody2D rb;
     private Animator anim;
     private Transform targetEnemy;
+    private float lastAttackTime;
 
-    // Danh sách enemy trong vùng trigger
     private List<Transform> enemiesInRange = new List<Transform>();
+    private bool hasExploded = false; // ✅ ngăn việc nổ nhiều lần
 
     private void Awake()
     {
@@ -28,7 +33,6 @@ public class HeroKnight : MonoBehaviour
             if (!enemiesInRange.Contains(other.transform))
                 enemiesInRange.Add(other.transform);
 
-            // nếu chưa có target thì chọn enemy mới
             if (targetEnemy == null)
                 targetEnemy = other.transform;
         }
@@ -45,8 +49,6 @@ public class HeroKnight : MonoBehaviour
                 targetEnemy = null;
                 anim.SetBool("isRun", false);
                 anim.SetBool("isAttack", false);
-
-                // chọn lại target khác trong vùng
                 UpdateTargetEnemy();
             }
         }
@@ -54,6 +56,8 @@ public class HeroKnight : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (hasExploded) return; // đã nổ rồi thì ko làm gì nữa
+
         if (targetEnemy == null)
         {
             anim.SetBool("isRun", false);
@@ -61,7 +65,6 @@ public class HeroKnight : MonoBehaviour
             return;
         }
 
-        // Enemy mất tag hoặc bị destroy
         if (!targetEnemy.CompareTag("Enemy"))
         {
             enemiesInRange.Remove(targetEnemy);
@@ -72,14 +75,13 @@ public class HeroKnight : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, targetEnemy.position);
 
-        // Quay mặt theo hướng
         Vector2 direction = (targetEnemy.position - transform.position).normalized;
         if (direction.x > 0.01f)
             transform.localScale = new Vector3(1, 1, 1);
         else if (direction.x < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
 
-        if (distance > 0.5f) // chưa tới gần
+        if (distance > 0.5f)
         {
             Vector2 newPos = Vector2.MoveTowards(rb.position, targetEnemy.position, _speed * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
@@ -88,19 +90,54 @@ public class HeroKnight : MonoBehaviour
         }
         else
         {
-            // đủ gần -> attack
             anim.SetBool("isRun", false);
             anim.SetBool("isAttack", true);
 
-            Enemy enemyComp = targetEnemy.GetComponent<Enemy>();
-            if (enemyComp != null)
-                enemyComp.GetComponent<Enemy>().TakeDamage(enemyComp, _damage);
+            if (Time.time - lastAttackTime >= _attackCooldown)
+            {
+                AttackWithExplosion();
+                lastAttackTime = Time.time;
+            }
         }
+    }
+
+    private void AttackWithExplosion()
+    {
+        if (hasExploded) return; // chỉ nổ 1 lần
+        hasExploded = true;
+
+        if (targetEnemy != null)
+        {
+            Enemy mainEnemy = targetEnemy.GetComponent<Enemy>();
+            if (mainEnemy != null)
+            {
+                mainEnemy.TakeDamage(_damage);
+            }
+        }
+
+        if (_explosionPrefab != null)
+        {
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        }
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _explosionRadius, _enemyLayer);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.transform == targetEnemy) continue;
+
+            Enemy splashEnemy = hit.GetComponent<Enemy>();
+            if (splashEnemy != null)
+            {
+                splashEnemy.TakeDamage(Mathf.CeilToInt(_damage * 0.5f));
+            }
+        }
+
+        // 🔥 Biến mất sau khi explosion
+        Destroy(gameObject, 0.2f);
     }
 
     private void UpdateTargetEnemy()
     {
-        // chọn enemy gần nhất trong danh sách còn lại
         float minDist = float.MaxValue;
         Transform nearest = null;
 
@@ -118,5 +155,11 @@ public class HeroKnight : MonoBehaviour
         }
 
         targetEnemy = nearest;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _explosionRadius);
     }
 }

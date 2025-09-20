@@ -207,6 +207,11 @@ public class Enemy : MonoBehaviour
     {
         enemy.Hit(damage);
     }
+
+    public void TakeDamage(float damage)
+    {
+        Hit(damage);
+    }
     public void ReductSpeed(Enemy enemy, float r, float time)
     {
         enemy.SetSpeed(r, time);

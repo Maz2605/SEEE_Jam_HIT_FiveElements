@@ -7,6 +7,7 @@ using DG.Tweening; // cần DOTween
 
 public class StoreManager : MonoBehaviour
 {
+    public static Action OnStoreAppeared;
     public static Action OnStoreClosed;
 
     public GameObject panelRoot;
@@ -61,6 +62,7 @@ public class StoreManager : MonoBehaviour
         DOVirtual.DelayedCall(1.5f, () =>
         {
             AppearItemBoard();
+            OnStoreAppeared?.Invoke();
         });
     }
 
@@ -83,7 +85,11 @@ public class StoreManager : MonoBehaviour
 
             seq.AppendInterval(0.2f);
         }
-        
+
+        seq.OnComplete(() =>
+        {
+            OnStoreAppeared?.Invoke();
+        });
     }
 
     private void ShowButtonWithFade(Button btn)

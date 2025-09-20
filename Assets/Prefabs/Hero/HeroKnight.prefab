@@ -122,7 +122,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _damage: 10
+  _damage: 20
+  _attackCooldown: 0.5
+  _explosionRadius: 5
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _explosionPrefab: {fileID: 7326648420543631554, guid: b1641a4841e3adb4481bb7c94f9eab47, type: 3}
 --- !u!50 &7925977881628172702
 Rigidbody2D:
   serializedVersion: 4

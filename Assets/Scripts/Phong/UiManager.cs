@@ -96,6 +96,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OpenTutorial()
     {
+        
         menuUI.SetActive(false);
         settingUI.SetActive(false);
         mapUI.SetActive(false);

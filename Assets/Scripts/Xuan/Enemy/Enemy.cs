@@ -264,6 +264,7 @@ public class Enemy : MonoBehaviour
     }
     public void SpawnCoin()
     {
+
         for (int i = 0; i < _countCoin; i++)
         {
             // Spawn tại vị trí enemy (có thể thêm chút random nhỏ)

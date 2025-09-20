@@ -15,7 +15,7 @@ public class PlayerLevelSystem : MonoBehaviour
     private void Start()
     {
         //chi spawn play khi bat dau level
-        //SpawnNormalPlayer();
+        SpawnNormalPlayer();
         currentLevel = 0;
     }
 

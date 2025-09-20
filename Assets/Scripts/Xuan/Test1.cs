@@ -8,6 +8,8 @@ public class Test1 : MonoBehaviour
     [SerializeField] private Button btn;
     [SerializeField] private Button btnContinue;
     [SerializeField] private Button btnPause;
+    [SerializeField] private Button btnBack;
+    [SerializeField] private GameObject panelMenu;
 
     private void Start()
     {
@@ -20,12 +22,19 @@ public class Test1 : MonoBehaviour
         btnContinue.onClick.AddListener(() =>
         {
             Time.timeScale = 1;
-            btnContinue.gameObject.SetActive(false);
+            panelMenu.SetActive(false);
         });
         btnPause.onClick.AddListener(() =>
         {
             Time.timeScale = 0;
-            btnContinue.gameObject.SetActive(true);
+            panelMenu.SetActive(true);
+        });
+        btnBack.onClick.AddListener(() =>
+        {
+            Time.timeScale = 1;
+            panelMenu.SetActive(false);
+            btn.gameObject.SetActive(true);
+            XuanEventManager.OnBackLevel();
         });
     }
 

@@ -79,4 +79,12 @@ public class PlayerLevelSystem : MonoBehaviour
             spawnPoint.rotation
         );
     }
+    public void RemovePlayer()
+    {
+        if(_currentPlayer != null)
+        {
+            PoolingManager.Despawn(_currentPlayer);
+            _currentPlayer = null;
+        }
+    }
 }

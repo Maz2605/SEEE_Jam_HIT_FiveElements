@@ -14,10 +14,12 @@ public class StartLevel : MonoBehaviour
     private void Start()
     {
         XuanEventManager.OnStartLevel += OnLevel;
+        XuanEventManager.OnBackLevel += BackLevel;
     }
     private void OnDestroy()
     {
         XuanEventManager.OnStartLevel -= OnLevel;
+        XuanEventManager.OnBackLevel -= BackLevel;
     }
 
     public void OnLevel(int index)
@@ -28,6 +30,7 @@ public class StartLevel : MonoBehaviour
         _playerLevelSystem.SpawnNormalPlayer();
         obj.SetActive(true);
         enemyListSpawn.SetActive(true);
+        GameManager.Instance.CurrentWaveIndex = -1;
     }
 
     public void BackLevel()
@@ -36,5 +39,18 @@ public class StartLevel : MonoBehaviour
         _uiGamePlay.SetActive(false);
         obj.SetActive(false);
         enemyListSpawn.SetActive(false);
+        EnemyManager.Instance.RemoveAllEnemy();
+        _playerLevelSystem.RemovePlayer();
+
+        HeroFlight heroFlight = FindObjectOfType<HeroFlight>();
+        if (heroFlight != null)
+        {
+            PoolingManager.Despawn(heroFlight.gameObject);
+        }
+        HeroKnight heroKnight = FindObjectOfType<HeroKnight>();
+        if (heroKnight != null)
+        {
+            PoolingManager.Despawn(heroKnight.gameObject);
+        }
     }
 }

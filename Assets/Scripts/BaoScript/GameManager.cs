@@ -33,6 +33,12 @@ public class GameManager : Singleton<GameManager>
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;
+
+    public int CurrentWaveIndex
+    {
+               get { return _currentWaveIndex; }
+                set { _currentWaveIndex = value; }
+    }
     private void Awake()
     {
         InitEnemyCache();

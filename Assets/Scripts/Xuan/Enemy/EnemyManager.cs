@@ -177,4 +177,16 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         return _bossSpawnPoint;
     }
+
+    public void RemoveAllEnemy()
+    {
+        for (int i = _enemys.Count - 1; i >= 0; i--)
+        {
+            if (_enemys[i] != null && _enemys[i].gameObject.activeInHierarchy)
+            {
+                PoolingManager.Despawn(_enemys[i].gameObject);
+                _enemys.RemoveAt(i);    
+            }
+        }
+    }
 }

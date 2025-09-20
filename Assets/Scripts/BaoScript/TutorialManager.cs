@@ -13,31 +13,24 @@ public class TutorialStep
     public bool hideOnNext;
 }
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : Singleton<TutorialManager>
 {
-    public static TutorialManager Instance;
-
     [Header("UI")]
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private TextMeshProUGUI instructionText;
     [SerializeField] private GameObject highlightPrefab;
+    [SerializeField] private GameObject tutorialImage;
 
     [Header("Steps")]
     [SerializeField] private List<TutorialStep> steps = new List<TutorialStep>();
     [SerializeField] private UnityEngine.UI.Button nextButton;
 
     private int currentStep = -1;
-    private GameObject currentHighlight;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
+    
     private void Start()
     {
         nextButton.onClick.AddListener(NextStep);
-        StartTutorial();
+        //StartTutorial();
     }
 
     public void StartTutorial()
@@ -45,6 +38,7 @@ public class TutorialManager : MonoBehaviour
         currentStep = -1;
         tutorialPanel.SetActive(true);
         nextButton.gameObject.SetActive(true);
+        instructionText.gameObject.SetActive(true);
         NextStep();
     }
 
@@ -52,13 +46,13 @@ public class TutorialManager : MonoBehaviour
     {
         if (currentStep >= 0 && currentStep < steps.Count)
         {
-            var prevStep = steps[currentStep];
+            TutorialStep prevStep = steps[currentStep];
             if (prevStep.hideOnNext && prevStep.targetToHide != null)
             {
                 prevStep.targetToHide.SetActive(false);
             }
         }
-
+        
         currentStep++;
 
         if (currentStep >= steps.Count)
@@ -67,22 +61,31 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        var step = steps[currentStep];
+        if (currentStep == 0)
+        {
+            tutorialImage.SetActive(true);
+        }
+        else
+        {
+            tutorialImage.SetActive(false);
+        }
+
+        TutorialStep step = steps[currentStep];
         instructionText.text = step.instructionText;
-
-        if (currentHighlight != null) Destroy(currentHighlight);
-
-        if (step.spawnPoint != null)
+        
+        highlightPrefab.transform.position = step.spawnPoint.position;
+        highlightPrefab.transform.rotation = Quaternion.Euler(step.rotationEuler);
+        /*if (step.spawnPoint != null)
         {
             // Tạo highlight tại spawnPoint + xoay theo rotationEuler
             currentHighlight = Instantiate(
                 highlightPrefab,
                 step.spawnPoint.position,
-                Quaternion.Euler(step.rotationEuler),
-                tutorialPanel.transform
+                Quaternion.Euler(step.rotationEuler)
+                
             );
             currentHighlight.transform.SetAsLastSibling();
-        }
+        }*/
 
 
         Time.timeScale = 0f;
@@ -93,8 +96,8 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialPanel.SetActive(false);
         instructionText.gameObject.SetActive(false);
-        if (currentHighlight != null) Destroy(currentHighlight);
-
+        /*if (currentHighlight != null) Destroy(currentHighlight);*/
+        highlightPrefab.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(false);
 
         Time.timeScale = 1f;

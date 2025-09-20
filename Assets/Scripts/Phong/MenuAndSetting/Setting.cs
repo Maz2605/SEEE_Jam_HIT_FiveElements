@@ -19,6 +19,9 @@ public class Setting : MonoBehaviour
         
         musicSlider.value = _currentMusicVolume;
         sfxSlider.value = _currentSfxVolume;
+        
+        AudioManager.Instance.SetMusicVolume(_currentMusicVolume);
+        AudioManager.Instance.SetSoundVolume(_currentSfxVolume);
     }
     
     
@@ -34,6 +37,7 @@ public class Setting : MonoBehaviour
         DataManager.Instance.SaveMusicVolume(DataManager.Instance.MusicVolume);
         DataManager.Instance.SaveSfxVolume(DataManager.Instance.SfxVolume);
         
-        
+        AudioManager.Instance.SetMusicVolume(_currentMusicVolume);
+        AudioManager.Instance.SetSoundVolume(_currentSfxVolume);
     }
 }

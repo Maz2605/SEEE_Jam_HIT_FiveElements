@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,19 +12,26 @@ public class StartLevel : MonoBehaviour
     [SerializeField] private GameObject enemyListSpawn;
     [SerializeField] private GameObject _uiGamePlay;
 
+    private int _currentLevelIndex = -1;
+
     private void Start()
     {
         XuanEventManager.OnStartLevel += OnLevel;
         XuanEventManager.OnBackLevel += BackLevel;
+        XuanEventManager.OnNextLevel += NextLevel;
+        XuanEventManager.OnRetryLevel += RetryLevel;
     }
     private void OnDestroy()
     {
         XuanEventManager.OnStartLevel -= OnLevel;
         XuanEventManager.OnBackLevel -= BackLevel;
+        XuanEventManager.OnNextLevel -= NextLevel;
+        XuanEventManager.OnRetryLevel -= RetryLevel;
     }
 
     public void OnLevel(int index)
     {
+        _currentLevelIndex = index;
         TowerHealth.Instance.InitTower();
         _map.SetActive(true);
         _uiGamePlay.SetActive(true);
@@ -54,5 +62,21 @@ public class StartLevel : MonoBehaviour
             PoolingManager.Despawn(heroKnight.gameObject);
         }
         ObjectManager.Instance.DeactivateAllObjects();
+    }
+
+    public void NextLevel()
+    {
+        _currentLevelIndex++;
+
+        RetryLevel();
+    }
+
+    public void RetryLevel()
+    {
+        BackLevel();
+        DOVirtual.DelayedCall(0.1f, () =>
+        {
+            OnLevel(_currentLevelIndex);
+        });
     }
 }

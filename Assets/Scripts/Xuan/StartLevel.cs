@@ -74,7 +74,7 @@ public class StartLevel : MonoBehaviour
     public void RetryLevel()
     {
         BackLevel();
-        DOVirtual.DelayedCall(0.5f, () =>
+        DOVirtual.DelayedCall(0.1f, () =>
         {
             OnLevel(_currentLevelIndex);
         });

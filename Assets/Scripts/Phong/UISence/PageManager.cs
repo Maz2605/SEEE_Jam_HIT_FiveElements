@@ -18,7 +18,7 @@ public class PageManager : MonoBehaviour
     
         if (autoHide)
         {
-            seq.AppendInterval(3f);
+            seq.AppendInterval(2f);
             seq.Append(imageInfor.DOFade(0f, 1f));
    
 

@@ -47,6 +47,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OpenGamePlay()
     {
+        AudioManager.Instance.PlayMusicInGame();
         menuUI.SetActive(false);
         settingUI.SetActive(false);
         openSenceUI.SetActive(false);
@@ -58,6 +59,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OpenMap()
     {
+        AudioManager.Instance.PlayMusicSelectLevel();
         menuUI.SetActive(false);
         settingUI.SetActive(false);
         openSenceUI.SetActive(false);

@@ -124,7 +124,7 @@ public class Bullet : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, transform.position + _moveDirection * 1.5f);
     }
-
+        
     private void BulletSpin()
     {
         transform.Rotate(Vector3.forward * _spinSpeed * Time.deltaTime);

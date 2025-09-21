@@ -12,6 +12,7 @@ public class UiManager : Singleton<UiManager>
     public GameObject gamePlayUI;
     public GameObject introUI;
     public GameObject tutorialUI;
+    private bool _isSkip;
 
     public void OpenMenu()
     {
@@ -84,7 +85,14 @@ public class UiManager : Singleton<UiManager>
     
     public void OpenSence()
     {
+        if(_isSkip)
+        {
+            introUI.SetActive(false);
+            OpenMap();
+            return;
+        }
         // 
+        _isSkip = true;
         menuUI.SetActive(false);
         settingUI.SetActive(false);
         mapUI.SetActive(false);
@@ -96,8 +104,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OpenTutorial()
     {
-        
-        menuUI.SetActive(false);
+        /*menuUI.SetActive(false);
         settingUI.SetActive(false);
         mapUI.SetActive(false);
         openSenceUI.SetActive(false);
@@ -110,7 +117,7 @@ public class UiManager : Singleton<UiManager>
         if (TutorialManager.Instance != null)
         {
             TutorialManager.Instance.StartTutorial();
-        }
+        }*/
     }
 
     public void QuitGame()

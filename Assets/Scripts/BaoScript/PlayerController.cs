@@ -94,7 +94,12 @@ public class PlayerController : Singleton<PlayerController>
 
         if (attackTimer <= 0f)
         {
-            if (_towerHealth != null && _towerHealth.IsDead) return;
+            if (_towerHealth != null && _towerHealth.IsDead)
+            {
+                Debug.Log("Twokdkjshjdshj");
+                return; 
+            }
+
             Enemy target = XuanEventManager.GetEnemy(transform.position,10f);
 
             if (target != null)

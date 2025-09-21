@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class MapGame : MonoBehaviour
 {
-    
-    
+    private bool _isTutoria;   
     public void OpenShop()
     {
         
@@ -21,8 +21,13 @@ public class MapGame : MonoBehaviour
 
     public void GoToLevel(int level)
     {
+        //Tutoria
+        if(!_isTutoria)
+        {
+            TutorialManager.Instance.StartTutorial();
+            _isTutoria = true;
+        }
         //Go to level
-        TutorialManager.Instance.StartTutorial();
         XuanEventManager.OnStartLevel(level);
         UiManager.Instance.OpenGamePlay();
     }

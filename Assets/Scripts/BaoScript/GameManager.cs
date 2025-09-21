@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager>
     public static System.Action OnAllWavesFinished;
 
     [Header("Level Settings")]
-    [SerializeField] private LevelData levelData;
+    [SerializeField] private List<LevelData> _levelData;
     [SerializeField] private EnemyManager enemyManager;
 
     [Header("UI")]
@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject _currentHero;
 
     private int _currentWaveIndex = -1;
+    private int _currentLevelIndex = -1;
     private GameState _state = GameState.Idle;
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
@@ -43,6 +44,11 @@ public class GameManager : Singleton<GameManager>
     {
                get { return _currentWaveIndex; }
                 set { _currentWaveIndex = value; }
+    }
+    public int CurrentLevel
+    {
+        get => _currentLevelIndex;
+        set => _currentLevelIndex = value;
     }
     private void Awake()
     {
@@ -67,7 +73,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.WaitEnemies:
                 if (enemyManager.AreAllEnemiesDead())
                 {
-                    WaveData wave = levelData.waves[_currentWaveIndex];
+                    WaveData wave = _levelData[CurrentWaveIndex].waves[_currentWaveIndex];
 
                     // Nếu wave này có boss -> sang SpawnBosses
                     if (wave.bosses != null && wave.bosses.Count > 0)
@@ -107,9 +113,9 @@ public class GameManager : Singleton<GameManager>
     #region SPAWN METHODS
     private void SpawnEnemies()
     {
-        if (_currentWaveIndex < 0 || _currentWaveIndex >= levelData.waves.Count) return;
+        if (_currentWaveIndex < 0 || _currentWaveIndex >= _levelData[_currentLevelIndex].waves.Count) return;
 
-        WaveData wave = levelData.waves[_currentWaveIndex];
+        WaveData wave = _levelData[_currentLevelIndex].waves[_currentWaveIndex];
         bool hasEnemies = wave.enemies != null && wave.enemies.Count > 0;
         bool hasBosses = wave.bosses != null && wave.bosses.Count > 0;
 
@@ -146,9 +152,9 @@ public class GameManager : Singleton<GameManager>
 
     private void SpawnBosses()
     {
-        if (_currentWaveIndex < 0 || _currentWaveIndex >= levelData.waves.Count) return;
+        if (_currentWaveIndex < 0 || _currentWaveIndex >= _levelData[_currentLevelIndex].waves.Count) return;
 
-        WaveData wave = levelData.waves[_currentWaveIndex];
+        WaveData wave = _levelData[_currentLevelIndex].waves[_currentWaveIndex];
         if (wave.bosses == null || wave.bosses.Count == 0)
         {
             ChangeState(GameState.BetweenWaves);
@@ -208,7 +214,7 @@ public class GameManager : Singleton<GameManager>
         }
         if (newState == GameState.BetweenWaves)
         {
-            if(_currentWaveIndex == levelData.waves.Count - 1)
+            if(_currentWaveIndex == _levelData[_currentLevelIndex].waves.Count - 1)
             {
                 Debug.Log("🏁 Đã hoàn thành toàn bộ waves!");
                 ChangeState(GameState.Finished);
@@ -262,7 +268,7 @@ public class GameManager : Singleton<GameManager>
     {
         _currentWaveIndex++;
 
-        if (_currentWaveIndex < levelData.waves.Count)
+        if (_currentWaveIndex < _levelData[_currentLevelIndex].waves.Count)
         {
             GameEventPhong.DisAppearAward?.Invoke();
             //StartCoroutine(WaitThenSpawn(3f)); // chờ 1 giây rồi spawn wave

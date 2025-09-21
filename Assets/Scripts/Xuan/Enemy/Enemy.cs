@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private float _scoreValue;
     private int _countCoin;
     private EnemyType _type;
+    private Coroutine _frozenCoroutine;
 
     //Get
     public float GetHealth => _health;
@@ -92,6 +93,8 @@ public class Enemy : MonoBehaviour
         _collider2D.enabled = true;
 
         _isStart = false;
+        _isDead = false;
+        _isFrozen = false;
         //Sau khi khoi tao xong bat dau di chuyen
         StartMove();
     }
@@ -150,22 +153,31 @@ public class Enemy : MonoBehaviour
     }
     public void Frozen(float time)
     {
+        if (_isFrozen) return;
+
+        if (_frozenCoroutine != null) StopCoroutine(_frozenCoroutine);
+        _frozenCoroutine = StartCoroutine(FrozenRoutine(time));
+    }
+
+    private IEnumerator FrozenRoutine(float time)
+    {
         _isFrozen = true;
         _animator.speed = 0f;
         _rb.velocity = Vector2.zero;
-        if(_cAttack != null) StopCoroutine(_cAttack);
-        DOVirtual.DelayedCall(time, () =>
+
+        if (_cAttack != null) StopCoroutine(_cAttack);
+
+        yield return new WaitForSeconds(time);
+
+        _animator.speed = 1f;
+        if (_currentHealth < _health)
         {
-            _animator.speed = 1f;
-            if (_currentHealth < _health && _type == EnemyType.Enemy)
-            {
-                if(_isAttack) _cAttack = StartCoroutine(AttackWall());
+            if (_isAttack) _cAttack = StartCoroutine(AttackWall());
+            _rb.velocity = new Vector2(-_speed, _rb.velocity.y);
+        }
 
-                _rb.velocity = new Vector2(-_speed, _rb.velocity.y);
-                _isFrozen = false;
-            }
-
-        });
+        _isFrozen = false;
+        _frozenCoroutine = null;
     }
 
     public void StartExplosion()
@@ -251,7 +263,6 @@ public class Enemy : MonoBehaviour
             DOVirtual.DelayedCall(0.65f, () =>
             {
                 _animator.runtimeAnimatorController = EnemyManager.Instance.RandomVillage();
-                gameObject.tag = "Untagged";
                 gameObject.layer = LayerMask.NameToLayer("Default");
                 _enemyUI.SetActionFalseBar();
                 _animator.SetBool("IsRun", true);

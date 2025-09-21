@@ -41,6 +41,7 @@ public class StartLevel : MonoBehaviour
         obj.SetActive(true);
         enemyListSpawn.SetActive(true);
         GameManager.Instance.CurrentWaveIndex = -1;
+        GameManager.Instance.ResetState();
     }
 
     public void BackLevel()

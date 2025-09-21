@@ -35,7 +35,12 @@ public class GameManager : Singleton<GameManager>
 
     private int _currentWaveIndex = -1;
     private int _currentLevelIndex = -1;
-    private GameState _state = GameState.Idle;
+   [SerializeField] private GameState _state = GameState.Idle;
+
+    public void ResetState()
+    {
+        _state = GameState.Idle;
+    }
 
     private Dictionary<string, EnemyStats> _enemyStatsCache;
     private Dictionary<string, EnemyStats> _bossStatsCache;

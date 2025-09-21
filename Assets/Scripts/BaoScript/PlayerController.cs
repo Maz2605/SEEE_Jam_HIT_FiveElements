@@ -28,7 +28,7 @@ public class PlayerController : Singleton<PlayerController>
     private float attackTimer;
 
     private bool _isDead;
-    private bool _isAttacking;
+    public bool _isAttacking;
     private bool _isUsingSuperHappy = false;
     private PlayerStateType _state = PlayerStateType.Idle;
 
@@ -154,7 +154,7 @@ public class PlayerController : Singleton<PlayerController>
         Vector3 direction = (_cachedTarget.position - _firePoint.position).normalized;
         bullet.Launch(direction, _bulletSpeed);
 
-        Invoke(nameof(ResetAttack), 0.2f);
+        Invoke(nameof(ResetAttack), 0.5f);
     }
 
     private void FireBulletMulti(int count, float interval)
@@ -186,8 +186,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (_isDead) return;
 
-        _isDead = true;
-        _isAttacking = false;
+       
 
         ChangeState(PlayerStateType.Die);
         Debug.Log("Player died → animation Die");
@@ -199,7 +198,7 @@ public class PlayerController : Singleton<PlayerController>
     #region ANIMATION CONTROL
     private void ChangeState(PlayerStateType newState)
     {
-        if (_state == newState) return;
+        //if (_state == newState) return;
 
         _state = newState;
 

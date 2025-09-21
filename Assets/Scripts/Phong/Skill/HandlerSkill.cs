@@ -22,7 +22,7 @@ public class HandlerSkill : MonoBehaviour
         {
             Debug.Log("-50 mau ");
             // Enemy take damage
-            other.GetComponent<Enemy>().TakeDamage(other.gameObject.GetComponent<Enemy>(), _damage);
+            other.GetComponent<Enemy>().TakeDamage( _damage);
         }
     }
 

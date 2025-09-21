@@ -164,7 +164,7 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         for (int i = _enemys.Count - 1; i >= 0; i--)
         {
-            if (_enemys[i] == null || !_enemys[i].gameObject.activeInHierarchy)
+            if ( !_enemys[i].gameObject.activeInHierarchy)
             {
                 _enemys.RemoveAt(i);
             }

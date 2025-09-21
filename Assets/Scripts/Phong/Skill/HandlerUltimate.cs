@@ -45,18 +45,9 @@ public class HandlerUltimate : MonoBehaviour
         {
             Debug.Log("-100 mau");
             // Enemy take damage
-            _enemies.Add(other.GetComponent<Enemy>());
+            other.GetComponent<Enemy>().TakeDamage(_damage);
         }
     }
 
-    public void GetDamage()
-    {
-        if (_enemies.Count > 0)
-        {
-            foreach (var enemy in _enemies)
-            {
-                enemy.GetComponent<Enemy>().TakeDamage(enemy.gameObject.GetComponent<Enemy>(), _damage);
-            }
-        }
-    }
+   
 }

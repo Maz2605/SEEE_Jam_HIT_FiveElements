@@ -118,7 +118,7 @@ public class DataManager : Singleton<DataManager>
 
     private void Awake()
     {
-        //ResetAll();
+        ResetAll();
         LoadAll();
     }
 
@@ -248,9 +248,9 @@ public class DataManager : Singleton<DataManager>
     {
         PlayerPrefs.DeleteAll();
     
-        damageSkill1 = 50f;
-        damageSkillUltimate = 1000f;
-        timerSkill2 = 5f;
+        damageSkill1 = 40f;
+        damageSkillUltimate =200f;
+        timerSkill2 = 2f;
         timerSkill3 = 5f;
         buffRangeAttack = 1.5f;
         buffSpeedAttack = 1.2f;

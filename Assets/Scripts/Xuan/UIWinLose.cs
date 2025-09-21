@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,9 +55,13 @@ public class UIWinLose : Singleton<UIWinLose>
     }
     public void ShowWin()
     {
-        Time.timeScale = 0f;
-        _backGround.SetActive(true);
-        _win.SetActive(true);
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            Time.timeScale = 0f;
+            _backGround.SetActive(true);
+            _win.SetActive(true);
+        });
+       
     }
     public void BackWin()
     {

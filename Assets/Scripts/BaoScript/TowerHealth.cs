@@ -25,11 +25,15 @@ public class TowerHealth : Singleton<TowerHealth>
         _maxHealth = DataManager.Instance.TowerHealth;
         _healthBar.Initialize(_maxHealth);
         _currentHealth = _maxHealth;
+    
     }
 
     public void SetCurrentHealth(float value)
     {
         _currentHealth += value;
+        
+        if(_currentHealth >= _maxHealth) _currentHealth = _maxHealth;
+        
         _healthBar.SetHealth(_currentHealth);
     }
 
@@ -46,6 +50,12 @@ public class TowerHealth : Singleton<TowerHealth>
 
         if (_healthBar != null)
             _healthBar.Initialize(_maxHealth);
+        else
+        {
+            Debug.LogWarning("No health Bar found!");
+        }
+        
+       
     }
     #endregion
 

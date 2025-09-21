@@ -54,6 +54,7 @@ public class PlayerLevelSystem : MonoBehaviour
 
     private void ReplaceWithNormal(int newLevel)
     {
+        PlayerController.Instance._isAttacking = false;
         if (_currentPlayer != null)
             PoolingManager.Despawn(_currentPlayer);
 
@@ -62,7 +63,7 @@ public class PlayerLevelSystem : MonoBehaviour
             spawnPoint.position,
             spawnPoint.rotation
         );
-
+        
         Animator anim = _currentPlayer.GetComponent<Animator>();
         if (anim != null)
             anim.SetInteger("EmotionLevel", newLevel);
@@ -70,6 +71,7 @@ public class PlayerLevelSystem : MonoBehaviour
 
     private void ReplaceWithSuperHappy()
     {
+        PlayerController.Instance._isAttacking = false;
         if (_currentPlayer != null)
             PoolingManager.Despawn(_currentPlayer);
 
@@ -78,6 +80,7 @@ public class PlayerLevelSystem : MonoBehaviour
             spawnPoint.position,
             spawnPoint.rotation
         );
+       
     }
     public void RemovePlayer()
     {

@@ -10,6 +10,7 @@ TagManager:
   - Stop
   - Ball
   - AttackRange
+  - HealthBarTower
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,10 @@ TagManager:
     locked: 0
   - name: Skill
     uniqueID: 351489503
+    locked: 0
+  - name: Player
+    uniqueID: 1734758285
+    locked: 0
+  - name: Bullet
+    uniqueID: 3146246427
     locked: 0

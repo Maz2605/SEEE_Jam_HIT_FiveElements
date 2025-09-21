@@ -106,6 +106,7 @@ public class EmotionBar : Singleton<EmotionBar>
     private void Start()
     {
         _currentEmotion = 0f;
+        _tweenDuration = DataManager.Instance.PowerDuration;
         UpdateUIImmediate();
         UpdateEmotionIcon(_currentEmotion / _maxEmotion);
     }

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ccf29817493684fa90ddbbdd717e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 15
   boomPrefab: {fileID: 668321126092033461, guid: cb4a8ef8f25a4404f8c111e57910183b, type: 3}
 --- !u!50 &9152047907114352804
 Rigidbody2D:

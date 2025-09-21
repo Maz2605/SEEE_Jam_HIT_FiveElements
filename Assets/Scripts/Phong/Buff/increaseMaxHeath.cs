@@ -22,5 +22,6 @@ public class increaseMaxHeath : MonoBehaviour
     {
         DataManager.Instance.TowerHealth *= 1.1f;
         DataManager.Instance.SaveTowerHealth(DataManager.Instance.TowerHealth);
+        TowerHealth.Instance.SetMaxHealth(DataManager.Instance.TowerHealth);
     }
 }

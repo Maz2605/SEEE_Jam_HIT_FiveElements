@@ -118,6 +118,7 @@ public class DataManager : Singleton<DataManager>
 
     private void Awake()
     {
+        //ResetAll();
         LoadAll();
     }
 
@@ -262,8 +263,8 @@ public class DataManager : Singleton<DataManager>
         currentLevelSkillUltimate = 1;
     
         coin = 1000;
-        towerHealth = 500f;
-        powerDuration = 10f;
+        towerHealth = 300f;
+        powerDuration = 8f;
         attackRange = 5f;   // ✅ default
         bulletSpeed = 10f;  // ✅ default
     

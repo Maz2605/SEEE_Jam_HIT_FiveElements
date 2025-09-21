@@ -63,6 +63,7 @@ public class PlayerController : Singleton<PlayerController>
     #endregion
     private void Awake()
     {
+        
         rangeCollider = GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
 
@@ -70,10 +71,17 @@ public class PlayerController : Singleton<PlayerController>
             _animator = GetComponent<Animator>();
 
         _healthBar = GameObject.FindGameObjectWithTag("HealthBarTower").GetComponent<HealthBarController>();
-        _healthBar.Initialize(30f);
+        // _healthBar.Initialize(30f);
 
 
     }
+
+    private void Start()
+    {
+        _attackRange = DataManager.Instance.AttackRange;
+        _bulletSpeed = DataManager.Instance.BulletSpeed;
+    }
+
     #region UPDATE LOOP
     private void Update()
     {

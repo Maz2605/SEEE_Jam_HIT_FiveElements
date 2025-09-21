@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class TowerHealth : Singleton<TowerHealth>
 {
@@ -19,14 +20,22 @@ public class TowerHealth : Singleton<TowerHealth>
     public float GetMaxHealth() => _maxHealth;
     public bool GetIsDead() => _isDead;
 
+    private void Start()
+    {
+        _maxHealth = DataManager.Instance.TowerHealth;
+        _healthBar.Initialize(_maxHealth);
+        _currentHealth = _maxHealth;
+    }
+
     public void SetCurrentHealth(float value)
     {
         _currentHealth += value;
+        _healthBar.SetHealth(_currentHealth);
     }
 
     public void SetMaxHealth(float value)
     {
-        _maxHealth += value;
+        _maxHealth = value;
     }
     #endregion
 
@@ -76,13 +85,6 @@ public class TowerHealth : Singleton<TowerHealth>
         }
     }
 
-    public void Revive()
-    {
-        _isDead = false;
-        _currentHealth = _maxHealth;
-
-        if (_healthBar != null)
-            _healthBar.Initialize(_maxHealth);
-    }
+   
     #endregion
 }

@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7eccb37e409bc444b172d2d0adc2bec, type: 3}
-  m_Name: LevelData
+  m_Name: LevelData 1
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyID: knight1
+    - enemyID: 'knight2 '
       count: 9
+    - enemyID: fire
+      count: 1
     bosses: []
   - enemies:
     - enemyID: knight1

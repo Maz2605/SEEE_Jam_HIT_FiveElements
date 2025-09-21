@@ -32,6 +32,7 @@ public class StartLevel : MonoBehaviour
     public void OnLevel(int index)
     {
         _currentLevelIndex = index;
+        GameManager.Instance.CurrentLevel = _currentLevelIndex - 1;
         TowerHealth.Instance.InitTower();
         _map.SetActive(true);
         _uiGamePlay.SetActive(true);

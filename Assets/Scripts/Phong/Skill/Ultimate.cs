@@ -43,6 +43,7 @@ public class Ultimate : MonoBehaviour
     {
         if (ultimatePrefab == null || _isCooldown || _isLook) return;
 
+        AudioManager.Instance.PlayUltimate();
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
         {

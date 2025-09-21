@@ -147,7 +147,8 @@ public class PlayerController : Singleton<PlayerController>
     public void FireBullet()
     {
         if (_isDead || _cachedTarget == null || (_towerHealth != null && _towerHealth.IsDead)) return;
-
+    
+        AudioManager.Instance.PlayAttack();
         GameObject bulletObj = PoolingManager.Spawn(_bulletPrefab, _firePoint.position, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         ObjectManager.Instance.RegisterObject(bullet.gameObject);

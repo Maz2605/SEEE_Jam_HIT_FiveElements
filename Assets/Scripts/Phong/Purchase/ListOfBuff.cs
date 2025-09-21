@@ -91,7 +91,7 @@ public class ListOfBuff : Singleton<ListOfBuff>
             DataManager.Instance.SaveCoin(DataManager.Instance.Coin);
             ShopManager.Instance.UpdateCoinText(DataManager.Instance.Coin);
         }
-        
+        AudioManager.Instance.PlayUseCoin();
         
     }
 

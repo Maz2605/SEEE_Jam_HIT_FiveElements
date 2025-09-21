@@ -54,6 +54,7 @@ public class PlayerLevelSystem : MonoBehaviour
 
     private void ReplaceWithNormal(int newLevel)
     {
+        AudioManager.Instance.PlayMusicInGame();
         PlayerController.Instance._isAttacking = false;
         if (_currentPlayer != null)
             PoolingManager.Despawn(_currentPlayer);
@@ -71,6 +72,7 @@ public class PlayerLevelSystem : MonoBehaviour
 
     private void ReplaceWithSuperHappy()
     {
+        AudioManager.Instance.PlayMusicMaxBar();
         PlayerController.Instance._isAttacking = false;
         if (_currentPlayer != null)
             PoolingManager.Despawn(_currentPlayer);

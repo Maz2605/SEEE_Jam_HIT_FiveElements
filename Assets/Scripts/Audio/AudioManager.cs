@@ -61,6 +61,7 @@ public class AudioManager : Singleton<AudioManager>
             _musicSource.volume = Mathf.Clamp01(volume);
             DataManager.Instance.MusicVolume = _musicSource.volume;
             DataManager.Instance.SaveMusicVolume(DataManager.Instance.MusicVolume);
+            _musicSource.volume = DataManager.Instance.MusicVolume;
         }
     }
 
@@ -71,6 +72,7 @@ public class AudioManager : Singleton<AudioManager>
             _soundSource.volume = Mathf.Clamp01(volume);
             DataManager.Instance.SfxVolume = _soundSource.volume;
             DataManager.Instance.SaveSfxVolume(DataManager.Instance.SfxVolume);
+            _soundSource.volume = DataManager.Instance.SfxVolume;
         }
     }
 
@@ -128,7 +130,7 @@ public class AudioManager : Singleton<AudioManager>
         _musicSource.volume = 0f;
         _musicSource.Play();
 
-        float targetVol = 1f;
+        float targetVol = DataManager.Instance.MusicVolume;
         
 
         _musicSource.DOFade(targetVol, fadeDuration).SetUpdate(true);

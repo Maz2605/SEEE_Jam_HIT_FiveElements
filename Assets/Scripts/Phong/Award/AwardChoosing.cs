@@ -36,7 +36,7 @@ public class AwardChoosing : MonoBehaviour
         // Next wave
         GameEventPhong.DisAppearAward();
         GameManager.Instance.ContinueNextWave();
-        DOVirtual.DelayedCall(5f, () => SpawnBuff());
+        DOVirtual.DelayedCall(2f, () => SpawnBuff());
     }
 
     public void SpawnBuff()

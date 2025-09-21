@@ -69,6 +69,7 @@ public class BuffChoosing : MonoBehaviour
 
     public void OnPressed()
     {
+        AudioManager.Instance.PlaySoundClickButton();
         ListOfBuff.Instance.CurrentBuffChoice = _currentBuff;
         ListOfBuff.Instance.OnPressed();
     }

@@ -16,6 +16,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OpenMenu()
     {
+        AudioManager.Instance.PlaySoundClickButton();
         menuUI.SetActive(true);
         settingUI.SetActive(false);
         mapUI.SetActive(false);
@@ -28,11 +29,13 @@ public class UiManager : Singleton<UiManager>
     public void OpenSetting()
     {
         settingUI.SetActive(true);
+        AudioManager.Instance.PlaySoundClickButton();
     }
 
     public void CloseSetting()
     {
         settingUI.SetActive(false);
+        AudioManager.Instance.PlaySoundClickButton();
     }
 
     public void OpenShop()
@@ -44,6 +47,7 @@ public class UiManager : Singleton<UiManager>
         shopUI.SetActive(true);
         gamePlayUI.SetActive(false);
         introUI.SetActive(false);
+        AudioManager.Instance.PlaySoundClickButton();
     }
 
     public void OpenGamePlay()
@@ -56,6 +60,7 @@ public class UiManager : Singleton<UiManager>
         shopUI.SetActive(false);
         gamePlayUI.SetActive(true);
         introUI.SetActive(false);
+        AudioManager.Instance.PlaySoundClickButton();
     }
 
     public void OpenMap()
@@ -68,6 +73,7 @@ public class UiManager : Singleton<UiManager>
         shopUI.SetActive(false);
         gamePlayUI.SetActive(false);
         introUI.SetActive(false);
+        AudioManager.Instance.PlaySoundClickButton();
     }
 
     
@@ -81,10 +87,12 @@ public class UiManager : Singleton<UiManager>
         shopUI.SetActive(false);
         gamePlayUI.SetActive(false);
         introUI.SetActive(true);
+        AudioManager.Instance.PlaySoundClickButton();
     }
     
     public void OpenSence()
     {
+        AudioManager.Instance.PlaySoundClickButton();
         if(_isSkip)
         {
             introUI.SetActive(false);
@@ -122,6 +130,7 @@ public class UiManager : Singleton<UiManager>
 
     public void QuitGame()
     {
+        AudioManager.Instance.PlaySoundClickButton();
         Application.Quit();
     }
     

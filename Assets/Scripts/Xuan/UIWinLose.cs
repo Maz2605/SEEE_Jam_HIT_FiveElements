@@ -55,7 +55,8 @@ public class UIWinLose : Singleton<UIWinLose>
     }
     public void ShowWin()
     {
-        DOVirtual.DelayedCall(3f, () =>
+        AudioManager.Instance.PlayWinGame();
+        DOVirtual.DelayedCall(1f, () =>
         {
             Time.timeScale = 0f;
             _backGround.SetActive(true);
@@ -71,9 +72,14 @@ public class UIWinLose : Singleton<UIWinLose>
 
     public void ShowLose()
     {
-        Time.timeScale = 0f;
-        _backGround.SetActive(true);
-        _lose.SetActive(true);
+        AudioManager.Instance.PlayLoseGame();
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            Time.timeScale = 0f;
+            _backGround.SetActive(true);
+            _lose.SetActive(true);
+        });
+        
     }
     public void BackLose()
     {

@@ -118,8 +118,13 @@ public class DataManager : Singleton<DataManager>
 
     private void Awake()
     {
-        ResetAll();
+        //ResetAll();
         LoadAll();
+    }
+
+    private void OnDestroy()
+    {
+        SaveAll();
     }
 
     // =========================

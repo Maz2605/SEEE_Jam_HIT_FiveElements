@@ -47,6 +47,7 @@ public class Skill3 : MonoBehaviour
     {
         if(_isCooldown || _isLook) return;
         
+        AudioManager.Instance.PlaySkill3();
         Instantiate(skill3Prefab, PlayerController.Instance.transform.position, Quaternion.identity);
         // Lam gi do voi player
         BuffDamageRange();

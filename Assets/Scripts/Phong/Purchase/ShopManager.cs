@@ -25,8 +25,14 @@ public class ShopManager : Singleton<ShopManager>
 
     private void Awake()
     {
-        DataManager.Instance.ResetAll();
         OnPressSkill();
+        _coin = DataManager.Instance.Coin;
+        text.text = _coin.ToString();
+    }
+
+    private void OnEnable()
+    {
+        DataManager.Instance.SaveCoin(DataManager.Instance.Coin);
         _coin = DataManager.Instance.Coin;
         text.text = _coin.ToString();
     }

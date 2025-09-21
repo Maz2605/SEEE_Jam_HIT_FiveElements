@@ -81,6 +81,7 @@ public class ChoosingObj : MonoBehaviour
 
     public void Press()
     {
+        AudioManager.Instance.PlaySoundClickButton();
         ListObjPart.Instance.SetCurrentSkillChoice(_currentSkill);
         GameEventPhong.PressObject();
         if (_currentSkill == 4)
@@ -93,6 +94,7 @@ public class ChoosingObj : MonoBehaviour
 
     public void PressUpgrade()
     {
+        AudioManager.Instance.PlayUseCoin();
         _level++;
         if (_currentSkill == 1 && _level <= 5)
         {

@@ -57,6 +57,7 @@ public class Skill1 : MonoBehaviour
     {
         if (_isChoiceSkill || skill1RangePrefab == null || _isCooldown || _isLook) return;
 
+        AudioManager.Instance.PlaySkill1();
         Vector3 spawnPos = GetMouseWorldPosition(Input.mousePosition);
         if (spawnPos != Vector3.zero)
         {

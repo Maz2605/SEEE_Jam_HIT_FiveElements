@@ -6,17 +6,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
 
-    private void OnEnable()
-    {
-        GameEventPhong.OpenMenu += OpenMenu;
-        GameEventPhong.CloseMenu += CloseMenu;
-    }
 
-    private void OnDisable()
-    {
-        GameEventPhong.OpenMenu -= OpenMenu;
-        GameEventPhong.CloseMenu -= CloseMenu;
-    }
 
     public void OpenMenu()
     {
@@ -40,7 +30,7 @@ public class Menu : MonoBehaviour
     public void SettingsGame()
     {
         gameObject.SetActive(false);
-        GameEventPhong.OpenSettings();
+        UiManager.Instance.OpenSetting();
     }
 
     public void BackHome()
@@ -48,6 +38,6 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1f;
         gameObject.SetActive(false);
         XuanEventManager.OnBackLevel();
-        GameEventPhong.OpenMap();
+        UiManager.Instance.OpenMap();
     }
 }

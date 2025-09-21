@@ -248,6 +248,7 @@ public class Enemy : MonoBehaviour
     {
         //////////////////////////////////////////
         //Debug.Log($"{name} đã chết, còn lại: {EnemyManager.Instance.EnemyCount}");
+        AudioManager.Instance.PlayEnemyDeath();
         DataManager.Instance.Coin += _countCoin;
         DataManager.Instance.SaveCoin(DataManager.Instance.Coin);
         gameObject.tag = "Untagged";

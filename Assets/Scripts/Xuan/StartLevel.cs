@@ -31,6 +31,7 @@ public class StartLevel : MonoBehaviour
 
     public void OnLevel(int index)
     {
+        AudioManager.Instance.PlayMusicSelectLevel();
         _currentLevelIndex = index;
         GameManager.Instance.CurrentLevel = _currentLevelIndex - 1;
         TowerHealth.Instance.InitTower();

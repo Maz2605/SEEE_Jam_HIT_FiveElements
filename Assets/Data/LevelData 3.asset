@@ -10,26 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7eccb37e409bc444b172d2d0adc2bec, type: 3}
-  m_Name: LevelData
+  m_Name: LevelData 3
   m_EditorClassIdentifier: 
   waves:
   - enemies:
     - enemyID: 'knight2 '
-      count: 5
+      count: 10
     - enemyID: fire
       count: 5
     bosses: []
   - enemies:
     - enemyID: knight1
-      count: 12
+      count: 10
     - enemyID: fire
-      count: 12
+      count: 15
+    - enemyID: fire
+      count: 15
     bosses: []
   - enemies:
+    - enemyID: knight1
+      count: 15
     - enemyID: fire
-      count: 10
+      count: 15
+    - enemyID: magic
+      count: 15
+    bosses: []
+  - enemies:
+    - enemyID: knight1
+      count: 20
     - enemyID: knight2
       count: 10
-    - enemyID: knight1
-      count: 10
+    - enemyID: light
+      count: 20
     bosses: []
+  - enemies: []
+    bosses:
+    - enemyID: flydemon
+      count: 1

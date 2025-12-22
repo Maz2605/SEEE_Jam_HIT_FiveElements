@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyStatsList:
   - idEnemy: fire
     isFar: 1
-    health: 50
+    health: 150
     speed: 0.75
     damage: 5
     speedAttack: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
     animator: {fileID: 9100000, guid: 21d1da7c3adf32d4d9d17416b93f99a9, type: 2}
   - idEnemy: light
     isFar: 1
-    health: 50
+    health: 150
     speed: 0.75
     damage: 3
     speedAttack: 1.5
@@ -33,7 +33,7 @@ MonoBehaviour:
     animator: {fileID: 9100000, guid: 45230227bfd2d3d43be5a64b64bc07f0, type: 2}
   - idEnemy: magic
     isFar: 1
-    health: 70
+    health: 150
     speed: 0.75
     damage: 5
     speedAttack: 1.2
@@ -42,7 +42,7 @@ MonoBehaviour:
     animator: {fileID: 9100000, guid: d9768425ec0e099448b62d0a78a5dc6d, type: 2}
   - idEnemy: knight1
     isFar: 0
-    health: 70
+    health: 300
     speed: 0.75
     damage: 3
     speedAttack: 1.2
@@ -51,7 +51,7 @@ MonoBehaviour:
     animator: {fileID: 9100000, guid: c50cbb3561cd3184ead9d3c825bda5fa, type: 2}
   - idEnemy: knight2
     isFar: 0
-    health: 90
+    health: 400
     speed: 1
     damage: 10
     speedAttack: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     animator: {fileID: 9100000, guid: 8292ed2038d93194894c41b1ee975667, type: 2}
   - idEnemy: knight3
     isFar: 0
-    health: 110
+    health: 450
     speed: 1
     damage: 10
     speedAttack: 1.2

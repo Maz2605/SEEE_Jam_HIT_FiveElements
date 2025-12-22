@@ -15,17 +15,31 @@ MonoBehaviour:
   waves:
   - enemies:
     - enemyID: 'knight2 '
-      count: 9
+      count: 5
     - enemyID: fire
-      count: 1
+      count: 5
+    - enemyID: fire
+      count: 8
+    - enemyID: knight1
+      count: 5
     bosses: []
   - enemies:
     - enemyID: knight1
-      count: 28
+      count: 15
     - enemyID: fire
-      count: 10
+      count: 5
+    - enemyID: magic
+      count: 5
+    - enemyID: light
+      count: 5
     bosses: []
-  - enemies: []
-    bosses:
-    - enemyID: golem
-      count: 1
+  - enemies:
+    - enemyID: knight2
+      count: 15
+    - enemyID: knight1
+      count: 15
+    - enemyID: fire
+      count: 5
+    - enemyID: light
+      count: 25
+    bosses: []

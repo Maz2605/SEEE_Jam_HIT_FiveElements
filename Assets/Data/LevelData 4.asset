@@ -10,26 +10,54 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7eccb37e409bc444b172d2d0adc2bec, type: 3}
-  m_Name: LevelData
+  m_Name: LevelData 4
   m_EditorClassIdentifier: 
   waves:
   - enemies:
     - enemyID: 'knight2 '
-      count: 5
+      count: 10
     - enemyID: fire
-      count: 5
+      count: 10
     bosses: []
   - enemies:
     - enemyID: knight1
-      count: 12
+      count: 28
     - enemyID: fire
-      count: 12
+      count: 10
     bosses: []
   - enemies:
-    - enemyID: fire
+    - enemyID: knight1
       count: 10
     - enemyID: knight2
       count: 10
-    - enemyID: knight1
+    - enemyID: knight3
+      count: 10
+    - enemyID: fire
       count: 10
     bosses: []
+  - enemies:
+    - enemyID: knight1
+      count: 20
+    - enemyID: 'fire '
+      count: 15
+    - enemyID: light
+      count: 15
+    bosses: []
+  - enemies:
+    - enemyID: knight1
+      count: 10
+    - enemyID: knight2
+      count: 10
+    - enemyID: knight3
+      count: 10
+    - enemyID: light
+      count: 10
+    - enemyID: fire
+      count: 10
+    - enemyID: magic
+      count: 10
+    bosses: []
+  - enemies: []
+    bosses:
+    - enemyID: medusa
+      count: 1

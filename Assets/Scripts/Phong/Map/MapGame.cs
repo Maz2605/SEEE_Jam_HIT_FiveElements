@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MapGame : MonoBehaviour
 {
-    private bool _isTutoria;   
+    private bool _isTutoria = false;   
     public void OpenShop()
     {
         
